@@ -22,10 +22,9 @@ class Class(db.Model):
             'name': self.name,
             'purpose':self.purpose,
             'headline': self.headline,
-            'description': self.desciption,
+            'description': self.description,
             'private': self.private,
-            'user': self.user.to_dict(),
-            'decks': self.decks.to_dict_no_addons()
+            'decks': [deck.to_dict() for deck in self.decks]
         }
 
     def to_dict_no_addons(self):
@@ -34,6 +33,6 @@ class Class(db.Model):
             'name': self.name,
             'purpose':self.purpose,
             'headline': self.headline,
-            'description': self.desciption,
+            'description': self.description,
             'private': self.private
         }

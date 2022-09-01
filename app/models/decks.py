@@ -13,16 +13,17 @@ class Deck(db.Model):
 
     def to_dict(self):
         return {
+            'id': self.id,
             'name': self.name,
             'objective': self.objective,
-            'class': self.parent_class,
-            'class`'
-            'cards': self.cards.to_dict_no_deck()
+            # 'class': self.parent_class,
+            'cards': [card.to_dict_no_deck() for card in self.cards]
         }
 
     def to_dict_no_addons(self):
         return {
+            'id': self.id,
             'name': self.name,
             'objective': self.objective,
-            'class': self.parent_class
+            'class_id': self.class_id
         }

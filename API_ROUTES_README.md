@@ -62,8 +62,7 @@ Returns the information about the current user that is logged in.
       "id": 1,
       "firstName": "Demo",
       "lastName": "Demo",
-      "email": "demo@aa.io",
-      "buyingPower": 1000000.00
+      "email": "demo@aa.io"
     }
     ```
 
@@ -101,7 +100,6 @@ information.
       "firstName": "Demo",
       "lastName": "Demo",
       "email": "demo@aa.io",
-      "buyingPower": 1000000.00,
       "token": ""
     }
     ```
@@ -201,7 +199,6 @@ user's information.
       "firstName": "Demo",
       "lastName": "Demo",
       "email": "demo@aa.io",
-      "buyingPower": 0,
       "token": ""
     }
     ```
@@ -243,15 +240,15 @@ user's information.
     }
     ```
 
-## Get all Watchlists created by the Current User
+## Get all Classes created by the user
 
-Return all the watchlists.
+Return all the classes created by the user.
 
 - Require Authentication: true
 - Request
 
   - Method: GET
-  - URL: /api/users/current-user/watchlists
+  - URL: /api/classes/current-user-classes
   - Body: none
 
 - Successful Response
@@ -263,37 +260,26 @@ Return all the watchlists.
 
     ```json
     {
-      "Watchlists": [
-        {
-          "id": 1,
-          "name": "FinTech",
-          "userId": 1
-        },
-        {
-          "id": 2,
-          "name": "Healthcare",
-          "userId": 1
-        }
-      ]
+
     }
     ```
 
-## Create a Watchlist
+## Create a Class
 
-Creates and returns a new watchlist.
+Creates and returns a new class.
 
 - Require Authentication: true
 - Request
 
   - Method: POST
-  - URL: /api/watchlists
+  - URL: /api/classes
   - Headers:
     - Content-Type: application/json
   - Body:
 
     ```json
     {
-      "name": "FinTech"
+
     }
     ```
 
@@ -306,9 +292,7 @@ Creates and returns a new watchlist.
 
     ```json
     {
-      "id": 1,
-      "name": "FinTech",
-      "userId": 1
+
     }
     ```
 
@@ -324,28 +308,28 @@ Creates and returns a new watchlist.
       "message": "Validation Error",
       "statusCode": 400,
       "errors": {
-        "name": "Name is required",
+
       }
     }
     ```
 
-## Edit a Watchlist
+## Edit a class
 
-Updates and returns an edited watchlist.
+Updates and returns an edited class.
 
 - Require Authentication: true
-- Require proper authorization: Watchlist must belong to the current user
+- Require proper authorization: Class must belong to the current user
 - Request
 
   - Method: PUT
-  - URL: /api/watchlists/:watchlistId
+  - URL: /api/classes/:classId
   - Headers:
     - Content-Type: application/json
   - Body:
 
     ```json
     {
-      "name": "Technology"
+
     }
     ```
 
@@ -358,9 +342,7 @@ Updates and returns an edited watchlist.
 
     ```json
     {
-      "id": 1,
-      "name": "Technology",
-      "userId": 1
+
     }
     ```
 
@@ -376,12 +358,12 @@ Updates and returns an edited watchlist.
       "message": "Validation Error",
       "statusCode": 400,
       "errors": {
-        "name": "Name is required",
+
       }
     }
     ```
 
-- Error response: Couldn't find a Watchlist with the specified id
+- Error response: Couldn't find a Class with the specified id
 
   - Status Code: 404
   - Headers:
@@ -390,21 +372,20 @@ Updates and returns an edited watchlist.
 
     ```json
     {
-      "message": "Watchlist couldn't be found",
+      "message": "Class couldn't be found",
       "statusCode": 404
     }
     ```
 
-## Delete a Watchlist
-
-Deletes an existing watchlist.
+## Delete a class
+Deletes an existing class.
 
 - Require Authentication: true
-- Require proper authorization: Watchlist must belong to the current user
+- Require proper authorization: Class must belong to the current user
 - Request
 
   - Method: DELETE
-  - URL: /api/watchlists/:watchlistId
+  - URL: /api/classes/:classId
   - Body: none
 
 - Successful Response
@@ -421,7 +402,7 @@ Deletes an existing watchlist.
     }
     ```
 
-- Error response: Couldn't find a Watchlist with the specified id
+- Error response: Couldn't find a Class with the specified id
 
   - Status Code: 404
   - Headers:
@@ -430,23 +411,23 @@ Deletes an existing watchlist.
 
     ```json
     {
-      "message": "Watchlist couldn't be found",
+      "message": "Class couldn't be found",
       "statusCode": 404
     }
     ```
 
-## Get all Stocks of a Watchlist specified by its id
+## Get all Decks of a Class specified by its id
 
-Returns the stocks of a watchlist specified by its id
+Returns the decks of a class specified by its id
 
 - Require Authentication: true
 - Request
 
   - Method: GET
-  - URL: /api/watchlist/:watchlistId
+  - URL: /api/classes/:classId/decks
   - Body: none
 
-- Successful Response: If you ARE the creator of the watchlist, show all stocks of the watchlist.
+- Successful Response: If you are the creator of the class, show all decks of the class.
 
   - Status Code: 200
   - Headers:
@@ -455,17 +436,17 @@ Returns the stocks of a watchlist specified by its id
 
     ```json
     {
-      "Stocks": [
+      "Decks": [
         {
           "id": 1,
-          "symbol": "APPL",
-          "watchlistId": 1
+          "name": "my deck",
+          "objective": "deck description"
         }
       ]
     }
     ```
 
-- Error response: Couldn't find a Watchlist with the specified id
+- Error response: Couldn't find a class with the specified id
 
   - Status Code: 404
   - Headers:
@@ -474,20 +455,20 @@ Returns the stocks of a watchlist specified by its id
 
     ```json
     {
-      "message": "Watchlist couldn't be found",
+      "message": "Class couldn't be found",
       "statusCode": 404
     }
     ```
 
-## Add a Stock to a Watchlist specified by symbol
+## Add a Deck to a Class specified by its id
 
-Add a stock to a watchlist specified by symbol.
+Add a deck to a class specified by its Id.
 
 - Require Authentication: true
 - Request
 
   - Method: POST
-  - URL: /api/watchlist/:watchlistId/stocks
+  - URL: /api/classes/:classId/decks
   - Headers:
     - Content-Type: application/json
   - Body: none
@@ -501,11 +482,12 @@ Add a stock to a watchlist specified by symbol.
 
     ```json
     {
-      "symbol": "AAPL"
+      "name": "deck name",
+      "objective": "deck objective"
     }
     ```
 
-- Error response: Couldn't find a Watchlist with the specified id
+- Error response: Couldn't find a Class with the specified id
 
   - Status Code: 404
   - Headers:
@@ -514,12 +496,12 @@ Add a stock to a watchlist specified by symbol.
 
     ```json
     {
-      "message": "Watchlist couldn't be found",
+      "message": "Class couldn't be found",
       "statusCode": 404
     }
     ```
 
-- Error response: Watchlist already has a stock with this id/symbol
+- Error response: Class already has a deck with this id
 
 - Status Code: 400
   - Headers:
@@ -528,21 +510,85 @@ Add a stock to a watchlist specified by symbol.
 
     ```json
     {
-      "message": "Watchlist already has this stock",
+      "message": "Class already has this deck",
       "statusCode": 400
     }
     ```
 
-## Delete a Stock from a Watchlist specified by id
+## Edit a Deck
 
-Delete a stock from a watchlist specified by id.
+Updates and returns an edited Deck.
 
 - Require Authentication: true
-- Require proper authorization: Current User must be the creator of the watchlist
+- Require proper authorization: Deck must belong to the current user
+- Request
+
+  - Method: PUT
+  - URL: /api/classes/:classId/decks/:deckid
+  - Headers:
+    - Content-Type: application/json
+  - Body:
+
+    ```json
+    {
+
+    }
+    ```
+
+- Successful Response
+
+  - Status Code: 201
+  - Headers:
+    - Content-Type: application/json
+  - Body:
+
+    ```json
+    {
+
+    }
+    ```
+
+- Error Response: Body validation error
+
+  - Status Code: 400
+  - Headers:
+    - Content-Type: application/json
+  - Body:
+
+    ```json
+    {
+      "message": "Validation Error",
+      "statusCode": 400,
+      "errors": {
+
+      }
+    }
+    ```
+
+- Error response: Couldn't find a Deck with the specified id
+
+  - Status Code: 404
+  - Headers:
+    - Content-Type: application/json
+  - Body:
+
+    ```json
+    {
+      "message": "Deck couldn't be found",
+      "statusCode": 404
+    }
+    ```
+
+## Delete a Deck from a Class specified by id
+
+Delete a deck from a class specified by id.
+
+- Require Authentication: true
+- Require proper authorization: Current User must be the creator of the class
 - Request
 
   - Method: DELETE
-  - URL: /api/watchlist/:watchlistId/stocks/:symbol
+  - URL: /api/classes/:classId/decks/:deckId
   - Headers:
     - Content-Type: application/json
   - Body: none
@@ -556,11 +602,11 @@ Delete a stock from a watchlist specified by id.
 
     ```json
     {
-      "message": "Successfully deleted stock from watchlist"
+      "message": "Successfully deleted deck from class"
     }
     ```
 
-- Error response: Couldn't find a Watchlist with the specified id
+- Error response: Couldn't find a Class with the specified id
 
   - Status Code: 404
   - Headers:
@@ -569,12 +615,12 @@ Delete a stock from a watchlist specified by id.
 
     ```json
     {
-      "message": "Watchlist couldn't be found",
+      "message": "Class couldn't be found",
       "statusCode": 404
     }
     ```
 
--Error response: Watchlist does not contain this stock
+-Error response: Class does not contain this deck
 
  - Status Code: 404
   - Headers:
@@ -583,12 +629,12 @@ Delete a stock from a watchlist specified by id.
 
       ```json
       {
-        "message": "Watchlist does not contain this stock",
+        "message": "Class does not contain this deck",
         "statusCode": 404
       }
       ```
 
-- Error response: Only the creator of a watchlist may remove a stock
+- Error response: Only the creator of a class may remove a deck
 
   - Status Code: 403
   - Headers:
@@ -597,43 +643,43 @@ Delete a stock from a watchlist specified by id.
 
     ```json
     {
-      "message": "Only the creator of a watchlist may remove a stock",
+      "message": "Only the creator of a class may remove a deck",
       "statusCode": 403
     }
     ```
 
-## Get a Users Portfolio specified by User Id
+## Get all Cards of a Deck specified by its id
 
-Returns all portfolio transactions of a user, specified by its id
+Returns the decks of a class specified by its id
 
 - Require Authentication: true
 - Request
 
   - Method: GET
-  - URL: /api/portfolio/:userId
+  - URL: /api/decks/:deckId/cards
   - Body: none
+
+- Successful Response: If you are the creator of the deck, show all cards of the deck.
+
+  - Status Code: 200
+  - Headers:
+    - Content-Type: application/json
+  - Body:
 
     ```json
     {
-      "Assets": [
+      "Decks": [
         {
           "id": 1,
-          "quantityOwned": 10,
-          "symbol": "AAPL",
-          "totalPurchasePrice": 560.7,
-          "userId": 1
-       },
-       {
-          "id": 2,
-          "quantityOwned": 70,
-          "symbol": "BOX",
-          "totalPurchasePrice": 1334.2,
-          "userId": 1
-       },
-     ]
+          "question" : "question",
+          "answer": "answer",
+          "deck_id": 1
+        }
+      ]
     }
     ```
-- Error response: Couldn't find a User with the specified id
+
+- Error response: Couldn't find a deck with the specified id
 
   - Status Code: 404
   - Headers:
@@ -642,32 +688,23 @@ Returns all portfolio transactions of a user, specified by its id
 
     ```json
     {
-      "message": "User couldn't be found",
+      "message": "deck couldn't be found",
       "statusCode": 404
     }
     ```
 
-## Purchase a Stock
+## Add a Card to a Deck specified by its id
 
-User buys a stock and the stock is added to the user's portfolio.
+Add a deck to a class specified by its Id.
 
 - Require Authentication: true
 - Request
 
   - Method: POST
-  - URL: /api/portfolio/:userId/stocks
-   - Headers:
+  - URL: /api/decks/:deckId/cards
+  - Headers:
     - Content-Type: application/json
-  - Body:
-
-    ```json
-    {
-      "userId": 1,
-      "symbol": "AAPL",
-      "quantity": 2,
-      "price": 170
-    }
-    ```
+  - Body: none
 
 - Successful Response
 
@@ -678,14 +715,12 @@ User buys a stock and the stock is added to the user's portfolio.
 
     ```json
     {
-      "id": 1,
-      "symbol": "AAPL",
-      "quantity": 2,
-      "price": 170
+      "question" : "question",
+      "answer": "answer",
     }
     ```
 
-- Error response: Insufficient Funds
+- Error response: Couldn't find a Class with the specified id
 
   - Status Code: 404
   - Headers:
@@ -694,23 +729,88 @@ User buys a stock and the stock is added to the user's portfolio.
 
     ```json
     {
-      "message": "Insufficient funds",
+      "message": "Deck couldn't be found",
       "statusCode": 404
     }
     ```
 
-## Sell a Stock
+## Edit a Card
 
-User sells a stock and the stock is removed from the users portfolio.
+Updates and returns an edited Card.
 
 - Require Authentication: true
+- Require proper authorization: Deck must belong to the current user
+- Request
+
+  - Method: PUT
+  - URL: /api/decks/:deckid/cards/:cardId
+  - Headers:
+    - Content-Type: application/json
+  - Body:
+
+    ```json
+    {
+
+    }
+    ```
+
+- Successful Response
+
+  - Status Code: 201
+  - Headers:
+    - Content-Type: application/json
+  - Body:
+
+    ```json
+    {
+
+    }
+    ```
+
+- Error Response: Body validation error
+
+  - Status Code: 400
+  - Headers:
+    - Content-Type: application/json
+  - Body:
+
+    ```json
+    {
+      "message": "Validation Error",
+      "statusCode": 400,
+      "errors": {
+
+      }
+    }
+    ```
+
+- Error response: Couldn't find a Card with the specified id
+
+  - Status Code: 404
+  - Headers:
+    - Content-Type: application/json
+  - Body:
+
+    ```json
+    {
+      "message": "Card couldn't be found",
+      "statusCode": 404
+    }
+    ```
+
+## Delete a Card from a Deck specified by id
+
+Delete a card from a deck specified by id.
+
+- Require Authentication: true
+- Require proper authorization: Current User must be the creator of the deck
 - Request
 
   - Method: DELETE
-  - URL: /api/portfolio/:userId/stocks/:symbol
-   - Headers:
+  - URL: /api/decks/:deckId/cards/:cardId
+  - Headers:
     - Content-Type: application/json
-    - Body: none
+  - Body: none
 
 - Successful Response
 
@@ -721,35 +821,48 @@ User sells a stock and the stock is removed from the users portfolio.
 
     ```json
     {
-      "message": "Successfully sold stock",
-      "statusCode": 200
+      "message": "Successfully deleted card from deck"
     }
     ```
 
-- Error response: Couldn't find a Stock with the specified symbol that the user owns.
+- Error response: Couldn't find a deck with the specified id
 
-  - Status Code: 400
+  - Status Code: 404
   - Headers:
     - Content-Type: application/json
   - Body:
 
     ```json
     {
-      "message": "You do not own this stock",
-      "statusCode": 400
+      "message": "Deck couldn't be found",
+      "statusCode": 404
     }
     ```
 
-- Error response: Quantity being sold is greater than quantity owned
+-Error response: Deck does not contain this Card
 
-  - Status Code: 400
+ - Status Code: 404
+  - Headers:
+    - Content-Type: application/json
+    - Body:
+
+      ```json
+      {
+        "message": "Deck does not contain this Card",
+        "statusCode": 404
+      }
+      ```
+
+- Error response: Only the creator of a deck may remove a card
+
+  - Status Code: 403
   - Headers:
     - Content-Type: application/json
   - Body:
 
     ```json
     {
-      "message": "You can not sell more stock than you own",
-      "statusCode": 400
+      "message": "Only the creator of a deck may remove a card",
+      "statusCode": 403
     }
     ```
