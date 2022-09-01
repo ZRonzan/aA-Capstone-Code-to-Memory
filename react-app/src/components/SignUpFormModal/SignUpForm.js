@@ -6,8 +6,8 @@ import './SignUpFormModal.css'
 
 const SignUpForm = ({setShowModal}) => {
   const [errors, setErrors] = useState([]);
-  const [firstName, setFirstname] = useState('');
-  const [lastName, setLastname] = useState('');
+  const [first_name, setFirstname] = useState('');
+  const [last_name, setLastname] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
@@ -17,11 +17,12 @@ const SignUpForm = ({setShowModal}) => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(firstName, lastName, email, password));
+      const data = await dispatch(signUp(first_name, last_name, email, password));
       if (data) {
         setErrors(data)
       }
     }
+    setShowModal(false)
   };
 
   const updateFirstName = (e) => {
@@ -61,7 +62,7 @@ const SignUpForm = ({setShowModal}) => {
           type='text'
           name='first name'
           onChange={updateFirstName}
-          value={firstName}
+          value={first_name}
         ></input>
       </div>
       <div>
@@ -70,7 +71,7 @@ const SignUpForm = ({setShowModal}) => {
           type='text'
           name='last name'
           onChange={updateLastName}
-          value={lastName}
+          value={last_name}
         ></input>
       </div>
       <div>
