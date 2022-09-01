@@ -6,8 +6,8 @@ def seed_classes():
     intro_to_javascript = Class(
         name = "Learning javascript",
         purpose = None,
-        headline = "This class is provided to you upon new user signup to Code-to-Memory./n Feel free to use this class as a starting point to your coding endeavors!",
-        description = "This class contains a few decks fo you to study, focused on some of the fundamentals of javascript./n Feel free to use these materials as inspiration for creating your own decks!",
+        headline = "This class is provided to you upon new user signup to Code-to-Memory.\n Feel free to use this class as a starting point to your coding endeavors!",
+        description = "This class contains a few decks fo you to study, focused on some of the fundamentals of javascript.\n Feel free to use these materials as inspiration for creating your own decks!",
         private = False,
         owner_id = 1
     )
