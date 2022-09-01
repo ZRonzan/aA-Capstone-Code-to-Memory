@@ -16,8 +16,16 @@ class Deck(db.Model):
             'id': self.id,
             'name': self.name,
             'objective': self.objective,
-            # 'class': self.parent_class,
+            'class_id': self.class_id,
             'cards': [card.to_dict_no_deck() for card in self.cards]
+        }
+
+    def to_dict_with_parent_class(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'objective': self.objective,
+            'parent_class': self.parent_class.to_dict_no_addons()
         }
 
     def to_dict_no_addons(self):

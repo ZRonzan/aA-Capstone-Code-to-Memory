@@ -1,17 +1,16 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField
-from wtforms.validators import DataRequired, Email, ValidationError
-from app.models import User
+from wtforms.validators import DataRequired, ValidationError
 
 
 def deck_name_length(form, field):
     name = field.data
-    if len(name) > 30:
+    if name is not None and len(name) > 30 or name is not None and len(name) == 0:
         raise ValidationError("Deck name must be 30 characters or less.")
 
 def deck_objective_length(form, field):
     objective = field.data
-    if len(objective) > 255:
+    if objective is not None and len(objective) > 255 or objective is not None and len(objective) == 0:
         raise ValidationError("Deck objective must be 255 characters or less.")
 
 class DeckForm(FlaskForm):

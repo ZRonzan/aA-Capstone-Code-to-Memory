@@ -24,6 +24,18 @@ class Class(db.Model):
             'headline': self.headline,
             'description': self.description,
             'private': self.private,
+            'decks': [deck.to_dict_no_addons() for deck in self.decks],
+            'user': self.user.to_dict()
+        }
+
+    def to_dict_all_data(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'purpose':self.purpose,
+            'headline': self.headline,
+            'description': self.description,
+            'private': self.private,
             'decks': [deck.to_dict() for deck in self.decks]
         }
 
@@ -34,5 +46,6 @@ class Class(db.Model):
             'purpose':self.purpose,
             'headline': self.headline,
             'description': self.description,
-            'private': self.private
+            'private': self.private,
+            'owner_id': self.owner_id
         }
