@@ -9,11 +9,11 @@ class Class(db.Model):
     name = db.Column(db.String(40), nullable=False)
     purpose = db.Column(db.String, nullable=False, default="General Learning")
     headline = db.Column(db.String(40), nullable=True)
-    desciption = db.Column(db.String(1000), nullable=True)
+    description = db.Column(db.String(1000), nullable=True)
     private = db.Column(db.Boolean, default=True)
-    owner_id = db.Column(db.Integer, db.Foreignkey('users.id'), nullable=False)
+    owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
-    user = db.relationship("User", back_populates='classes')
+    user = db.relationship("User", back_populates='user_classes')
     decks = db.relationship("Deck", back_populates='parent_class', cascade='all, delete')
 
     def to_dict(self):
@@ -22,9 +22,21 @@ class Class(db.Model):
             'name': self.name,
             'purpose':self.purpose,
             'headline': self.headline,
-            'description': self.desciption,
+            'description': self.description,
             'private': self.private,
+            'decks': [deck.to_dict_no_addons() for deck in self.decks],
             'user': self.user.to_dict()
+        }
+
+    def to_dict_all_data(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'purpose':self.purpose,
+            'headline': self.headline,
+            'description': self.description,
+            'private': self.private,
+            'decks': [deck.to_dict() for deck in self.decks]
         }
 
     def to_dict_no_addons(self):
@@ -33,6 +45,7 @@ class Class(db.Model):
             'name': self.name,
             'purpose':self.purpose,
             'headline': self.headline,
-            'description': self.desciption,
-            'private': self.private
+            'description': self.description,
+            'private': self.private,
+            'owner_id': self.owner_id
         }
