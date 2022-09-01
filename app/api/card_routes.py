@@ -29,17 +29,16 @@ def get_all_owned_cards():
     res = {"cards": []}
 
     for card in cards:
-        if card.parent_class.owner_id == current_user.id:
+        if card.deck.parent_class.owner_id == current_user.id:
             res["cards"].append(card.to_dict())
 
     return res
 
 # Get card by id
-@card_routes.route('/<cardId>')
+@card_routes.route('/<int:cardId>')
 def get_one_card(cardId):
 
     single_card = Card.query.get(cardId)
-    print(single_card)
     if single_card is None:
         return {"message": "card does not exist", "statusCode": 404}, 404
     else:
@@ -57,17 +56,21 @@ def create_card():
     if form.validate_on_submit():
         data = form.data
 
-        parent_class = Class.query.get(data['class_id'])
+        parent_deck = Deck.query.get(data['deck_id'])
+        if parent_deck is None:
+            return {"message": "Deck does not exist", "statusCode": 404}, 404
+
+        parent_class = Class.query.get(parent_deck.to_dict_no_addons()['class_id'])
 
         if parent_class.to_dict_no_addons()['owner_id'] == current_user.id:
             new_card = Card(
-                name = data['name'],
-                objective = data['objective'],
-                class_id = data['class_id']
+                question = data['question'],
+                answer= data['answer'],
+                deck_id = data['deck_id']
             )
             db.session.add(new_card)
             db.session.commit()
-            return new_card.to_dict_no_addons()
+            return new_card.to_dict_no_deck()
         else:
             return {'errors': ["Unauthorized"]}, 401
     else:
@@ -84,16 +87,20 @@ def edit_card(cardId):
     if form.validate_on_submit():
         data = form.data
         card_to_edit = Card.query.get(cardId)
-        parent_class = Class.query.get(card_to_edit.class_id)
 
-        if parent_class.to_dict_no_addons()['owner_id'] == current_user.id:
+        if card_to_edit is None:
+            return {"message": "card does not exist", "statusCode": 404}, 404
 
-            card_to_edit.name = data['name']
-            card_to_edit.objective = data['objective']
-            card_to_edit.class_id = data['class_id']
+        parent_class = card_to_edit.to_dict_with_class()['deck']['parent_class']
+
+        if parent_class['owner_id'] == current_user.id and card_to_edit.deck_id == data['deck_id']:
+
+            card_to_edit.question = data['question']
+            card_to_edit.answer = data['answer']
+            card_to_edit.deck_id = data['deck_id']
 
             db.session.commit()
-            return card_to_edit.to_dict_no_addons()
+            return card_to_edit.to_dict_no_deck()
         else:
             return {'errors': ["Unauthorized"]}, 401
     else:
@@ -107,8 +114,8 @@ def delete_card(cardId):
     card_to_delete = Card.query.get(cardId)
 
     if card_to_delete is not None:
-        parent_class = Class.query.get(card_to_delete.class_id)
-        if parent_class.owner_id == current_user.id:
+        parent_class = card_to_delete.to_dict_with_class()['deck']['parent_class']
+        if parent_class['owner_id'] == current_user.id:
             db.session.delete(card_to_delete)
             db.session.commit()
             return {"message": "Successfully deleted"}

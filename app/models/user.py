@@ -14,6 +14,7 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
 
     user_classes = db.relationship("Class", back_populates='user', cascade='all, delete')
+    masteries = db.relationship("Mastery", back_populates='user', cascade='all, delete')
 
     @property
     def password(self):

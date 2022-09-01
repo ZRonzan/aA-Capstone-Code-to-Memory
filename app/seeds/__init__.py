@@ -3,6 +3,7 @@ from .users import seed_users, undo_users
 from .classes import seed_classes, undo_classes
 from .decks import seed_decks, undo_decks
 from .cards import seed_cards1, seed_cards2, seed_cards3, seed_cards4, seed_cards5, undo_cards
+from .mastery_scores import seed_mastery_scores, undo_mastery_scores
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
 seed_commands = AppGroup('seed')
@@ -19,6 +20,7 @@ def seed():
     seed_cards3()
     seed_cards4()
     seed_cards5()
+    seed_mastery_scores()
     # Add other seed functions here
 
 
@@ -29,4 +31,5 @@ def undo():
     undo_classes()
     undo_decks()
     undo_cards()
+    undo_mastery_scores()
     # Add other undo functions here
