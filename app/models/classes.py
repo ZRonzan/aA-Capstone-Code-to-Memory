@@ -9,11 +9,11 @@ class Class(db.Model):
     name = db.Column(db.String(40), nullable=False)
     purpose = db.Column(db.String, nullable=False, default="General Learning")
     headline = db.Column(db.String(40), nullable=True)
-    desciption = db.Column(db.String(1000), nullable=True)
+    description = db.Column(db.String(1000), nullable=True)
     private = db.Column(db.Boolean, default=True)
-    owner_id = db.Column(db.Integer, db.Foreignkey('users.id'), nullable=False)
+    owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
-    user = db.relationship("User", back_populates='classes')
+    user = db.relationship("User", back_populates='user_classes')
     decks = db.relationship("Deck", back_populates='parent_class', cascade='all, delete')
 
     def to_dict(self):
@@ -24,7 +24,8 @@ class Class(db.Model):
             'headline': self.headline,
             'description': self.desciption,
             'private': self.private,
-            'user': self.user.to_dict()
+            'user': self.user.to_dict(),
+            'decks': self.decks.to_dict_no_addons()
         }
 
     def to_dict_no_addons(self):
