@@ -6,8 +6,8 @@ from app.models import User
 
 def class_name_length(form, field):
     name = field.data
-    if len(name) > 50:
-        raise ValidationError("Class name must be 50 characters or less.")
+    if len(name) > 100:
+        raise ValidationError("Class name must be 100 characters or less.")
 
 def class_headline_length(form, field):
     headline = field.data
