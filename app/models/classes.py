@@ -6,10 +6,10 @@ class Class(db.Model):
     __tablename__ = "classes"
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String, nullable=False)
+    name = db.Column(db.String(100), nullable=False)
     purpose = db.Column(db.String, nullable=False, default="General Learning")
-    headline = db.Column(db.String, nullable=True)
-    description = db.Column(db.String, nullable=True)
+    headline = db.Column(db.String(300), nullable=True)
+    description = db.Column(db.String(1500), nullable=True)
     private = db.Column(db.Boolean, default=True)
     owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
