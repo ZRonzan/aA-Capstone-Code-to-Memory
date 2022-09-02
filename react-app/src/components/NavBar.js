@@ -1,35 +1,40 @@
 
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import LogoutButton from './auth/LogoutButton';
+import { useDispatch } from 'react-redux';
 import LogInFormModal from './LogInFormModal/LogInFormModal';
-import SignUpFormModal from './SignUpFormModal/SignUpFormModal';
+import { login } from '../store/session';
+import { ReactComponent as SplashLogo } from '../assets/MainLogo.svg';
+import "./SplashPage/SplashPage.css"
 
 const NavBar = () => {
+
+  const dispatch = useDispatch()
+
+  const logInDemoUser = async () => {
+    let email = 'demo@aa.io'
+    let password = 'password'
+    await dispatch(login(email, password))
+  }
+
   return (
-    <nav>
-      <ul>
-        <li>
-          <NavLink to='/' exact={true} activeClassName='active'>
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <LogInFormModal />
-        </li>
-        <li>
-          <SignUpFormModal />
-        </li>
-        <li>
-          <NavLink to='/users' exact={true} activeClassName='active'>
-            Users
-          </NavLink>
-        </li>
-        <li>
-          <LogoutButton />
-        </li>
-      </ul>
-    </nav>
+    <div className='splash-page-navbar-main-container'>
+      <div className='splash-navbar-left-container'>
+        <div className='splash-page-main-logo'>
+          <SplashLogo />
+        </div>
+      </div>
+      <div className='splash-navbar-right-container'>
+        <div className='splash-page-navbar-button demo-user'>
+          <button
+            onClick={() => logInDemoUser()}
+            className={`demo-login-button`}
+          >
+            Demo User Log In
+          </button>
+        </div>
+        <LogInFormModal />
+      </div>
+    </div>
   );
 }
 

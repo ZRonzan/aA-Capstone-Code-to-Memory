@@ -1,0 +1,36 @@
+.splash-carousel-outer-container {
+    padding-top: 7.5vh;
+    max-height: min-content;
+}
+
+.splash-carousel-image-container {
+    width: 100%;
+    max-width: 2460px;
+    height: 92.5vh;
+    background-color: rgb(92, 92, 92);
+    object-fit: cover;
+}
+
+
+.splash-carousel-main-container {
+    position: relative;
+}
+
+.splash-carousel-text-container {
+    position: absolute;
+    top: 20%;
+    left: 5%;
+}
+
+.splash-carousel-title {
+    font-size: 8.5rem;
+    font-weight: bolder;
+    color: white;
+    padding: 0% 0%;
+}
+
+.splash-carousel-subtitle {
+    padding-top: 2rem;
+    font-size: 2rem;
+    color: white;
+}

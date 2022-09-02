@@ -1,0 +1,165 @@
+.log-in-button {
+    background-color: #fafbfb;
+    border:none;
+    font-weight: bold;
+}
+
+
+.log-in-button:hover {
+    background-color: #eff2f2;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.demo-login-button {
+    background-color: #15b6c8;
+    color: white;
+    border:none;
+    font-weight: bold;
+}
+
+
+.demo-login-button:hover {
+    background-color: #15b6c8;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+/* log in form */
+
+.log-in-form-x-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.fa-xmark.login {
+    color: #777777;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    margin-top: 5%;
+    margin-right: 5%;
+    font-size: 2rem;
+}
+
+.fa-xmark.login:hover {
+    cursor: pointer;
+    background-color: #e5e5e5;
+    color:#29a5dc;
+}
+
+.log-in-form-main-container {
+    width: 100%;
+    min-height: min-content;
+}
+
+.log-in-form-title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #324a6b;
+}
+
+.log-in-form-errors.signup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: red;
+    min-height: min-content;
+    height: 120px;
+}
+
+.log-in-form-errors.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: red;
+    min-height: max-content;
+    height: 60px;
+}
+
+.log-in-error {
+    padding:2% 0%;
+}
+
+.log-in-form-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: min-content;
+}
+
+.log-in-form-email-container,
+.log-in-form-password-container {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3% 0%;
+}
+
+
+.log-in-form-email-field,
+.log-in-form-password-field {
+    width: 50%;
+    height: 2.5rem;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-bottom: 3px solid rgb(217, 217, 217);
+}
+
+.log-in-form-email-field:focus,
+.log-in-form-password-field:focus {
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-bottom: 3px solid #29a5dc;
+    outline: none;
+}
+
+.log-in-form-submit-button {
+    width: 40%;
+    border: none;
+    color: white;
+    background-color: #ff8243;
+    height: 45px;
+    border-radius: 23px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.log-in-form-submit-button:hover {
+    background-color: #ff9966;
+    cursor: pointer;
+}
+
+.log-in-form-create-an-account {
+    margin-bottom: 10px;
+}
+
+.log-in-form-create-an-account:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.ctm-logo-signup-errors {
+    top: 1%;
+    left: 1%;
+    position: absolute;
+    height: 10%;
+    opacity: 0.5;
+}
+
+.ctm-logo-signup-no-errors {
+    top: 15%;
+    position: absolute;
+    height: 20%;
+    opacity: 0.5;
+}
