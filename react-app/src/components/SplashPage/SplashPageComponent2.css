@@ -1,0 +1,40 @@
+.splash-component-2-outer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 2460px;
+    height: 80vh;
+    background-color: white;
+    object-fit: cover;
+}
+
+.splash-component-2-main-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.splash-component-2-image-container {
+    width: 40%;
+}
+
+.splash-component-2-text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 40%;
+}
+
+.splash-component-2-title {
+    font-size: 4.5rem;
+    font-weight: bolder;
+    color: black;
+    padding: -5% 0%;
+}
+
+.splash-component-2-subtitle {
+    padding-top: 2rem;
+    font-size: 1rem;
+    color: rgb(197, 197, 197);
+}

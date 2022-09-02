@@ -1,0 +1,13 @@
+.get-started-button {
+    background-color: #ff8243;
+    color: white;
+    font-weight: bold;
+    border: none;
+}
+
+.get-started-button:hover {
+    background-color: #ff8243;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+}

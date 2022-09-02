@@ -1,0 +1,57 @@
+.splash-page-navbar-container {
+    position: fixed;
+    width: 100%;
+    z-index: 30;
+}
+
+
+.splash-page-navbar-main-container {
+    display: flex;
+    width: 100%;
+    background-color: white;
+    justify-content: space-between;
+    align-items: center;
+    height: 7.5vh;
+
+}
+
+.splash-carousel-main-container {
+    display: flex;
+    justify-content: center;
+    min-width: 1000px;
+    width: 100%;
+}
+
+.splash-navbar-right-container {
+    display: flex;
+}
+
+.splash-navbar-left-container{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.splash-page-main-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80%;
+}
+
+.splash-page-main-logo svg{
+    height: 100%;
+}
+
+.splash-navbar-right-container{
+    height: 100%;
+}
+
+.splash-page-navbar-button {
+    height: 100%;
+}
+
+.splash-page-navbar-button > button{
+    height: 100%;
+    width: 11vw;
+}
