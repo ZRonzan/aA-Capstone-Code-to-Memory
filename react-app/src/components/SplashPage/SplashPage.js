@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import SplashCarousel from './SplashCarousel';
 import SplashPageComponent2 from './SplashPageComponent2';
+import SplashPageComponent3 from './SplashPageComponent3';
 import { useSelector, useDispatch } from 'react-redux';
 import {useHistory} from 'react-router-dom'
+import Footer from '../Footer/Footer';
 
 function SplashPage() {
     const user = useSelector(state => state.session.user)
@@ -18,7 +20,8 @@ function SplashPage() {
         <div className='splash-page-main-container'>
             <SplashCarousel />
             <SplashPageComponent2 />
-            <a href="https://www.vecteezy.com/free-vector/coding">Coding Vectors by Vecteezy</a>
+            <SplashPageComponent3 />
+            <Footer />
         </div>
     );
 }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import './SignUpFormModal.css'
 import mainLogo from "../../assets/logo500x500.svg"
@@ -14,8 +14,11 @@ const SignUpForm = ({ setShowModal2, setShowModal1 }) => {
   const [repeatPassword, setRepeatPassword] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+  const history = useHistory()
 
   const onSignUp = async (e) => {
+
+
     e.preventDefault();
     let errors = []
     if (!first_name.length) {
@@ -26,6 +29,9 @@ const SignUpForm = ({ setShowModal2, setShowModal1 }) => {
     }
     if (!email.length) {
       errors.push("Email: Please provide an email.")
+    }
+    if(email.includes(" ")) {
+      errors.push("Email: Emails cannot contain spaces.")
     }
     if (password !== repeatPassword) {
       errors.push("Password: Passwords do not match.")
@@ -41,33 +47,39 @@ const SignUpForm = ({ setShowModal2, setShowModal1 }) => {
         setErrors(data)
       } else {
         setShowModal2(false)
+        history.push('/dashboard')
       }
     }
 
   };
 
   const updateFirstName = (e) => {
-    setFirstname(e.target.value);
+    let firstname = e.target.value.trim()
+    setFirstname(firstname);
   };
 
   const updateLastName = (e) => {
-    setLastname(e.target.value);
+    let lastName = e.target.value.trim()
+    setLastname(lastName);
   };
 
   const updateEmail = (e) => {
-    setEmail(e.target.value);
+    let newEmail = e.target.value.trim()
+    setEmail(newEmail);
   };
 
   const updatePassword = (e) => {
-    setPassword(e.target.value);
+    let password = e.target.value.trim()
+    setPassword(password);
   };
 
   const updateRepeatPassword = (e) => {
-    setRepeatPassword(e.target.value);
+    let password = e.target.value.trim()
+    setRepeatPassword(password);
   };
 
   if (user) {
-    return <Redirect to='/' />;
+    return <Redirect to='/dashboard' />;
   }
 
   return (
