@@ -29,18 +29,22 @@ const LoginForm = ({ setShowModal1, setShowModal2 }) => {
 
     const data = await dispatch(login(email, password));
     if (data) {
-      setErrors(data);
+      setErrors(["Password or email is incorrect"]);
     } else {
       setShowModal1(false)
     }
   };
 
   const updateEmail = (e) => {
-    setEmail(e.target.value);
+    let newEmail = e.target.value.trim()
+    setErrors([])
+    setEmail(newEmail);
   };
 
   const updatePassword = (e) => {
-    setPassword(e.target.value);
+    let password = e.target.value.trim()
+    setErrors([])
+    setPassword(password);
   };
 
   if (user) {
@@ -58,16 +62,15 @@ const LoginForm = ({ setShowModal1, setShowModal2 }) => {
           <div className='log-in-form-title'>
             Log In
           </div>
-
-          <div
-            style={{ visibility: `${errors.length ? "visible" : "hidden"}` }}
-            className='log-in-form-errors login'
-          >
-            {errors.map((error, ind) => (
-              <div key={ind} className="log-in-error">{error}</div>
-            ))}
+          <div className='log-in-form-errors login'>
+            {errors.length > 0 && (<div
+              className='log-in-form-errors login inner'
+            >
+              {errors.map((error, ind) => (
+                <div key={ind} className="log-in-error">{error}</div>
+              ))}
+            </div>)}
           </div>
-
           <div className='log-in-form-email-container'>
             <label htmlFor='email' className='log-in-form-email-label'>Email</label>
             <input

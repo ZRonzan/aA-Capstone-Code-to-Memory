@@ -6,7 +6,7 @@ import { login } from '../store/session';
 import { ReactComponent as SplashLogo } from '../assets/MainLogo.svg';
 import "./SplashPage/SplashPage.css"
 
-const NavBar = () => {
+const NavBar = ({showModal1, showModal2, setShowModal1, setShowModal2}) => {
 
   const dispatch = useDispatch()
 
@@ -32,7 +32,7 @@ const NavBar = () => {
             Demo User Log In
           </button>
         </div>
-        <LogInFormModal />
+        <LogInFormModal showModal1={showModal1} showModal2={showModal2} setShowModal1={setShowModal1} setShowModal2={setShowModal2}/>
       </div>
     </div>
   );

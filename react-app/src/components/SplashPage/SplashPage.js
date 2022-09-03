@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import SplashCarousel from './SplashCarousel';
 import SplashPageComponent2 from './SplashPageComponent2';
+import SplashPageComponent3 from './SplashPageComponent3';
 import { useSelector, useDispatch } from 'react-redux';
 import {useHistory} from 'react-router-dom'
+import Footer from '../Footer/Footer';
+import SplashPageComponent4 from './SplashPageComponent4';
+import SplashPageComponent5 from './SplashPageComponent5';
 
-function SplashPage() {
+function SplashPage({setShowModal1, setShowModal2}) {
     const user = useSelector(state => state.session.user)
 
     const history = useHistory()
@@ -15,10 +19,12 @@ function SplashPage() {
 
 
     return (
-        <div className='splash-page-main-container'>
+        <div className='splash-page-main-container-inner'>
             <SplashCarousel />
             <SplashPageComponent2 />
-            <a href="https://www.vecteezy.com/free-vector/coding">Coding Vectors by Vecteezy</a>
+            <SplashPageComponent3 />
+            <SplashPageComponent4 />
+            <SplashPageComponent5 setShowModal1={setShowModal1} setShowModal2={setShowModal2} />
         </div>
     );
 }

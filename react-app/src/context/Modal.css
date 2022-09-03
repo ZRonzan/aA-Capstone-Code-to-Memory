@@ -26,4 +26,10 @@
     width: 20%;
     min-height: min-content;
     border-radius: 20px;
+    animation: scaleUp 0.2s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+}
+
+@keyframes scaleUp {
+    0% {scale: 0%; opacity: 0;}
+    100% {scale: 100%; opacity: 100;}
 }
