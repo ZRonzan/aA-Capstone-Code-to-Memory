@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import { Modal } from '../../context/Modal';
 import LogInForm from './LoginForm';
 import SignUpForm from './SignUpForm';
 
-function LogInFormModal() {
-    const [showModal1, setShowModal1] = useState(false);
-    const [showModal2, setShowModal2] = useState(false);
+function LogInFormModal({showModal1, showModal2, setShowModal1, setShowModal2}) {
 
     return (
         <>

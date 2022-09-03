@@ -1,11 +1,13 @@
 .splash-carousel-outer-container {
+    width: 100%;
+    max-width: 2560px;
     padding-top: 7.5vh;
     max-height: min-content;
 }
 
 .splash-carousel-image-container {
     width: 100%;
-    max-width: 2460px;
+    max-height: 1440px;
     height: 92.5vh;
     background-color: rgb(92, 92, 92);
     object-fit: cover;

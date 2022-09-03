@@ -73,6 +73,18 @@
     height: 120px;
 }
 
+.log-in-form-errors.signup.inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: red;
+    min-height: min-content;
+    height: 120px;
+    will-change: opacity;
+    animation: fadeIn 2s cubic-bezier(0.165, 0.840, 0.440, 1.000) both;
+}
+
 .log-in-form-errors.login {
     display: flex;
     flex-direction: column;
@@ -81,6 +93,25 @@
     color: red;
     min-height: max-content;
     height: 60px;
+
+}
+
+.log-in-form-errors.login.inner {
+    position:relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: red;
+    min-height: max-content;
+    height: 60px;
+    will-change: opacity;
+    animation: fadeIn 2s cubic-bezier(0.165, 0.840, 0.440, 1.000) both;
+}
+
+@keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 100;}
 }
 
 .log-in-error {

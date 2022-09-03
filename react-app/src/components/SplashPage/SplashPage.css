@@ -1,6 +1,21 @@
+.splash-page-main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    min-width: 700px;
+}
+.splash-page-main-container-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
 .splash-page-navbar-container {
     position: fixed;
     width: 100%;
+    min-width: 700px;
     z-index: 30;
 }
 
@@ -8,6 +23,7 @@
 .splash-page-navbar-main-container {
     display: flex;
     width: 100%;
+    min-width: 700px;
     background-color: white;
     justify-content: space-between;
     align-items: center;
@@ -18,7 +34,7 @@
 .splash-carousel-main-container {
     display: flex;
     justify-content: center;
-    min-width: 1000px;
+    min-width: 700px;
     width: 100%;
 }
 
@@ -53,5 +69,6 @@
 
 .splash-page-navbar-button > button{
     height: 100%;
-    width: 11vw;
+    width: 8.5vw;
+    min-width: 100px;
 }
