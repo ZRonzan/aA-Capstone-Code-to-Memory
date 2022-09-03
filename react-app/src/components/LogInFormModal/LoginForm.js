@@ -37,11 +37,13 @@ const LoginForm = ({ setShowModal1, setShowModal2 }) => {
 
   const updateEmail = (e) => {
     let newEmail = e.target.value.trim()
+    setErrors([])
     setEmail(newEmail);
   };
 
   const updatePassword = (e) => {
     let password = e.target.value.trim()
+    setErrors([])
     setPassword(password);
   };
 
@@ -60,16 +62,15 @@ const LoginForm = ({ setShowModal1, setShowModal2 }) => {
           <div className='log-in-form-title'>
             Log In
           </div>
-
-          {errors.length > 0 && (<div
-            style={{ visibility: `${errors.length ? "visible" : "hidden"}` }}
-            className='log-in-form-errors login'
-          >
-            {errors.map((error, ind) => (
-              <div key={ind} className="log-in-error">{error}</div>
-            ))}
-          </div>)}
-
+          <div className='log-in-form-errors login'>
+            {errors.length > 0 && (<div
+              className='log-in-form-errors login inner'
+            >
+              {errors.map((error, ind) => (
+                <div key={ind} className="log-in-error">{error}</div>
+              ))}
+            </div>)}
+          </div>
           <div className='log-in-form-email-container'>
             <label htmlFor='email' className='log-in-form-email-label'>Email</label>
             <input

@@ -4,6 +4,7 @@
     align-items: center;
     width: 100%;
     max-width: 2460px;
+    min-height: min-content;
     height: 80vh;
     background-color: white;
     object-fit: cover;
@@ -36,4 +37,16 @@
 .splash-component-2-subtitle {
     font-size: 1rem;
     color: rgb(197, 197, 197);
+}
+
+@media (max-width: 950px) {
+    .splash-component-2-title {
+        font-size:2.5rem;
+        font-weight: bolder;
+        color: black;
+        padding: -5% 0%;
+    }
+    .splash-component-2-outer-container {
+        height: 40vh;
+    }
 }

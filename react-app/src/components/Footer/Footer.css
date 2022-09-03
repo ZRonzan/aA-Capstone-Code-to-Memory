@@ -35,4 +35,5 @@
 
 .footer-link:hover {
     color: rgb(91, 143, 189);
+    cursor: pointer;
 }

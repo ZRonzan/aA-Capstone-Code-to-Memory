@@ -30,7 +30,7 @@ const SignUpForm = ({ setShowModal2, setShowModal1 }) => {
     if (!email.length) {
       errors.push("Email: Please provide an email.")
     }
-    if(email.includes(" ")) {
+    if (email.includes(" ")) {
       errors.push("Email: Emails cannot contain spaces.")
     }
     if (password !== repeatPassword) {
@@ -55,26 +55,31 @@ const SignUpForm = ({ setShowModal2, setShowModal1 }) => {
 
   const updateFirstName = (e) => {
     let firstname = e.target.value.trim()
+    setErrors([])
     setFirstname(firstname);
   };
 
   const updateLastName = (e) => {
     let lastName = e.target.value.trim()
+    setErrors([])
     setLastname(lastName);
   };
 
   const updateEmail = (e) => {
     let newEmail = e.target.value.trim()
+    setErrors([])
     setEmail(newEmail);
   };
 
   const updatePassword = (e) => {
     let password = e.target.value.trim()
+    setErrors([])
     setPassword(password);
   };
 
   const updateRepeatPassword = (e) => {
     let password = e.target.value.trim()
+    setErrors([])
     setRepeatPassword(password);
   };
 
@@ -92,16 +97,18 @@ const SignUpForm = ({ setShowModal2, setShowModal1 }) => {
           <div className='log-in-form-title'>
             Get Started
           </div>
-          <img src={mainLogo} className={`ctm-logo-signup-${errors.length? "errors" : "no-errors"}`}>
+          {/* <img src={mainLogo} className={`ctm-logo-signup-${errors.length ? "errors" : "no-errors"}`}>
 
-          </img>
+          </img> */}
           <div
             style={{ visibility: `${errors.length ? "visible" : "hidden"}` }}
             className='log-in-form-errors signup'
-            >
-            {errors.map((error, ind) => (
-              <div key={ind} className="log-in-error">{error}</div>
-            ))}
+          >
+            {errors.length > 0 && (<div className='log-in-form-errors signup inner'>
+              {errors.map((error, ind) => (
+                <div key={ind} className="log-in-error">{error}</div>
+              ))}
+            </div>)}
           </div>
           <div className='log-in-form-email-container'>
             <label className='log-in-form-email-label'>First Name</label>
