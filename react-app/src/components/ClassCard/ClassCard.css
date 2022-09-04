@@ -1,0 +1,25 @@
+.class-card-container {
+    display:flex;
+    padding: 0% 4%;
+    height: 50px;
+}
+
+.class-card-container:hover {
+    border-left: 5px solid gray;
+}
+
+.class-card-image-container {
+
+}
+
+.class-card-image {
+
+}
+
+.class-card-name {
+
+}
+
+.class-card-delete-container {
+
+}
