@@ -1,0 +1,42 @@
+.not-found-page-container {
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.not-found-page-left-container {
+    width: 40%;
+}
+
+.not-found-page-title {
+    color:#ff4500;
+    font-size: 11rem;
+}
+
+.not-found-page-subtitle {
+    font-size: 4rem;
+}
+
+.not-found-page-text {
+    line-height: 1.5rem;
+}
+
+.not-found-page-image {
+    height: 80%;
+}
+
+.not-found-page-navlink {
+    text-decoration: none;
+    color: #29a5dc;
+}
+
+.not-found-page-navlink:hover {
+    text-decoration: underline;
+    color: #ff4500;
+}
+
+.not-found-page-navlink:visited {
+    text-decoration: none;
+}

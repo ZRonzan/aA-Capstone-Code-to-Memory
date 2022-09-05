@@ -37,7 +37,6 @@ const CreateClassForm = ({ setShowModal, setSortedClasses }) => {
     setSortedClasses([])
     setShowModal(false)
     if (data['id']) {
-      console.log("---------------------------------------------------------------new class:", data.name, "id:", data.id)
       history.push(`/dashboard/${data.id}/about`)
     }
   }
