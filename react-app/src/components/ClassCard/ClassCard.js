@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import {Redirect, useHistory, NavLink} from 'react-router-dom'
 import "./ClassCard.css"
 import DeleteClassModal from '../DeleteClassModal/DeleteClassModal';
-import IMAGES from './iconPaths.json'
+import IMAGES from './iconPath-copy.json'
 
 const ClassCard = ({ myClass, setSortedClasses }) => {
 
-    const [isLoadeed, setIsLoaded] = useState(false)
+    const [isLoaded, setIsLoaded] = useState(false)
     const [image, setImage] = useState('/images/coding.svg')
 
     const dispatch = useDispatch()
@@ -23,13 +23,13 @@ const ClassCard = ({ myClass, setSortedClasses }) => {
         setIsLoaded(true)
     },[])
 
-    return isLoadeed && (
+    return isLoaded && (
         <NavLink
         to={`/dashboard/${myClass['id']}/about`}
         className={`class-card-container`}
         >
             <div className='class-card-image-container'>
-                <img src={image} className='class-card-image'>
+                <img src={process.env.PUBLIC_URL + image} className='class-card-image'>
 
                 </img>
             </div>
