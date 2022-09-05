@@ -1,0 +1,70 @@
+.class-card-container {
+    text-decoration: none;
+    color: white;
+    display:flex;
+    align-items: center;
+    padding: 0% 4%;
+    border-left: 5px solid rgba(0,0,0,0);
+    height: 70px;
+}
+
+.class-card-container:hover {
+    text-decoration: none;
+    border-left: 5px solid rgb(187, 187, 187);
+}
+
+.class-card-container.active {
+    border-left: 5px solid rgb(255, 255, 255);
+    text-decoration: none;
+}
+.class-card-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    height: 100%;
+}
+
+.class-card-image {
+    border-radius: 5px;
+    width: 45px;
+    height: 45px;
+    background-size: contain;
+    /* background-color: rgb(255, 255, 255); */
+}
+
+.class-card-name {
+    text-overflow: ellipsis;
+    width: 60%;
+}
+
+.class-card-delete-container {
+    height: 100%;
+    width: 20%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+.delete-class-button-x {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    height: 100%;
+    width: 100%;
+}
+
+.fa-x.class-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    height: 20%;
+    font-size: 0.5rem;
+}
+
+.fa-x.class-card:hover {
+    color: #29a5dc;
+    background-color: #7c7c7c;
+    border-radius: 50%;
+}

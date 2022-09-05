@@ -5,8 +5,8 @@ import NavBar from './components/NavBar';
 import { authenticate } from './store/session';
 import './index.css'
 import SplashPage from './components/SplashPage/SplashPage';
-import LogoutButton from './components/auth/LogoutButton';
 import Footer from './components/Footer/Footer';
+import DashBoard from './components/Dashboard/Dashboard';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -38,8 +38,7 @@ function App() {
           </div>
         </Route>
         <Route path='/dashboard' >
-          <LogoutButton />
-          <h1>My Home Page</h1>
+          <DashBoard />
         </Route>
       </Switch>
     </>

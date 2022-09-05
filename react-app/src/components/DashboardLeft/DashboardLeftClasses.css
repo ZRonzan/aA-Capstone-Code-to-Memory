@@ -1,0 +1,127 @@
+.dashboard-left-classses-main-container {
+    height: 100vh;
+    background-color: #324054;
+    color: #8c9caa;
+}
+
+/* top component: logo, user profile, logout */
+.dashboard-left-classses-top {
+    display: flex;
+    height: 15vh;
+}
+
+.dashboard-left-classses-logo {
+    width: 20%;
+    height: 100%;
+}
+
+.dashboard-left-classses-logo-image {
+    width: 70%;
+    padding-top: 30%;
+    padding-left: 20%;
+}
+
+.dashboard-left-classses-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+    height: 100%;
+}
+
+.dashboard-left-classses-profile-icon {
+    padding-top: 10%;
+    width: 25%;
+
+}
+
+.dashboard-left-classses-profile-image {
+    width: 100%;
+}
+
+.dashboard-left-classses-profile-name {
+    color: white;
+}
+
+.dashboard-left-classses-profile-details {
+    font-size: 0.6rem;
+}
+
+
+.dashboard-left-classses-logout-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 20%;
+    height: 100%;
+}
+
+.fa-right-from-bracket {
+    padding-top: 40%;
+    font-size: 2rem;
+    width: 70%;
+    height: fit-content;
+}
+
+.fa-right-from-bracket:hover {
+    cursor: pointer;
+    color: #0a92dd;
+}
+
+/* showing classes owned and create a class button */
+
+.dashboard-left-classses-middle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #8c9caa;
+    color: white;
+    font-size: 0.9rem;
+    margin: 0% 4%;
+    height: 4vh;
+}
+
+/* where classes you own will be shown */
+.dashboard-left-classses-bottom {
+    height: 78vh;
+    padding: 3% 0%;
+    overflow-y: auto;
+}
+
+.dashboard-left-classses-empty {}
+
+.dashboard-left-classses-header {
+    font-size: 0.9rem;
+    color: white;
+    padding-top: 2%;
+    padding-left: 4%;
+    padding-right: 4%;
+}
+
+.dashboard-left-classses-text {
+    font-size: 0.8rem;
+    padding-top: 5%;
+    padding-left: 4%;
+    padding-right: 4%;
+    line-height: 1.5rem;
+}
+
+
+*::-webkit-scrollbar {
+    width: 12px;
+    /* width of the entire scrollbar */
+}
+
+*::-webkit-scrollbar-track {
+    background: rgb(255, 255, 255);
+    /* color of the tracking area */
+    border-radius: 20px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #7fc1ff;
+    /* color of the scroll thumb */
+    border-radius: 20px;
+    /* roundness of the scroll thumb */
+    border: 1px solid rgb(255, 255, 255);
+    /* creates padding around scroll thumb */
+}
