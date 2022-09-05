@@ -2,6 +2,7 @@ import React, {useState, useEffect}from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {useHistory} from 'react-router-dom'
 import DashBoardLeftClasses from '../DashboardLeft/DashboardLeftClasses';
+import DashboardRightNoClasses from '../DashboardRightNoClasses/DashboardRightNoClasses';
 import "./Dashboard.css"
 
 const DashBoard = () => {
@@ -27,7 +28,7 @@ const DashBoard = () => {
                 <DashBoardLeftClasses />
             </div>
             <div className='dashboard-inner-right'>
-
+                <DashboardRightNoClasses />
             </div>
         </div>
     );

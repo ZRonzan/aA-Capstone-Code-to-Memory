@@ -1,12 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useState,useEffect } from 'react';
 
 const DashboardRightNoClasses = () => {
 
+    const [isLoaded, setIslLoaded] = useState()
+
     useEffect(() => {
-        setIsLoaded(true)
+        setIslLoaded(true)
     },[])
 
-    return isLoadeed && (
+    return (
         <div>
             <div>
                 Add Classes to your Library
