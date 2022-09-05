@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {Redirect, useHistory, NavLink} from 'react-router-dom'
+import {Redirect, useHistory, NavLink, useLocation} from 'react-router-dom'
 import "./ClassCard.css"
 import DeleteClassModal from '../DeleteClassModal/DeleteClassModal';
 import IMAGES from './iconPath-copy.json'
@@ -15,6 +15,8 @@ const ClassCard = ({ myClass, setSortedClasses }) => {
 
     const dispatch = useDispatch()
     const history = useHistory()
+    const pathName = useLocation().pathname
+
 
     useEffect(() => {
         for (let i = 0; i < IMAGES.length; i++) {
@@ -26,9 +28,13 @@ const ClassCard = ({ myClass, setSortedClasses }) => {
         setIsLoaded(true)
     },[])
 
+    if ((pathName === `/dashboard/${myClass['id']}`)) {
+        history.push(`/dashboard/${myClass['id']}/about`)
+    }
+
     return isLoaded && (
         <NavLink
-        to={`/dashboard/${myClass['id']}/about`}
+        to={`/dashboard/${myClass['id']}`}
         className={`class-card-container`}
         >
             <div className='class-card-image-container'>

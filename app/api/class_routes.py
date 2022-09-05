@@ -26,7 +26,6 @@ def get_all_classes():
 def get_one_class(classId):
 
     single_class = Class.query.get(classId)
-    print(single_class)
     if single_class is None:
         return {"message": "Class does not exist", "statusCode": 404}, 404
     else:

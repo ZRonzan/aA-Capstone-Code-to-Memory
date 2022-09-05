@@ -7,6 +7,7 @@ import './index.css'
 import SplashPage from './components/SplashPage/SplashPage';
 import Footer from './components/Footer/Footer';
 import DashBoard from './components/Dashboard/Dashboard';
+import PageNotFound from './components/PageNotFound/PageNotFound';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -39,6 +40,14 @@ function App() {
         </Route>
         <Route path='/dashboard' >
           <DashBoard />
+        </Route>
+        <Route exact path='/404-not-found' >
+          <PageNotFound />
+          <Footer />
+        </Route>
+        <Route>
+          <PageNotFound />
+          <Footer />
         </Route>
       </Switch>
     </>
