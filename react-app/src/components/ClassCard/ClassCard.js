@@ -17,7 +17,7 @@ const ClassCard = ({ myClass, setSortedClasses }) => {
         for (let i = 0; i < IMAGES.length; i++) {
             if (myClass.name.toUpperCase().includes(IMAGES[i].name)) {
                 setImage(IMAGES[i].path)
-                break
+                break;
             }
         }
         setIsLoaded(true)
@@ -29,9 +29,9 @@ const ClassCard = ({ myClass, setSortedClasses }) => {
         className={`class-card-container`}
         >
             <div className='class-card-image-container'>
-                <div style={{ "backgroundImage": `url(${ "%PUBLIC_URL%" + image})`}} className='class-card-image'>
+                <img src={image} className='class-card-image'>
 
-                </div>
+                </img>
             </div>
             <div className='class-card-name'>
                 {myClass.name}
