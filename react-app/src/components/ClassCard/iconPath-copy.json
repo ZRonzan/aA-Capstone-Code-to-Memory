@@ -1,266 +1,266 @@
 [
     {
         "name": "AWS",
-        "path": "/images/amazonwebservices.svg"
+        "path": "../../assets/icons/amazonwebservices.svg"
     },
     {
         "name": "AMAZON WEB SERVICES",
-        "path": "/images/amazonwebservices.svg"
+        "path": "../../assets/icons/amazonwebservices.svg"
     },
     {
         "name": "AMAZONWEBSERVICES",
-        "path": "/images/amazonwebservices.svg"
+        "path": "../../assets/icons/amazonwebservices.svg"
     },
     {
         "name": "ANDROID",
-        "path": "/images/android.svg"
+        "path": "../../assets/icons/android.svg"
     },
     {
         "name": "ANGULARJS",
-        "path": "/images/angularjs.svg"
+        "path": "../../assets/icons/angularjs.svg"
     },
     {
         "name": "ANGULAR JS",
-        "path": "/images/angularjs.svg"
+        "path": "../../assets/icons/angularjs.svg"
     },
     {
         "name": "APACHE",
-        "path": "/images/apache.svg"
+        "path": "../../assets/icons/apache.svg"
     },
     {
         "name": "APPCELERATOR",
-        "path": "/images/appcelerator.svg"
+        "path": "../../assets/icons/appcelerator.svg"
     },
     {
         "name": "ATOM",
-        "path": "/images/atom.svg"
+        "path": "../../assets/icons/atom.svg"
     },
     {
         "name": "BABEL",
-        "path": "/images/babel.svg"
+        "path": "../../assets/icons/babel.svg"
     },
     {
         "name": "BACKBONEJS",
-        "path": "/images/backbonejs.svg"
+        "path": "../../assets/icons/backbonejs.svg"
     },
     {
         "name": "BACKBONE JS",
-        "path": "/images/backbonejs.svg"
+        "path": "../../assets/icons/backbonejs.svg"
     },
     {
         "name": "BITBUCKET",
-        "path": "/images/bitbucket.svg"
+        "path": "../../assets/icons/bitbucket.svg"
     },
     {
         "name": "BOOTSTRAP",
-        "path": "/images/bootstrap.svg"
+        "path": "../../assets/icons/bootstrap.svg"
     },
     {
         "name": "BOWER",
-        "path": "/images/bower.svg"
+        "path": "../../assets/icons/bower.svg"
     },
     {
         "name": "C++",
-        "path": "/images/cplusplus.svg"
+        "path": "../../assets/icons/cplusplus.svg"
     },
     {
         "name": "CAKE PHP",
-        "path": "/images/.svg"
+        "path": "../../assets/icons/.svg"
     },
     {
         "name": "CAKE",
-        "path": "/images/cakephp.svg"
+        "path": "../../assets/icons/cakephp.svg"
     },
     {
         "name": "C ",
-        "path": "/images/c.svg"
+        "path": "../../assets/icons/c.svg"
     },
     {
         "name": " C ",
-        "path": "/images/c.svg"
+        "path": "../../assets/icons/c.svg"
     },
     {
         "name": "CEYLON",
-        "path": "/images/ceylon.svg"
+        "path": "../../assets/icons/ceylon.svg"
     },
     {
         "name": "CSS3",
-        "path": "/images/css3.svg"
+        "path": "../../assets/icons/css3.svg"
     },
     {
         "name": "CUCUMBER",
-        "path": "/images/cucumber.svg"
+        "path": "../../assets/icons/cucumber.svg"
     },
     {
         "name": "DEBIAN",
-        "path": "/images/debian.svg"
+        "path": "../../assets/icons/debian.svg"
     },
     {
         "name": "DJS",
-        "path": "/images/djs.svg"
+        "path": "../../assets/icons/djs.svg"
     },
     {
         "name": "DOCKER",
-        "path": "/images/docker.svg"
+        "path": "../../assets/icons/docker.svg"
     },
     {
         "name": "DRUPAL",
-        "path": "/images/drupal.svg"
+        "path": "../../assets/icons/drupal.svg"
     },
     {
         "name": "ELM",
-        "path": "/images/elm.svg"
+        "path": "../../assets/icons/elm.svg"
     },
     {
         "name": "EXPRESS",
-        "path": "/images/express.svg"
+        "path": "../../assets/icons/express.svg"
     },
     {
         "name": "FOUNDATION ",
-        "path": "/images/foundation.svg"
+        "path": "../../assets/icons/foundation.svg"
     },
     {
         "name": "GITHUB",
-        "path": "/images/github.svg"
+        "path": "../../assets/icons/github.svg"
     },
     {
         "name": " GITHUB ",
-        "path": "/images/github.svg"
+        "path": "../../assets/icons/github.svg"
     },
     {
         "name": "GIT ",
-        "path": "/images/git.svg"
+        "path": "../../assets/icons/git.svg"
     },
     {
         "name": " GIT ",
-        "path": "/images/git.svg"
+        "path": "../../assets/icons/git.svg"
     },
     {
         "name": "GITLAB ",
-        "path": "/images/gitlab.svg"
+        "path": "../../assets/icons/gitlab.svg"
     },
     {
         "name": " GITLAB ",
-        "path": "/images/gitlab.svg"
+        "path": "../../assets/icons/gitlab.svg"
     },
     {
         "name": "GRUNT",
-        "path": "/images/grunt.svg"
+        "path": "../../assets/icons/grunt.svg"
     },
     {
         "name": "HEROKU",
-        "path": "/images/heroku.svg"
+        "path": "../../assets/icons/heroku.svg"
     },
     {
         "name": "HTML-5",
-        "path": "/images/html-5.svg"
+        "path": "../../assets/icons/html-5.svg"
     },
     {
         "name": "HTML5",
-        "path": "/images/html-5.svg"
+        "path": "../../assets/icons/html-5.svg"
     },
     {
         "name": "INTELLIJ",
-        "path": "/images/intellij.svg"
+        "path": "../../assets/icons/intellij.svg"
     },
     {
         "name": "IONIC",
-        "path": "/images/ionic.svg"
+        "path": "../../assets/icons/ionic.svg"
     },
     {
         "name": "JASMINE",
-        "path": "/images/jasmine.svg"
+        "path": "../../assets/icons/jasmine.svg"
     },
     {
         "name": "JAVASCRIPT",
-        "path": "/images/javascript.svg"
+        "path": "../../assets/icons/javascript.svg"
     },
     {
         "name": "JAVA",
-        "path": "/images/java.svg"
+        "path": "../../assets/icons/java.svg"
     },
     {
         "name": "LINUX",
-        "path": "/images/linux.svg"
+        "path": "../../assets/icons/linux.svg"
     },
     {
         "name": "MOCHA",
-        "path": "/images/mocha.svg"
+        "path": "../../assets/icons/mocha.svg"
     },
     {
         "name": "MOODLE",
-        "path": "/images/moodle.svg"
+        "path": "../../assets/icons/moodle.svg"
     },
     {
         "name": "MYSQL",
-        "path": "/images/mysql.svg"
+        "path": "../../assets/icons/mysql.svg"
     },
     {
         "name": "NODEJS",
-        "path": "/images/node-js.svg"
+        "path": "../../assets/icons/node-js.svg"
     },
     {
         "name": "NODE",
-        "path": "/images/node-js.svg"
+        "path": "../../assets/icons/node-js.svg"
     },
     {
         "name": "NODE-JS",
-        "path": "/images/node-js.svg"
+        "path": "../../assets/icons/node-js.svg"
     },
     {
         "name": "NODE WEB KIT",
-        "path": "/images/nodewebkit.svg"
+        "path": "../../assets/icons/nodewebkit.svg"
     },
     {
         "name": "PYCHARM",
-        "path": "/images/pycharm.svg"
+        "path": "../../assets/icons/pycharm.svg"
     },
     {
         "name": "RUBYMINE",
-        "path": "/images/rubymine.svg"
+        "path": "../../assets/icons/rubymine.svg"
     },
     {
         "name": "RUBY MINE",
-        "path": "/images/rubymine.svg"
+        "path": "../../assets/icons/rubymine.svg"
     },
     {
         "name": "SEQUELIZE",
-        "path": "/images/sequelize.svg"
+        "path": "../../assets/icons/sequelize.svg"
     },
     {
         "name": "SKETCH",
-        "path": "/images/sketch.svg"
+        "path": "../../assets/icons/sketch.svg"
     },
     {
         "name": "SWIFT",
-        "path": "/images/swift.svg"
+        "path": "../../assets/icons/swift.svg"
     },
     {
         "name": "TYPESCRIPT",
-        "path": "/images/typescript.svg"
+        "path": "../../assets/icons/typescript.svg"
     },
     {
         "name": "VAGRANT",
-        "path": "/images/vagrant.svg"
+        "path": "../../assets/icons/vagrant.svg"
     },
     {
         "name": "VISUAL STUDIO",
-        "path": "/images/visualstudio.svg"
+        "path": "../../assets/icons/visualstudio.svg"
     },
     {
         "name": "YARN",
-        "path": "/images/yarn.svg"
+        "path": "../../assets/icons/yarn.svg"
     },
     {
         "name": "PYTHON",
-        "path": "/images/python.svg"
+        "path": "../../assets/icons/python.svg"
     },
     {
         "name": "REACT",
-        "path": "/images/react.svg"
+        "path": "../../assets/icons/react.svg"
     },
     {
         "name": "CODING",
-        "path": "/images/coding.svg"
+        "path": "../../assets/icons/coding.svg"
     }
 ]

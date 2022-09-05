@@ -4,11 +4,14 @@ import {Redirect, useHistory, NavLink} from 'react-router-dom'
 import "./ClassCard.css"
 import DeleteClassModal from '../DeleteClassModal/DeleteClassModal';
 import IMAGES from './iconPath-copy.json'
+import ICONS from './icons';
+import codingimage from '../../assets/icons/coding.svg'
+
 
 const ClassCard = ({ myClass, setSortedClasses }) => {
 
     const [isLoaded, setIsLoaded] = useState(false)
-    const [image, setImage] = useState('/images/coding.svg')
+    const [image, setImage] = useState(codingimage)
 
     const dispatch = useDispatch()
     const history = useHistory()
@@ -16,7 +19,7 @@ const ClassCard = ({ myClass, setSortedClasses }) => {
     useEffect(() => {
         for (let i = 0; i < IMAGES.length; i++) {
             if (myClass.name.toUpperCase().includes(IMAGES[i].name)) {
-                setImage(IMAGES[i].path)
+                setImage(ICONS[IMAGES[i].name])
                 break;
             }
         }
@@ -29,7 +32,7 @@ const ClassCard = ({ myClass, setSortedClasses }) => {
         className={`class-card-container`}
         >
             <div className='class-card-image-container'>
-                <img src={process.env.PUBLIC_URL + image} className='class-card-image'>
+                <img src={image} className='class-card-image'>
 
                 </img>
             </div>
