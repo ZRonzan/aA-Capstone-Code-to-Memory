@@ -1,25 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { Modal } from '../../context/Modal';
-import DeleteClassForm from './DeleteClassForm';
+import CreateClassForm from './CreateClassForm';
 
-function DeleteClassModal({myClass, setSortedClasses}) {
+function CreateClassModal({setSortedClasses}) {
     const [showModal, setShowModal] = useState(false)
 
     return (
         <>
-            <div className='delete-class-button-x' title='Delete this class'>
+            <div className='delete-class-button-x' title='Create this class'>
                 <i
                     onClick={() => {
                         setShowModal(true)
                     }}
-                    className="fa-solid fa-x class-card"
+                    className="fa-solid fa-plus class-card"
                 >
                 </i>
             </div>
             {showModal && (
                 <>
                     <Modal onClose={() => setShowModal(false)} formType="log-in">
-                        <DeleteClassForm setShowModal={setShowModal} myClass={myClass} setSortedClasses={setSortedClasses}/>
+                        <CreateClassForm setShowModal={setShowModal} setSortedClasses={setSortedClasses}/>
                     </Modal>
                 </>
             )}
@@ -27,4 +27,4 @@ function DeleteClassModal({myClass, setSortedClasses}) {
     );
 }
 
-export default DeleteClassModal;
+export default CreateClassModal;

@@ -83,20 +83,45 @@
 /* where classes you own will be shown */
 .dashboard-left-classses-bottom {
     height: 78vh;
-    padding: 3% 4%;
+    padding: 3% 0%;
+    overflow-y: auto;
 }
 
-.dashboard-left-classses-empty {
-}
+.dashboard-left-classses-empty {}
 
 .dashboard-left-classses-header {
     font-size: 0.9rem;
     color: white;
     padding-top: 2%;
+    padding-left: 4%;
+    padding-right: 4%;
 }
 
 .dashboard-left-classses-text {
     font-size: 0.8rem;
     padding-top: 5%;
+    padding-left: 4%;
+    padding-right: 4%;
     line-height: 1.5rem;
+}
+
+
+*::-webkit-scrollbar {
+    width: 12px;
+    /* width of the entire scrollbar */
+}
+
+*::-webkit-scrollbar-track {
+    background: rgb(255, 255, 255);
+    /* color of the tracking area */
+    border-radius: 20px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #7fc1ff;
+    /* color of the scroll thumb */
+    border-radius: 20px;
+    /* roundness of the scroll thumb */
+    border: 1px solid rgb(255, 255, 255);
+    /* creates padding around scroll thumb */
 }

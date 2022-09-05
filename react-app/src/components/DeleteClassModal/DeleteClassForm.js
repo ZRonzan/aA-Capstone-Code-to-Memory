@@ -1,15 +1,27 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { useLocation, Redirect, useHistory } from 'react-router-dom';
 import { deleteUserClassThunk } from '../../store/currentuserclasses';
-import { login } from '../../store/session';
+import './DeleteClassForm.css'
 
-const DeleteClassForm = ({ setShowModal, myClass }) => {
+const DeleteClassForm = ({ setShowModal, myClass, setSortedClasses }) => {
   const [errors, setErrors] = useState([]);
   const dispatch = useDispatch();
+  const pathname = useLocation().pathname;
+  const history = useHistory()
 
   const handleDelete = async () => {
-    await dispatch(deleteUserClassThunk(myClass['id']))
+    const currentLocation = pathname.split("/")
+    if (parseInt(currentLocation[2]) === parseInt(myClass['id'])) {
+      await dispatch(deleteUserClassThunk(myClass['id']))
+      setSortedClasses([])
+      history.push('/dashboard')
+      setShowModal(false)
+    } else {
+      setSortedClasses([])
+      await dispatch(deleteUserClassThunk(myClass['id']))
+      setShowModal(false)
+    }
   }
 
   return (
@@ -17,28 +29,27 @@ const DeleteClassForm = ({ setShowModal, myClass }) => {
       <div className='log-in-form-x-container'>
         <i className="fa-solid fa-xmark login" onClick={() => setShowModal(false)}></i>
       </div>
-      <div>
-        <div>
+      <div className='delete-class-main-body'>
+        <div className='delete-class-title'>
           Caution
         </div>
-        <div>
-          {`Are you sure that you want to Remove this class (${myClass['name']})from your library? This action cannot be undone.`}
+        <div className='delete-class-message'>
+          {`Are you sure that you want to delete this class (${myClass['name']}) from your library? This action cannot be undone.`}
         </div>
-        <div>
-          <button
+      </div>
+      <div className='delete-class-buttons-container'>
+        <button
           onClick={handleDelete}
           className='log-in-form-submit-button'
-          >
-            Yes, please proceed
-          </button>
-          <div
+        >
+          Yes, please proceed
+        </button>
+        <div
           onClick={() => setShowModal(false)}
           className='delete-class-form-cancel'
-          >
-            No, cancel
-          </div>
+        >
+          No, cancel
         </div>
-
       </div>
     </>
   );

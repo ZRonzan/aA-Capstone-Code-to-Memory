@@ -1,33 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {Redirect, useHistory} from 'react-router-dom'
+import {Redirect, useHistory, NavLink} from 'react-router-dom'
 import "./ClassCard.css"
-import { deleteUserClassThunk, getUserClassesThunk } from '../../store/currentuserclasses';
 import DeleteClassModal from '../DeleteClassModal/DeleteClassModal';
+import IMAGES from './iconPaths.json'
 
-const ClassCard = ({ myClass }) => {
+const ClassCard = ({ myClass, setSortedClasses }) => {
 
     const [isLoadeed, setIsLoaded] = useState(false)
+    const [image, setImage] = useState('/images/coding.svg')
 
     const dispatch = useDispatch()
     const history = useHistory()
-    const 
 
     useEffect(() => {
+        for (let i = 0; i < IMAGES.length; i++) {
+            if (myClass.name.toUpperCase().includes(IMAGES[i].name)) {
+                setImage(IMAGES[i].path)
+                break
+            }
+        }
         setIsLoaded(true)
     },[])
 
-    const handleRedirect = () => {
-        history.push(`/dashboard/${myClass['id']}/about`)
-    }
-
     return isLoadeed && (
-        <div
-        onClick={handleRedirect}
-        className={`class-card-container ${}`}
+        <NavLink
+        to={`/dashboard/${myClass['id']}/about`}
+        className={`class-card-container`}
         >
             <div className='class-card-image-container'>
-                <div className='class-card-image'>
+                <div style={{ "backgroundImage": `url(${ process.env.PUBLIC_URL + image})`}} className='class-card-image'>
 
                 </div>
             </div>
@@ -35,9 +37,9 @@ const ClassCard = ({ myClass }) => {
                 {myClass.name}
             </div>
             <div className='class-card-delete-container'>
-                <DeleteClassModal myClass={myClass} />
+                <DeleteClassModal myClass={myClass} setSortedClasses={setSortedClasses}/>
             </div>
-        </div>
+        </NavLink>
     );
 }
 

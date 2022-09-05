@@ -6,7 +6,7 @@ class Class(db.Model):
     __tablename__ = "classes"
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.Text, nullable=False)
+    name = db.Column(db.Text(50), nullable=False)
     purpose = db.Column(db.String, nullable=False, default="General Learning")
     headline = db.Column(db.Text, nullable=True)
     description = db.Column(db.Text, nullable=True)

@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import {useHistory} from 'react-router-dom'
+import { useHistory, Redirect, useLocation} from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
-import { login, logOutDemoUser } from '../../store/session';
+import { login, logout, logOutDemoUser } from '../../store/session';
 import image from '../../assets/logo500x500.svg'
 import profileIcon from '../../assets/profile-logo.svg'
 import "./DashboardLeftClasses.css"
 import { getUserClassesThunk } from '../../store/currentuserclasses';
 import DeleteClassModal from '../DeleteClassModal/DeleteClassModal';
 import ClassCard from '../ClassCard/ClassCard';
+import CreateClassModal from '../CreateClassModal/CreateClassModal';
 
 const DashboardLeftClasses = () => {
-    const [isLoadeed, setIsLoaded] = useState(false)
+    const [isLoaded, setIsLoaded] = useState(false)
     const [classesCount, setClassesCount] = useState(0)
     const [sortedClasses, setSortedClasses] = useState([])
 
@@ -18,29 +19,34 @@ const DashboardLeftClasses = () => {
     const userClasses = useSelector(state => state.currentuserclasses)
     const dispatch = useDispatch()
     const history = useHistory()
+    const pathName = useLocation().pathname
 
     useEffect(() => {
-
         const getData = async () => {
             const data = await dispatch(getUserClassesThunk())
         }
         getData();
-        setIsLoaded(true)
     }, [])
 
     useEffect(() => {
         setClassesCount(Object.keys(userClasses).length)
-        let sorted = Object.values(userClasses).sort((a, b) => a['id'] - b['id'])
+        let sorted = Object.values(userClasses).sort((a, b) => b['id'] - a['id'])
         setSortedClasses(sorted)
+        setIsLoaded(true)
     }, [userClasses])
 
-    const logOutDemoUser = async () => {
-        let email = 'demo@aa.io'
-        let password = 'password'
-        await dispatch(login(email, password))
+    const logOutUser = async () => {
+        setIsLoaded(false)
+        await dispatch(logout())
+        history.push('/')
     }
 
-    return isLoadeed && (
+    console.log(userClasses)
+    if ((pathName === '/dashboard' || pathName === '/dashboard/') && sortedClasses.length > 0) {
+        history.push(`/dashboard/${sortedClasses[0]['id']}/about`)
+    }
+
+    return isLoaded && !!user && (
         <div className='dashboard-left-classses-main-container'>
             <div className='dashboard-left-classses-top'>
                 <div className='dashboard-left-classses-logo'>
@@ -58,7 +64,10 @@ const DashboardLeftClasses = () => {
                     </div>
                 </div>
                 <div className='dashboard-left-classses-logout-container'>
-                    <i className="fa-solid fa-right-from-bracket"></i>
+                    <i
+                        onClick={logOutUser}
+                        className="fa-solid fa-right-from-bracket"
+                    ></i>
                 </div>
             </div>
             <div className='dashboard-left-classses-middle'>
@@ -66,11 +75,11 @@ const DashboardLeftClasses = () => {
                     {`MY CLASSES (${classesCount})`}
                 </div>
                 <div className='dashboard-left-classses-create'>
-                    <i className="fa-solid fa-plus"></i>
+                    <CreateClassModal setSortedClasses={setSortedClasses}/>
                 </div>
             </div>
             <div className='dashboard-left-classses-bottom'>
-                {classesCount === 0 && (<div className='dashboard-left-classses-empty'>
+                {Object.keys(userClasses).length === 0 && (<div className='dashboard-left-classses-empty'>
                     <div className='dashboard-left-classses-header'>
                         Your library is empty
                     </div>
@@ -78,10 +87,10 @@ const DashboardLeftClasses = () => {
                         Create a class using the plus sign above and get started with your collection of wonderful studying materials.
                     </div>
                 </div>)}
-                {classesCount > 0 && sortedClasses.length > 0 && (
+                {sortedClasses.length > 0 && (
                     sortedClasses.map((ele) => {
                         return (
-                            <ClassCard myClass={ele} />
+                            <ClassCard myClass={ele} setSortedClasses={setSortedClasses}/>
                         )
                     })
                 )}

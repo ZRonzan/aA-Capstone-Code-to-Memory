@@ -1,0 +1,266 @@
+[
+    {
+        "name": "AWS",
+        "path": "/images/amazonwebservices.svg"
+    },
+    {
+        "name": "AMAZON WEB SERVICES",
+        "path": "/images/amazonwebservices.svg"
+    },
+    {
+        "name": "AMAZONWEBSERVICES",
+        "path": "/images/amazonwebservices.svg"
+    },
+    {
+        "name": "ANDROID",
+        "path": "/images/android.svg"
+    },
+    {
+        "name": "ANGULARJS",
+        "path": "/images/angularjs.svg"
+    },
+    {
+        "name": "ANGULAR JS",
+        "path": "/images/angularjs.svg"
+    },
+    {
+        "name": "APACHE",
+        "path": "/images/apache.svg"
+    },
+    {
+        "name": "APPCELERATOR",
+        "path": "/images/appcelerator.svg"
+    },
+    {
+        "name": "ATOM",
+        "path": "/images/atom.svg"
+    },
+    {
+        "name": "BABEL",
+        "path": "/images/babel.svg"
+    },
+    {
+        "name": "BACKBONEJS",
+        "path": "/images/backbonejs.svg"
+    },
+    {
+        "name": "BACKBONE JS",
+        "path": "/images/backbonejs.svg"
+    },
+    {
+        "name": "BITBUCKET",
+        "path": "/images/bitbucket.svg"
+    },
+    {
+        "name": "BOOTSTRAP",
+        "path": "/images/bootstrap.svg"
+    },
+    {
+        "name": "BOWER",
+        "path": "/images/bower.svg"
+    },
+    {
+        "name": "C++",
+        "path": "/images/cplusplus.svg"
+    },
+    {
+        "name": "CAKE PHP",
+        "path": "/images/.svg"
+    },
+    {
+        "name": "CAKE",
+        "path": "/images/cakephp.svg"
+    },
+    {
+        "name": "C ",
+        "path": "/images/c.svg"
+    },
+    {
+        "name": " C ",
+        "path": "/images/c.svg"
+    },
+    {
+        "name": "CEYLON",
+        "path": "/images/ceylon.svg"
+    },
+    {
+        "name": "CSS3",
+        "path": "/images/css3.svg"
+    },
+    {
+        "name": "CUCUMBER",
+        "path": "/images/cucumber.svg"
+    },
+    {
+        "name": "DEBIAN",
+        "path": "/images/debian.svg"
+    },
+    {
+        "name": "DJS",
+        "path": "/images/djs.svg"
+    },
+    {
+        "name": "DOCKER",
+        "path": "/images/docker.svg"
+    },
+    {
+        "name": "DRUPAL",
+        "path": "/images/drupal.svg"
+    },
+    {
+        "name": "ELM",
+        "path": "/images/elm.svg"
+    },
+    {
+        "name": "EXPRESS",
+        "path": "/images/express.svg"
+    },
+    {
+        "name": "FOUNDATION ",
+        "path": "/images/foundation.svg"
+    },
+    {
+        "name": "GITHUB",
+        "path": "/images/github.svg"
+    },
+    {
+        "name": " GITHUB ",
+        "path": "/images/github.svg"
+    },
+    {
+        "name": "GIT ",
+        "path": "/images/git.svg"
+    },
+    {
+        "name": " GIT ",
+        "path": "/images/git.svg"
+    },
+    {
+        "name": "GITLAB ",
+        "path": "/images/gitlab.svg"
+    },
+    {
+        "name": " GITLAB ",
+        "path": "/images/gitlab.svg"
+    },
+    {
+        "name": "GRUNT",
+        "path": "/images/grunt.svg"
+    },
+    {
+        "name": "HEROKU",
+        "path": "/images/heroku.svg"
+    },
+    {
+        "name": "HTML-5",
+        "path": "/images/html-5.svg"
+    },
+    {
+        "name": "HTML5",
+        "path": "/images/html-5.svg"
+    },
+    {
+        "name": "INTELLIJ",
+        "path": "/images/intellij.svg"
+    },
+    {
+        "name": "IONIC",
+        "path": "/images/ionic.svg"
+    },
+    {
+        "name": "JASMINE",
+        "path": "/images/jasmine.svg"
+    },
+    {
+        "name": "JAVASCRIPT",
+        "path": "/images/javascript.svg"
+    },
+    {
+        "name": "JAVA",
+        "path": "/images/java.svg"
+    },
+    {
+        "name": "LINUX",
+        "path": "/images/linux.svg"
+    },
+    {
+        "name": "MOCHA",
+        "path": "/images/mocha.svg"
+    },
+    {
+        "name": "MOODLE",
+        "path": "/images/moodle.svg"
+    },
+    {
+        "name": "MYSQL",
+        "path": "/images/mysql.svg"
+    },
+    {
+        "name": "NODEJS",
+        "path": "/images/node-js.svg"
+    },
+    {
+        "name": "NODE",
+        "path": "/images/node-js.svg"
+    },
+    {
+        "name": "NODE-JS",
+        "path": "/images/node-js.svg"
+    },
+    {
+        "name": "NODE WEB KIT",
+        "path": "/images/nodewebkit.svg"
+    },
+    {
+        "name": "PYCHARM",
+        "path": "/images/pycharm.svg"
+    },
+    {
+        "name": "RUBYMINE",
+        "path": "/images/rubymine.svg"
+    },
+    {
+        "name": "RUBY MINE",
+        "path": "/images/rubymine.svg"
+    },
+    {
+        "name": "SEQUELIZE",
+        "path": "/images/sequelize.svg"
+    },
+    {
+        "name": "SKETCH",
+        "path": "/images/sketch.svg"
+    },
+    {
+        "name": "SWIFT",
+        "path": "/images/swift.svg"
+    },
+    {
+        "name": "TYPESCRIPT",
+        "path": "/images/typescript.svg"
+    },
+    {
+        "name": "VAGRANT",
+        "path": "/images/vagrant.svg"
+    },
+    {
+        "name": "VISUAL STUDIO",
+        "path": "/images/visualstudio.svg"
+    },
+    {
+        "name": "YARN",
+        "path": "/images/yarn.svg"
+    },
+    {
+        "name": "PYTHON",
+        "path": "/images/python.svg"
+    },
+    {
+        "name": "REACT",
+        "path": "/images/react.svg"
+    },
+    {
+        "name": "CODING",
+        "path": "/images/coding.svg"
+    }
+]

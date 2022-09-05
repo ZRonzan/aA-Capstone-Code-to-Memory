@@ -13,7 +13,7 @@ export const getUserClassesThunk = () => async (dispatch) => {
     if (response.ok) {
         const data = await response.json()
         dispatch(setUserClasses(data))
-        return null;
+        return data;
     } else {
         return ['An error occurred. Please try again.']
     }
@@ -31,8 +31,9 @@ export const createUserClassThunk = (newClass) => async (dispatch) => {
 
 
     if (response.ok) {
+        const data = await response.json()
         dispatch(getUserClassesThunk())
-        return null;
+        return data;
     } else if (response.status < 500) {
         const data = await response.json();
         if (data.errors) {
