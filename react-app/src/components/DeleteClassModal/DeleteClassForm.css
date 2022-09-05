@@ -1,0 +1,35 @@
+.delete-class-main-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+}
+
+.delete-class-title {
+    font-size: 36px;
+}
+
+.delete-class-message {
+    padding: 2% 5%;
+    font-size: 0.9rem;
+    text-align: center;
+    line-height: 1.5rem;
+}
+
+.delete-class-buttons-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.delete-class-form-cancel {
+    width: 27%;
+    padding-top: 5%;
+    text-decoration: underline;
+}
+
+.delete-class-form-cancel:hover {
+    color: #29a5dc;
+    cursor: pointer;
+}
