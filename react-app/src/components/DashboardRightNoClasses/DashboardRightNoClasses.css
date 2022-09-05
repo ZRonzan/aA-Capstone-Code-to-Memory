@@ -1,1 +1,26 @@
+.dashboard-right-no-classes-container {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
 
+.dashboard-right-no-classes-title {
+    color: #4777b9;
+    font-size: 2rem;
+    padding-top: 2rem;
+    padding-left: 2rem;
+}
+
+.dashboard-right-no-classes-subtitle {
+    color:#777777;
+    padding-top: 1.5rem;
+    font-size: 1.2rem;
+    padding-left: 2rem;
+}
+
+.dashboard-right-no-classes-text {
+    color:#777777;
+    padding-top: 2rem;
+    line-height: 1.5rem;
+    padding-left: 2rem;
+}

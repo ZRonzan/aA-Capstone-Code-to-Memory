@@ -10,7 +10,7 @@ import DeleteClassModal from '../DeleteClassModal/DeleteClassModal';
 import ClassCard from '../ClassCard/ClassCard';
 import CreateClassModal from '../CreateClassModal/CreateClassModal';
 
-const DashboardLeftClasses = () => {
+const DashboardLeftClasses = ({setDashboardLoaded}) => {
     const [isLoaded, setIsLoaded] = useState(false)
     const [classesCount, setClassesCount] = useState(0)
     const [sortedClasses, setSortedClasses] = useState([])
@@ -36,12 +36,11 @@ const DashboardLeftClasses = () => {
     }, [userClasses])
 
     const logOutUser = async () => {
-        setIsLoaded(false)
+        setDashboardLoaded(false)
         await dispatch(logout())
         history.push('/')
     }
 
-    console.log(userClasses)
     if ((pathName === '/dashboard' || pathName === '/dashboard/') && sortedClasses.length > 0) {
         history.push(`/dashboard/${sortedClasses[0]['id']}/about`)
     }
