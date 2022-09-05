@@ -29,7 +29,7 @@ const ClassCard = ({ myClass, setSortedClasses }) => {
         className={`class-card-container`}
         >
             <div className='class-card-image-container'>
-                <div style={{ "backgroundImage": `url(${ process.env.PUBLIC_URL + image})`}} className='class-card-image'>
+                <div style={{ "backgroundImage": `url(${ "%PUBLIC_URL%" + image})`}} className='class-card-image'>
 
                 </div>
             </div>
