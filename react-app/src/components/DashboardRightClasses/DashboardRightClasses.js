@@ -83,10 +83,10 @@ const DashboardRightClasses = () => {
 
         const editedClass = {
             "name": newClassName,
-            "purpose": currentClassDetails['name'],
-            "headline": currentClassDetails['name'],
-            "description": currentClassDetails['name'],
-            "private": currentClassDetails['name'],
+            "purpose": currentClassDetails['purpose'],
+            "headline": currentClassDetails['headline'],
+            "description": currentClassDetails['description'],
+            "private": currentClassDetails['private'],
             "owner_id": currentClassDetails['owner_id'],
         }
 
