@@ -62,15 +62,15 @@ const LoginForm = ({ setShowModal1, setShowModal2 }) => {
           <div className='log-in-form-title'>
             Log In
           </div>
-          <div className='log-in-form-errors login'>
-            {errors.length > 0 && (<div
+          {errors.length > 0 && (<div className='log-in-form-errors login'>
+            <div
               className='log-in-form-errors login inner'
             >
               {errors.map((error, ind) => (
                 <div key={ind} className="log-in-error">{error}</div>
               ))}
-            </div>)}
-          </div>
+            </div>
+          </div>)}
           <div className='log-in-form-email-container'>
             <label htmlFor='email' className='log-in-form-email-label'>Email</label>
             <input

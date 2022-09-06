@@ -56,15 +56,15 @@ const CreateClassForm = ({ setShowModal, setSortedClasses }) => {
         <div className='delete-class-message'>
           A Class is a set of Flashcards, grouped into Decks
         </div>
-        <div className='log-in-form-errors login'>
-          {errors.length > 0 && (<div
+        {errors.length > 0 && (<div className='log-in-form-errors login'>
+          <div
             className='log-in-form-errors login inner'
           >
             {errors.map((error, ind) => (
               <div key={ind} className="log-in-error">{error}</div>
             ))}
-          </div>)}
-        </div>
+          </div>
+        </div>)}
       </div>
       <div className='create-class-form-name-container'>
         <input className='create-class-form-input-field'

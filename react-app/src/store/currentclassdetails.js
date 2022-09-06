@@ -17,7 +17,73 @@ export const getCurrentClassDetailsThunk= (classId) => async (dispatch) => {
     } else {
         return ['An error occurred. Please try again.']
     }
+}
 
+export const createNewDeckThunk = (newDeck) => async (dispatch) => {
+    const response = await fetch('/api/decks/create', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newDeck)
+    });
+
+
+    if (response.ok) {
+        const data = await response.json()
+        dispatch(getCurrentClassDetailsThunk(data['class_id']))
+        return data;
+    } else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+            return data.errors;
+        }
+    } else {
+        return ['An error occurred. Please try again.']
+    }
+}
+
+export const editDeckThunk = (editedDeck, deckId) => async (dispatch) => {
+    const response = await fetch(`/api/decks/${deckId}/edit`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(editedDeck)
+    });
+
+
+    if (response.ok) {
+        const data = await response.json()
+        dispatch(getCurrentClassDetailsThunk(data['class_id']))
+        return data;
+    } else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+            return data.errors;
+        }
+    } else {
+        return ['An error occurred. Please try again.']
+    }
+}
+
+export const deleteDeckThunk = (deckId, classId) => async (dispatch) => {
+    const response = await fetch(`/api/decks/${deckId}/delete`, {
+        method: 'DELETE'});
+
+
+    if (response.ok) {
+        const data = await response.json()
+        dispatch(getCurrentClassDetailsThunk(classId))
+        return data;
+    } else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+            return data.errors;
+        }
+    } else {
+        return ['An error occurred. Please try again.']
+    }
 }
 
 let initialState = {class:{}, decks: {}}

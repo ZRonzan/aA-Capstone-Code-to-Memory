@@ -38,7 +38,7 @@ class Class(db.Model):
             'description': self.description,
             'private': self.private,
             'owner_id': self.owner_id,
-            'decks': [deck.to_dict_no_addons() for deck in self.decks],
+            'decks': [deck.to_dict() for deck in self.decks],
             'user': self.user.to_dict_name_only()
         }
 
