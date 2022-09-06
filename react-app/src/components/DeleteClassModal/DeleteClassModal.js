@@ -12,7 +12,7 @@ function DeleteClassModal({myClass, setSortedClasses, classPage}) {
                     onClick={() => {
                         setShowModal(true)
                     }}
-                    className="fa-solid fa-x class-card"
+                    className="fa-regular fa-trash-can class-card"
                 >
                 </i>)}
                 {classPage &&(<i

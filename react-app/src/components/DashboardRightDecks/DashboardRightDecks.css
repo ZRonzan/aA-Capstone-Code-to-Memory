@@ -1,0 +1,83 @@
+.dashboard-right-decks-container {}
+
+.dashboard-right-decks-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+    min-height: 50px;
+    color: #197096;
+    border-bottom: 1px solid #c3d0dd;
+}
+
+.dashboard-right-decks-header {}
+
+.dashboard-right-decks-create-new-deck-container {}
+
+.dashboard-right-decks-list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.create-class-form-name-container.deck-name {
+    flex-direction: column;
+    align-items: center;
+}
+
+.create-class-form-input-field.deck-name {
+    width: 90%;
+    height: 3rem;
+}
+
+.create-class-form-name-container.deck-objective {
+    margin-top: 2rem;
+    flex-direction: column;
+    align-items: center;
+}
+
+.create-class-form-input-field.deck-objective {
+    width: 90%;
+    height: 5rem;
+    resize: none;
+}
+
+/* when a class has no decks */
+
+.dashboard-right-no-decks-container {}
+
+.dashboard-right-no-decks-title {
+    color: #197096;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 2rem 3%;
+}
+
+.dashboard-right-no-decks-text {
+    font-size: 0.9rem;
+    padding: 0rem 3%;
+}
+.dashboard-right-no-decks-text span{
+    font-weight: bold;
+}
+
+.dashboard-right-no-decks-create-button {
+    display: flex;
+    justify-content: flex-start;
+    padding: 1rem 3%;
+}
+
+.create-new-deck-modal-button {
+    width: 10rem;
+    border: none;
+    color: white;
+    background-color: #ff8243;
+    height: 45px;
+    border-radius: 23px;
+}
+
+.create-new-deck-modal-button:hover {
+    background-color: #ff9966;
+    cursor: pointer;
+}

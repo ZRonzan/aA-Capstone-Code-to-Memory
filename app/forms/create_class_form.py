@@ -11,7 +11,7 @@ def class_name_length(form, field):
 
 def class_purpose_length(form, field):
     purpose = field.data
-    if len(purpose) > 20:
+    if purpose is not None and len(purpose) > 20:
         raise ValidationError("Class purpose must be 20 characters or less.")
 
 def class_headline_length(form, field):

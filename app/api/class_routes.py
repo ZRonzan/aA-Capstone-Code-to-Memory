@@ -41,7 +41,7 @@ def current_user_classes():
     res = {"classes": []}
 
     for clss in classes:
-        res["classes"].append(clss.to_dict_no_addons())
+        res["classes"].append(clss.to_dict())
 
     return res
 

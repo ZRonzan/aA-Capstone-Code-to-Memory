@@ -6,14 +6,15 @@ import { getCurrentClassDetailsThunk } from '../../store/currentclassdetails';
 import IMAGES from '../ClassCard/iconPath-copy.json'
 import ICONS from '../ClassCard/icons'
 import defaultImage from '../../assets/icons/coding.svg'
-import DeleteClassModal from '../DeleteClassModal/DeleteClassModal';
 import { editUserClassThunk } from '../../store/currentuserclasses';
 import DashboardRightAboutPage from '../DasboardRightAboutPage/DashboardRightAboutPage';
+import DashboardRightDecks from '../DashboardRightDecks/DashboardRightDecks';
 
 const DashboardRightClasses = () => {
     const [isLoaded, setIsLoaded] = useState()
     const [image, setImage] = useState(defaultImage)
     const [sortedClasses, setSortedClasses] = useState([])
+    const [totalCards, setTotalCards] = useState(0)
     const [showEditClassName, setShowEditClassName] = useState(false)
     const [originalClassName, setOriginalClassName] = useState("")
     const [className, setClassName] = useState("")
@@ -65,7 +66,19 @@ const DashboardRightClasses = () => {
             setIsLoaded(true)
         }
         getClassDetails()
-    }, [classId, userClasses])
+    }, [classId,userClasses])
+
+    const countCards = () => {
+        if (currentClassDecks) {
+            let cardCount = 0
+            Object.values(currentClassDecks).forEach(ele => {
+                cardCount = cardCount + ele['cards'].length
+            })
+            return cardCount
+        } else {
+            return 0
+        }
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -131,6 +144,11 @@ const DashboardRightClasses = () => {
                                                 setErrors([])
                                                 setClassName(e.target.value)
                                             }}
+                                            onBlur={() => {
+                                                setErrors([])
+                                                setClassName(originalClassName)
+                                                setShowEditClassName(false)
+                                            }}
                                             type="text"
                                             placeholder='Class name is required'
                                             value={className}
@@ -167,7 +185,7 @@ const DashboardRightClasses = () => {
                                 {`Creator: `} <span>{`${currentClassDetails.user.first_name} ${currentClassDetails.user.last_name}`}</span>
                             </div>
                             <div className='dashboard-right-class-items-stats'>
-                                {`Decks: ${Object.keys(currentClassDecks).length} • Total Cards: ${30} (placeholder)`}
+                                {`Decks: ${Object.keys(currentClassDecks).length} • Total Cards: ${countCards()}`}
                             </div>
                         </div>
                         <div className='dashboard-right-class-options-container'>
@@ -199,6 +217,9 @@ const DashboardRightClasses = () => {
                 <Switch>
                     <Route exact path='/dashboard/:classId/about'>
                         <DashboardRightAboutPage />
+                    </Route>
+                    <Route exact path='/dashboard/:classId/decks'>
+                        <DashboardRightDecks />
                     </Route>
                 </Switch>
             </div>

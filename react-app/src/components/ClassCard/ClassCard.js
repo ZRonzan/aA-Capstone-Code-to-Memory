@@ -39,7 +39,7 @@ const ClassCard = ({ myClass, setSortedClasses }) => {
     }, [pathName])
 
     if ((pathName === `/dashboard/${myClass['id']}`)) {
-        history.push(`/dashboard/${myClass['id']}/about`)
+        history.push(`/dashboard/${myClass['id']}/decks`)
     }
 
 
