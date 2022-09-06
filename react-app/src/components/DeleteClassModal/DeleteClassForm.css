@@ -33,3 +33,12 @@
     color: #29a5dc;
     cursor: pointer;
 }
+
+.fa-trash-can.class-card {
+    font-size: 0.7rem;
+}
+
+.fa-trash-can.class-card:hover {
+    color: #29a5dc;
+    cursor: pointer;
+}

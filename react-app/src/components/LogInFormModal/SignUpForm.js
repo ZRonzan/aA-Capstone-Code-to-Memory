@@ -100,16 +100,15 @@ const SignUpForm = ({ setShowModal2, setShowModal1 }) => {
           {/* <img src={mainLogo} className={`ctm-logo-signup-${errors.length ? "errors" : "no-errors"}`}>
 
           </img> */}
-          <div
-            style={{ visibility: `${errors.length ? "visible" : "hidden"}` }}
+          {errors.length > 0 && (<div
             className='log-in-form-errors signup'
           >
-            {errors.length > 0 && (<div className='log-in-form-errors signup inner'>
+            <div className='log-in-form-errors signup inner'>
               {errors.map((error, ind) => (
                 <div key={ind} className="log-in-error">{error}</div>
               ))}
-            </div>)}
-          </div>
+            </div>
+          </div>)}
           <div className='log-in-form-email-container'>
             <label className='log-in-form-email-label'>First Name</label>
             <input

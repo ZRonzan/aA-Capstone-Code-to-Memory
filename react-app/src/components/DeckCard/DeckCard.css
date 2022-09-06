@@ -1,0 +1,96 @@
+.deck-card-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    height: 5rem;
+    padding: 1rem 3%;
+    border-bottom: 1px solid #c3d0dd;
+    color: #197096;
+}
+
+.deck-card-container:hover {
+    background-color:  #fafafa;
+    color: #4798bb;
+}
+
+.deck-card-name-and-edit {
+    display: flex;
+    min-width: 300px;
+    width: 100%;
+    align-items: center;
+}
+
+.deck-card-nav-container {
+    width: 100%;
+    text-decoration: none;
+    color: #197096;
+}
+
+.deck-card-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 1.5rem;
+}
+
+.deck-card-undertext {
+    font-size: 0.9rem;
+    color: #9cb0c4;
+}
+
+.deck-card-undertext.objective {
+    border-bottom: 1px solid #9cb0c4;
+    width: fit-content;
+}
+
+.deck-card-dropdown-menu {
+    width: 3rem;
+}
+
+.fa-ellipsis.deck-card:hover {
+    cursor: pointer;
+    color: #6db4d2;
+}
+
+.class-card-edit-delete-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    height: 100%;
+    width: 400px;
+}
+
+.edit-delete-deck-button {
+    margin: 0 0.3rem;
+    animation: scaleUp 0.2s cubic-bezier(0.165, 0.840, 0.440, 1.000) both;
+}
+
+@keyframes scaleUp {
+    0% {scale: 0%; opacity: 0;}
+    100% {scale: 100%; opacity: 100;}
+}
+
+
+.edit-class-save-button.delete-deck{
+    background-color: #8c9caa;
+    height: 30px;
+    width: 100px;
+}
+
+.edit-class-save-button.edit-deck{
+    height: 30px;
+    width: 100px;
+}
+
+.deck-card-dropdown-menu {
+}
+
+.class-card-arrow {
+    text-align: end;
+    width: 4rem;
+}
+.fa-chevron-right.deck-card {
+    font-size: 1.5rem;
+    width: 100%;
+}

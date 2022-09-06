@@ -35,6 +35,14 @@ const DashboardLeftClasses = ({setDashboardLoaded}) => {
         setIsLoaded(true)
     }, [userClasses])
 
+    const countDecks = () => {
+        let count = 0
+        Object.values(userClasses).forEach((ele) => {
+            count = count + ele.decks.length
+        })
+        return count
+    }
+
     const logOutUser = async () => {
         setDashboardLoaded(false)
         await dispatch(logout())
@@ -42,7 +50,7 @@ const DashboardLeftClasses = ({setDashboardLoaded}) => {
     }
 
     if ((pathName === '/dashboard' || pathName === '/dashboard/') && sortedClasses.length > 0) {
-        history.push(`/dashboard/${sortedClasses[0]['id']}/about`)
+        history.push(`/dashboard/${sortedClasses[0]['id']}/decks`)
     }
 
     return isLoaded && !!user && (
@@ -59,7 +67,8 @@ const DashboardLeftClasses = ({setDashboardLoaded}) => {
                         {`${user.first_name} ${user.last_name}`}
                     </div>
                     <div className='dashboard-left-classses-profile-details'>
-                        {`X Total Cards Studied - X Decks Created`}
+                        {`${countDecks()} Decks Created`}
+                        {/* to do once mastery table is up: X Total Cards Studied - */}
                     </div>
                 </div>
                 <div className='dashboard-left-classses-logout-container'>
