@@ -35,7 +35,9 @@
 }
 
 .class-card-name {
+    overflow-x: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
     width: 60%;
 }
 
