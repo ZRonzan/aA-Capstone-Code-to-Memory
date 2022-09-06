@@ -18,7 +18,6 @@ const DashboardRightDecks = () => {
     const userClasses = useSelector(state => state.currentuserclasses)
     const currentClassDetails = useSelector(state => state.currentclassdetails.class)
     const currentClassDecks = useSelector(state => state.currentclassdetails.decks)
-    console.log(currentClassDecks)
 
     useEffect(() => {
         const getClassDetails = async () => {
@@ -28,12 +27,12 @@ const DashboardRightDecks = () => {
         getClassDetails()
     }, [])
 
-    useEffect(() => {
-        setIsLoaded(false)
+    // useEffect(() => {
+    //     setIsLoaded(false)
 
-        setIsLoaded(true)
+    //     setIsLoaded(true)
 
-    }, [classId, userClasses])
+    // }, [classId, userClasses])
 
     if (!user || !userClasses[classId]) {
         history.push('/404-not-found')
@@ -51,22 +50,22 @@ const DashboardRightDecks = () => {
             </div>
             <div className='dashboard-right-decks-list-container'>
                 {Object.keys(currentClassDecks).length === 0 ? (
-                <div className='dashboard-right-no-decks-container'>
-                    <div className='dashboard-right-no-decks-title'>
-                        Add Decks to your Class
+                    <div className='dashboard-right-no-decks-container'>
+                        <div className='dashboard-right-no-decks-title'>
+                            Add Decks to your Class
+                        </div>
+                        <div className='dashboard-right-no-decks-text'>
+                            <span>Your Class has no Decks.</span> A Deck is a collection of Flashcards in a Class, similar to chapters in a book. Add a Deck to get started.
+                        </div>
+                        <div className='dashboard-right-no-decks-create-button'>
+                            <CreateNewDeckModal noClasses={true} />
+                        </div>
                     </div>
-                    <div className='dashboard-right-no-decks-text'>
-                        <span>Your Class has no Decks.</span> A Deck is a collection of Flashcards in a Class, similar to chapters in a book. Add a Deck to get started.
-                    </div>
-                    <div className='dashboard-right-no-decks-create-button'>
-                        <CreateNewDeckModal noClasses={true} />
-                    </div>
-                </div>
                 ) : (
                     Object.values(currentClassDecks).sort((a, b) => a['id'] - b['id']).map((ele) => {
                         return (
-                                <DeckCard myDeck={ele} classId={classId} ownerId={currentClassDetails['owner_id']}/>
-                           
+                            <DeckCard myDeck={ele} classId={classId} ownerId={currentClassDetails['owner_id']} />
+
                         )
                     })
                 )}

@@ -29,7 +29,6 @@ const DashboardRightClasses = () => {
     const userClasses = useSelector(state => state.currentuserclasses)
     const currentClassDetails = useSelector(state => state.currentclassdetails.class)
     const currentClassDecks = useSelector(state => state.currentclassdetails.decks)
-    console.log(currentClassDetails)
 
     useEffect(() => {
         const getClassDetails = async () => {
@@ -66,7 +65,7 @@ const DashboardRightClasses = () => {
             setIsLoaded(true)
         }
         getClassDetails()
-    }, [classId,userClasses])
+    }, [classId, userClasses])
 
     const countCards = () => {
         if (currentClassDecks) {
@@ -136,18 +135,15 @@ const DashboardRightClasses = () => {
                                 <>
                                     <form
                                         className='dashboard-right-class-name-form'
-                                        onSubmit={(e) => handleSubmit(e)}
+                                        onSubmit={(e) => {
+                                            handleSubmit(e)
+                                        }}
                                     >
                                         <input
                                             className='dashboard-right-class-name-input'
                                             onChange={(e) => {
                                                 setErrors([])
                                                 setClassName(e.target.value)
-                                            }}
-                                            onBlur={() => {
-                                                setErrors([])
-                                                setClassName(originalClassName)
-                                                setShowEditClassName(false)
                                             }}
                                             type="text"
                                             placeholder='Class name is required'
@@ -164,7 +160,9 @@ const DashboardRightClasses = () => {
                                                 }}
                                                 className="fa-solid fa-x edit-class"
                                             ></i>
-                                            <button className='edit-class-save-button'>Save</button>
+                                            <button
+                                                className='edit-class-save-button'
+                                            >Save</button>
                                         </div>
                                     </form>
                                     <div className='edit-class-name-errors-container-outer'>

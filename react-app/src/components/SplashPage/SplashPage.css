@@ -69,6 +69,11 @@
 
 .splash-page-navbar-button > button{
     height: 100%;
-    width: 8.5vw;
+    width: 9.5vw;
     min-width: 100px;
+}
+
+.demo-login-button {
+    min-width: max-content;
+    width: 10vw;
 }
