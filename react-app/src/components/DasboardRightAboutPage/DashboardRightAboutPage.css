@@ -76,7 +76,10 @@
 .edit-about-class-form-error-container {
     margin: 0% 3%;
     margin-top: 1%;
+    height:20px;
     width: 94%;
+    color: red;
+    font-size: 0.9rem;
 }
 
 .edit-about-class-form-error {

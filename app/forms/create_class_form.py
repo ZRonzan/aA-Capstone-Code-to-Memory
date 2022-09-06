@@ -21,8 +21,8 @@ def class_headline_length(form, field):
 
 def class_description_length(form, field):
     description = field.data
-    if description is not None and len(description) > 1500 or description is not None and len(description) == 0:
-        raise ValidationError("Class description must be 1500 characters or less.")
+    if description is not None and len(description) > 5000 or description is not None and len(description) == 0:
+        raise ValidationError("Class description must be 5000 characters or less.")
 
 class ClassForm(FlaskForm):
     name = StringField('class name', validators=[DataRequired(), class_name_length])

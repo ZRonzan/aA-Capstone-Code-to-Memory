@@ -41,24 +41,23 @@ const DashboardRightAboutPage = () => {
 
     useEffect(() => {
         const getClassDetails = async () => {
-            let data = await dispatch(getCurrentClassDetailsThunk(classId));
+            // let data = await dispatch(getCurrentClassDetailsThunk(classId));
 
-            setInitialPrivate(data.class['private'])
-            setEditedPrivate(data.class['private'])
+            // setInitialPrivate(data.class['private'])
+            // setEditedPrivate(data.class['private'])
 
-            setInitialHeadline(data.class['headline'])
-            setEditedHeadline(data.class['headline'])
+            // setInitialHeadline(data.class['headline'])
+            // setEditedHeadline(data.class['headline'])
 
-            setInitialDescription(data.class['description'])
-            setEditedDescription(data.class['description'])
+            // setInitialDescription(data.class['description'])
+            // setEditedDescription(data.class['description'])
 
-            setInitialPurpose(data.class['purpose'])
-            setEditedPurpose(data.class['purpose'])
+            // setInitialPurpose(data.class['purpose'])
+            // setEditedPurpose(data.class['purpose'])
 
             setIsLoaded(true)
         }
         getClassDetails()
-        setIsLoaded(true)
     }, [])
 
     useEffect(() => {
@@ -88,23 +87,47 @@ const DashboardRightAboutPage = () => {
         setEditedHeadline(initialHeadline)
         setEditedDescription(initialDescription)
         setEditedPurpose(initialPurpose)
+
+        setEditedDescriptionErrors(null)
+        setEditedHeadlineErrors(null)
+        setEditedPurposeErrors(null)
+        setEditedPrivateErrors(null)
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
 
         let errorcheck = false
-
-        let newHeadline = editedHeadline.trim()
-        let newDescription = editedDescription.trim()
-        let newPurpose = editedPurpose.trim()
+        let newHeadline = editedHeadline
+        let newDescription = editedDescription
+        let newPurpose = editedPurpose
         let newPrivacy = editedPrivate
 
-        if (newHeadline.length > 300) {
-
+        if(newHeadline) {
+            newHeadline = editedHeadline.trim()
         }
-        if (newDescription.length > 1000) {
-            
+        if(newPurpose) {
+            newPurpose = editedPurpose.trim()
+        }
+        if(newDescription) {
+            newDescription = editedDescription.trim()
+        }
+        if (!newPurpose) {
+            newPurpose = "General Learning"
+        }
+
+
+        if (newHeadline && newHeadline.length > 300) {
+            errorcheck = true;
+            setEditedHeadlineErrors("Class headline must be 300 characters or less.");
+        }
+        if (newDescription && newDescription.length > 5000) {
+            errorcheck = true;
+            setEditedDescriptionErrors("Class description must be 5000 characters or less.");
+        }
+        if (newPurpose && newPurpose.length > 20) {
+            errorcheck = true;
+            setEditedPurposeErrors("Class purpose must be 20 characters or less.");
         }
 
 
@@ -114,9 +137,9 @@ const DashboardRightAboutPage = () => {
 
         const editedClass = {
             "name": currentClassDetails['name'],
-            "purpose": newPurpose,
-            "headline": newHeadline,
-            "description": newDescription,
+            "purpose": newPurpose && newPurpose.length > 0? newPurpose: null,
+            "headline": newHeadline && newHeadline.length > 0? newHeadline: null,
+            "description": newDescription && newDescription.length > 0? newDescription : null,
             "private": newPrivacy,
             "owner_id": currentClassDetails['owner_id'],
         }
@@ -181,6 +204,7 @@ const DashboardRightAboutPage = () => {
                                 className='dashboard-right-edit-text-field'
                                 type="text"
                                 onChange={(e) => {
+                                    setEditedHeadlineErrors(null)
                                     setEditedHeadline(e.target.value)
                                 }}
                                 placeholder='Give a brief overview of your class'
@@ -215,6 +239,7 @@ const DashboardRightAboutPage = () => {
                                 className='dashboard-right-edit-text-area-field'
                                 type="text"
                                 onChange={(e) => {
+                                    setEditedDescriptionErrors(null)
                                     setEditedDescription(e.target.value)
                                 }}
                                 placeholder='Add a more detailed description of your class.'
@@ -243,6 +268,7 @@ const DashboardRightAboutPage = () => {
                                 className='dashboard-right-edit-text-field'
                                 type='text'
                                 onChange={(e) => {
+                                    setEditedPurposeErrors(null)
                                     setEditedPurpose(e.target.value)
                                 }}
                                 placeholder='Give a short tag detailing this class e.g "Python study", "Learning JavaScript"'
