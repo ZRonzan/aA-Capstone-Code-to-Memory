@@ -1,0 +1,87 @@
+.dashboard-right-about-page-main-container {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+
+.dashboard-right-about-page-edit-buttons-container {
+    padding-top: 1%;
+    padding-left: 3%;
+    min-height: 30px;
+    height: 3vh;
+    max-height: 70px;
+}
+
+.dashboard-right-about-page-edit-buttons-container button {
+    height: 100%;
+}
+
+.dashboard-right-about-text-container {
+    padding-top: 1%;
+}
+
+.dashboard-right-about-text-title {
+    color: #31a8dd;
+    border-bottom: 1px solid #9cb0c4;
+    margin: 0% 3%;
+}
+
+.dashboard-right-about-text-body {
+    color: #8c9caa;
+    line-height: 1.5rem;
+    margin: 1% 3%;
+    min-height: 5vh;
+}
+
+.dashboard-right-about-page-edit-buttons {
+    margin-right: 1rem;
+    border: none;
+    color: white;
+    border-radius: 20px;
+    height: 40px;
+    width: 200px;
+    background-color: #ff8243;
+}
+
+.dashboard-right-about-page-edit-buttons:hover {
+    background-color: #ff9966;
+    cursor: pointer;
+}
+
+.dashboard-right-about-page-edit-buttons.cancel {
+    background-color: #777777;
+}
+
+.dashboard-right-about-page-edit-buttons.cancel:hover {
+    background-color: #8c9caa;
+}
+
+/* form fields and errors*/
+
+
+.dashboard-right-edit-text-field {
+    margin: 0% 3%;
+    margin-top: 1%;
+    width: 94%;
+}
+
+.dashboard-right-edit-text-area-field {
+    margin: 0% 3%;
+    margin-top: 1%;
+    width: 94%;
+    height: 30vh;
+    resize: none;
+}
+
+.edit-about-class-form-error-container {
+    margin: 0% 3%;
+    margin-top: 1%;
+    height:20px;
+    width: 94%;
+    color: red;
+    font-size: 0.9rem;
+}
+
+.edit-about-class-form-error {
+
+}

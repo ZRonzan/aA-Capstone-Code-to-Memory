@@ -1,5 +1,7 @@
 .dashboard-left-classses-main-container {
     height: 100vh;
+    width: 100%;
+    overflow-y: auto;
     background-color: #324054;
     color: #8c9caa;
 }
@@ -8,6 +10,7 @@
 .dashboard-left-classses-top {
     display: flex;
     height: 15vh;
+    min-height: 120px
 }
 
 .dashboard-left-classses-logo {
@@ -78,11 +81,13 @@
     font-size: 0.9rem;
     margin: 0% 4%;
     height: 4vh;
+    min-height: 30px;
 }
 
 /* where classes you own will be shown */
 .dashboard-left-classses-bottom {
-    height: 78vh;
+    max-height: 78vh;
+    width: 100%;
     padding: 3% 0%;
     overflow-y: auto;
 }
