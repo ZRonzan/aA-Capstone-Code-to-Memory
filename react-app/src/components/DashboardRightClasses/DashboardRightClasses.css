@@ -4,6 +4,8 @@
     display: flex;
     width: 100%;
     height: 20vh;
+    min-height: 170px;
+    min-width: 450px;
     background-color: white;
 }
 
@@ -25,7 +27,6 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    min-width: 200px;
 }
 
 .dashboard-right-class-name {
@@ -48,7 +49,7 @@
 }
 
 .dashboard-right-class-creator-container {
-    padding-top: 10%;
+    padding-top: 5px;
     display: flex;
 }
 
@@ -78,6 +79,16 @@
 
 }
 
+@media screen and (max-width: 992px) {
+    .dashboard-right-class-mastery-container {
+        display: none;
+
+    }
+    .dashboard-right-class-name-container {
+        min-width: 430px;
+    }
+}
+
 .dashboard-right-class-mastery-percentage {
     font-size: 1.5rem;
     color: #197096;
@@ -91,6 +102,9 @@
 
 /* edit form  */
 .dashboard-right-class-name-form {
+    display: flex;
+    min-width: min-content;
+    justify-content: space-between;
     border: 1px solid #197096;
     border-radius: 10px;
     padding: 0.5rem;
@@ -124,7 +138,10 @@
 }
 
 .fa-x.edit-class {
-    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-size: 1rem;
     padding-right: 1rem;
 }
 
@@ -152,9 +169,12 @@
 .dashboard-right-class-navlinks-container {
     display: flex;
     width: 100%;
+    min-width: 600px;
     background-color: #eaf2f6;
-    height: 3rem;
+    height: 5vh;
+    min-height: 30px;
 }
+
 .dashboard-right-class-navlink {
     display: flex;
     align-items: center;
@@ -162,7 +182,7 @@
     width: 50%;
     text-decoration: none;
     color: #779aa9;
-    border-bottom: 5px solid rgba(0,0,0,0);
+    border-bottom: 5px solid rgba(0, 0, 0, 0);
     padding-top: 5px;
 }
 
@@ -176,4 +196,13 @@
     font-weight: bold;
     color: black;
     border-bottom: 5px solid #9cb0c4;
+}
+
+/* lower component beneath navbar */
+
+.dashboard-right-class-lower-container {
+    max-height: 72vh;
+    overflow-y: auto;
+    min-width: 600px;
+    width: 100%;
 }

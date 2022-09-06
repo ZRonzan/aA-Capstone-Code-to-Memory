@@ -12,6 +12,7 @@ const ClassCard = ({ myClass, setSortedClasses }) => {
 
     const [isLoaded, setIsLoaded] = useState(false)
     const [image, setImage] = useState(codingimage)
+    const [focused, setFocused] = useState(false)
 
     const dispatch = useDispatch()
     const history = useHistory()
@@ -28,9 +29,19 @@ const ClassCard = ({ myClass, setSortedClasses }) => {
         setIsLoaded(true)
     },[])
 
+    useEffect(() => {
+        if (pathName.startsWith(`/dashboard/${myClass['id']}`)) {
+            console.log("IN HERE FOCUSED")
+            setFocused(true)
+        } else {
+            setFocused(false)
+        }
+    }, [pathName])
+
     if ((pathName === `/dashboard/${myClass['id']}`)) {
         history.push(`/dashboard/${myClass['id']}/about`)
     }
+
 
     return isLoaded && (
         <NavLink
@@ -45,7 +56,10 @@ const ClassCard = ({ myClass, setSortedClasses }) => {
             <div className='class-card-name'>
                 {myClass.name}
             </div>
-            <div className='class-card-delete-container'>
+            <div
+            style={{visibility: `${focused? "visible": "hidden"}`}}
+            className='class-card-delete-container'
+            >
                 <DeleteClassModal myClass={myClass} setSortedClasses={setSortedClasses}/>
             </div>
         </NavLink>

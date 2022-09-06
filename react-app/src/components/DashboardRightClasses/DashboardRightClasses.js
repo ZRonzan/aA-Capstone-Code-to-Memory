@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink, useParams, useHistory } from 'react-router-dom'
+import { NavLink, useParams, useHistory, Switch, Route } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import './DashboardRightClasses.css'
 import { getCurrentClassDetailsThunk } from '../../store/currentclassdetails';
@@ -8,9 +8,10 @@ import ICONS from '../ClassCard/icons'
 import defaultImage from '../../assets/icons/coding.svg'
 import DeleteClassModal from '../DeleteClassModal/DeleteClassModal';
 import { editUserClassThunk } from '../../store/currentuserclasses';
+import DashboardRightAboutPage from '../DasboardRightAboutPage/DashboardRightAboutPage';
 
 const DashboardRightClasses = () => {
-    const [isLoaded, setIslLoaded] = useState()
+    const [isLoaded, setIsLoaded] = useState()
     const [image, setImage] = useState(defaultImage)
     const [sortedClasses, setSortedClasses] = useState([])
     const [showEditClassName, setShowEditClassName] = useState(false)
@@ -42,13 +43,13 @@ const DashboardRightClasses = () => {
             }
             setOriginalClassName(data.class.name)
             setClassName(data.class.name)
-            setIslLoaded(true)
+            setIsLoaded(true)
         }
         getClassDetails()
     }, [])
 
     useEffect(() => {
-        setIslLoaded(false)
+        setIsLoaded(false)
         const getClassDetails = async () => {
             let data = await dispatch(getCurrentClassDetailsThunk(classId));
             if (data.class.name) {
@@ -61,7 +62,7 @@ const DashboardRightClasses = () => {
             }
             setOriginalClassName(data.class.name)
             setClassName(data.class.name)
-            setIslLoaded(true)
+            setIsLoaded(true)
         }
         getClassDetails()
     }, [classId, userClasses])
@@ -83,10 +84,10 @@ const DashboardRightClasses = () => {
 
         const editedClass = {
             "name": newClassName,
-            "purpose": currentClassDetails['name'],
-            "headline": currentClassDetails['name'],
-            "description": currentClassDetails['name'],
-            "private": currentClassDetails['name'],
+            "purpose": currentClassDetails['purpose'],
+            "headline": currentClassDetails['headline'],
+            "description": currentClassDetails['description'],
+            "private": currentClassDetails['private'],
             "owner_id": currentClassDetails['owner_id'],
         }
 
@@ -166,7 +167,7 @@ const DashboardRightClasses = () => {
                                 {`Creator: `} <span>{`${currentClassDetails.user.first_name} ${currentClassDetails.user.last_name}`}</span>
                             </div>
                             <div className='dashboard-right-class-items-stats'>
-                                {`Decks: ${Object.keys(currentClassDecks).length} • Total Cards: ${30}`}
+                                {`Decks: ${Object.keys(currentClassDecks).length} • Total Cards: ${30} (placeholder)`}
                             </div>
                         </div>
                         <div className='dashboard-right-class-options-container'>
@@ -178,10 +179,10 @@ const DashboardRightClasses = () => {
                 </div>
                 <div className='dashboard-right-class-mastery-container'>
                     <div className='dashboard-right-class-mastery-percentage'>
-                        {`${45.236.toFixed(2)}%`}
+                        {`${45.236.toFixed(2)}% (placeholder)`}
                     </div>
                     <div className='dashboard-right-class-mastery-text'>
-                        Mastery
+                        Mastery (placeholder)
                     </div>
 
                 </div>
@@ -195,7 +196,11 @@ const DashboardRightClasses = () => {
                 </NavLink>
             </div>
             <div className='dashboard-right-class-lower-container'>
-                You can create your own classes using the "+" icon on the sidebar. Why not create one to get yourself started!
+                <Switch>
+                    <Route exact path='/dashboard/:classId/about'>
+                        <DashboardRightAboutPage />
+                    </Route>
+                </Switch>
             </div>
         </div>
     ) : (

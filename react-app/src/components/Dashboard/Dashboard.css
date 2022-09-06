@@ -9,11 +9,12 @@
     height: 100%;
     min-width: 340px;
     width: 340px;
+    max-width: 340px;
 }
 
 .dashboard-inner-right {
     min-height: min-content;
-    height: 100vh;
+    max-height: 100vh;
     width: calc(100% - 340px);
-    background-color: blue;
+    overflow-y: auto;
 }

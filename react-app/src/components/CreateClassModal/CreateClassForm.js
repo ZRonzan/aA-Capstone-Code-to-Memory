@@ -33,12 +33,10 @@ const CreateClassForm = ({ setShowModal, setSortedClasses }) => {
       "private": false,
       "owner_id": user.id
     }
-    const data = await dispatch(createUserClassThunk(newClass))
+    await dispatch(createUserClassThunk(newClass))
     setSortedClasses([])
     setShowModal(false)
-    if (data['id']) {
-      history.push(`/dashboard/${data.id}/about`)
-    }
+    history.push('/dashboard')
   }
 
   const updateClassName = (e) => {
