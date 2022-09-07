@@ -5,13 +5,14 @@ import DashBoardLeftClasses from '../DashboardLeft/DashboardLeftClasses';
 import DashboardRightNoClasses from '../DashboardRightNoClasses/DashboardRightNoClasses';
 import "./Dashboard.css"
 import DashboardRightClasses from '../DashboardRightClasses/DashboardRightClasses';
+import DashboardRightCards from '../DashboardRightCards/DashboardRightCards';
 
 const DashBoard = () => {
 
     const [dashBoardLoaded, setDashboardLoaded] = useState(false)
     const [classesCount, setClassesCount] = useState(0)
 
-    const user = useSelector( state => state.session.user)
+    const user = useSelector(state => state.session.user)
     const userClasses = useSelector(state => state.currentuserclasses)
 
 
@@ -27,7 +28,7 @@ const DashBoard = () => {
         setDashboardLoaded(true)
     }, [])
 
-    return  dashBoardLoaded? (
+    return dashBoardLoaded ? (
         <div className='dashboard-outer-container'>
             <div className='dashboard-inner-left'>
                 <DashBoardLeftClasses setDashboardLoaded={setDashboardLoaded} />
@@ -36,6 +37,11 @@ const DashBoard = () => {
                 {Object.keys(userClasses).length === 0 && (<DashboardRightNoClasses />)}
                 {Object.keys(userClasses).length > 0 && (
                     <Switch>
+                        <Route path='/dashboard/:classId/decks/:deckId'>
+
+                            {/* <DashboardRightClasses setDashboardLoaded={setDashboardLoaded} /> */}
+                            <DashboardRightCards setDashboardLoaded={setDashboardLoaded}/>
+                        </Route>
                         <Route path='/dashboard/:classId'>
                             <DashboardRightClasses setDashboardLoaded={setDashboardLoaded} />
                         </Route>
@@ -43,7 +49,7 @@ const DashBoard = () => {
                 )}
             </div>
         </div>
-    ): (
+    ) : (
         null
     )
 }

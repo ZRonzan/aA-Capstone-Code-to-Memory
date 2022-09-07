@@ -34,6 +34,18 @@ def get_all_owned_cards():
 
     return res
 
+# Get all cards of a deck
+@card_routes.route('/deck/<int:deckId>')
+def get_deck_cards(deckId):
+
+    cards = Card.query.filter(Card.deck_id == deckId).all()
+    res = {"cards": []}
+
+    for card in cards:
+        res["cards"].append(card.to_dict())
+
+    return res
+
 # Get card by id
 @card_routes.route('/<int:cardId>')
 def get_one_card(cardId):

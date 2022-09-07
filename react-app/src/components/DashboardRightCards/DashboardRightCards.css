@@ -1,0 +1,81 @@
+.dashboard-right-cards-top-container {
+    height: 7vh;
+    min-height: 70px;
+    max-height: 100px;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+}
+
+.dashboard-right-class-navlink-container-cards {
+    display: flex;
+    align-items: center;
+    padding-right: 1rem;
+    text-decoration: none;
+    color: #707070;
+}
+.dashboard-right-class-navlink-container-cards:hover {
+    cursor: pointer;
+    text-decoration: none;
+    color: #707070;
+}
+
+.dashboard-right-class-top-go-back-container.cards {
+}
+
+.dashboard-right-cards-container {
+    height: 100%;
+}
+.dashboard-right-class-icon-container-cards {
+    display: flex;
+    justify-content: center;
+    height: 30px;
+    width: 40px;
+}
+
+.dashboard-right-class-icon.cards {
+    height: 100%;
+    width: min-content;
+}
+
+.dashboard-right-class-navlinks-container {
+    font-size: 0.8rem;
+    height: 40px;
+}
+
+
+.dashboard-right-class-name-cards {
+
+}
+
+.dashboard-right-deck-name-cards {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #197096;
+}
+
+.dashboard-right-deck-number-cards {
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    text-decoration: none;
+    color: #707070;
+}
+
+.dashboard-right-lower-container.cards {
+    overflow-y: auto;
+    height: 87vh;
+}
+
+.create-card-sticky {
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    padding: 1rem 10%;
+    width: 80%;
+    top: 0;
+    border-bottom: 1px solid #c3d0dd;
+    background-color: white;
+    z-index: 2;
+}

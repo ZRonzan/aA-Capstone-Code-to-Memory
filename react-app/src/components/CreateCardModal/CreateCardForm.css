@@ -1,0 +1,24 @@
+.create-class-form-input-field.deck-objective.card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+
+}
+
+
+.fa-pencil.edit-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.fa-pencil.edit-card:hover {
+    cursor: pointer;
+    color: #3384ab;
+    background-color: #e2e2e2;
+}
