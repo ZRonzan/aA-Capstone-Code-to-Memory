@@ -14,9 +14,11 @@ const DashboardLeftClasses = ({setDashboardLoaded}) => {
     const [isLoaded, setIsLoaded] = useState(false)
     const [classesCount, setClassesCount] = useState(0)
     const [sortedClasses, setSortedClasses] = useState([])
+    const [decksCount, setDecksCount] = useState(0)
 
     const user = useSelector(state => state.session.user);
     const userClasses = useSelector(state => state.currentuserclasses)
+    const currentclassdetails = useSelector(state => state.currentclassdetails)
     const dispatch = useDispatch()
     const history = useHistory()
     const pathName = useLocation().pathname
@@ -28,20 +30,25 @@ const DashboardLeftClasses = ({setDashboardLoaded}) => {
         getData();
     }, [])
 
-    useEffect(() => {
-        setClassesCount(Object.keys(userClasses).length)
-        let sorted = Object.values(userClasses).sort((a, b) => b['id'] - a['id'])
-        setSortedClasses(sorted)
-        setIsLoaded(true)
-    }, [userClasses])
-
     const countDecks = () => {
+        console.log("COUNTING!!!!!!!!!!!!!!!!!!")
         let count = 0
         Object.values(userClasses).forEach((ele) => {
             count = count + ele.decks.length
         })
-        return count
+        console.log("HERE'S THE COUNT!", count)
+        setDecksCount(count)
     }
+
+    useEffect(() => {
+        setIsLoaded(false)
+        setClassesCount(Object.keys(userClasses).length)
+        let sorted = Object.values(userClasses).sort((a, b) => b['id'] - a['id'])
+        setSortedClasses(sorted)
+        countDecks()
+        setIsLoaded(true)
+    }, [userClasses ])
+
 
     const logOutUser = async () => {
         setDashboardLoaded(false)
@@ -67,7 +74,7 @@ const DashboardLeftClasses = ({setDashboardLoaded}) => {
                         {`${user.first_name} ${user.last_name}`}
                     </div>
                     <div className='dashboard-left-classses-profile-details'>
-                        {`${countDecks()} Decks Created`}
+                        {`${decksCount} Decks Created`}
                         {/* to do once mastery table is up: X Total Cards Studied - */}
                     </div>
                 </div>

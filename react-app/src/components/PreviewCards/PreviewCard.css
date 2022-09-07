@@ -81,7 +81,8 @@
 }
 
 .preview-card-edit-delete {
-    display: flex;
+    display: flex;flex-direction: column-reverse;
+    justify-content: flex-end;
     align-items: center;
     color: #a6a6a6;
     padding-left: 2rem;

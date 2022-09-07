@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import DeleteCardModal from '../DeleteCardModal/DeleteCardModal.js'
+import CreateCardModal from '../CreateCardModal/CreateCardModal.js';
 
 import './PreviewCard.css'
 
@@ -51,6 +52,7 @@ const PreviewCard = ({ card, number, mastery }) => {
                 className='preview-card-edit-delete'
             >
                 <DeleteCardModal myCard={card} />
+                <CreateCardModal myCard={card} />
             </div>
         </div>
     ) : (

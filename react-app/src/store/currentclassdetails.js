@@ -108,6 +108,7 @@ export const deleteCardThunk = (cardId, classId) => async (dispatch) => {
 }
 
 export const editCardThunk = (editedCard, cardId, classId) => async (dispatch) => {
+    console.log("IN EDIT CARD THUNK")
     const response = await fetch(`/api/cards/${cardId}/edit`, {
         method: 'PUT',
         headers: {
@@ -116,7 +117,7 @@ export const editCardThunk = (editedCard, cardId, classId) => async (dispatch) =
         body: JSON.stringify(editedCard)
     });
 
-
+    console.log(classId)
     if (response.ok) {
         const data = await response.json()
         dispatch(getCurrentClassDetailsThunk(classId))

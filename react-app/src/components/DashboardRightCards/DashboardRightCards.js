@@ -10,6 +10,8 @@ import defaultImage from '../../assets/icons/coding.svg'
 import './DashboardRightCards.css'
 import PreviewCard from '../PreviewCards/PreviewCard';
 import DashboardRightNoCards from '../DashboardRightNoCards/DashboardRightNoCards';
+import CreateCardModal from '../CreateCardModal/CreateCardModal';
+import BrowsingDeck from '../BrowsingDeck/BrowsingDeck';
 
 const DashboardRightCards = () => {
     const [isLoaded, setIsLoaded] = useState()
@@ -74,7 +76,6 @@ const DashboardRightCards = () => {
     }, [])
 
     useEffect(() => {
-        setIsLoaded(false)
         const getClassDetails = async () => {
             const userDecks = await fetch('/api/decks/current-user-owned')
             const dat = await userDecks.json()
@@ -164,7 +165,7 @@ const DashboardRightCards = () => {
                                         CARDS
                                     </div>
                                     <div>
-                                        +
+                                        <CreateCardModal />
                                     </div>
                                 </div>
                                 {currentDeck.cards.map((ele, i) => {
@@ -178,7 +179,7 @@ const DashboardRightCards = () => {
                     <Route exact path='/dashboard/:classId/decks/:deckId/Browse'>
                     {currentDeck.cards.length > 0 ? (
                             <>
-                                BROWSING DECK
+                                <BrowsingDeck />
                             </>
                         ) : (
                             <DashboardRightNoCards />

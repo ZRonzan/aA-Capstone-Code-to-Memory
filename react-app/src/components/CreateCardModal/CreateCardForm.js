@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { editCardThunk, createNewCardThunk } from '../../store/currentclassdetails';
+import { getUserClassesThunk } from '../../store/currentuserclasses';
 import './CreateCardForm.css'
 
 const CreateNewDeckForm = ({ setShowModal, myCard, editing}) => {
@@ -53,7 +54,9 @@ const CreateNewDeckForm = ({ setShowModal, myCard, editing}) => {
       "answer": newAnswer,
       "deck_id": deckId
     }
+    
     await dispatch(createNewCardThunk(newCard, currentClass.id))
+    await dispatch(getUserClassesThunk())
     setShowModal(false)
   }
 
@@ -85,7 +88,9 @@ const CreateNewDeckForm = ({ setShowModal, myCard, editing}) => {
       "answer": editedAnswer,
       "deck_id": deckId
     }
+
     await dispatch(editCardThunk(editedCard, myCard.id, currentClass.id))
+    await dispatch(getUserClassesThunk())
     setShowModal(false)
   }
 

@@ -28,7 +28,7 @@ const DashboardRightNoCards = ({ myCard, ownerId }) => {
                 Your deck is empty.
             </div>
             <div className='dashboard-right-no-classes-text'>
-                You can create your own cardsusing the button below.
+                You can create your own cards using the button below.
             </div>
             <div className='dashboard-right-no-classes-text'>
                 <CreateCardModal noCards={true} myCard={myCard} />

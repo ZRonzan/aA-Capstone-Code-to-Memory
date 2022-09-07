@@ -61,10 +61,10 @@ const DeckCard = ({ classId, myDeck, ownerId }) => {
                     {showDropdown && (
                         <>
                             <div className='edit-delete-deck-button'>
-                                <CreateNewDeckModal myDeck={myDeck} />
+                                <CreateNewDeckModal myDeck={myDeck} setShowDropdown={setShowDropdown}/>
                             </div>
                             <div className='edit-delete-deck-button'>
-                                <DeleteDeckModal myDeck={myDeck} classId={classId}/>
+                                <DeleteDeckModal myDeck={myDeck} classId={classId} setShowDropdown={setShowDropdown}/>
                             </div>
                         </>
                     )}

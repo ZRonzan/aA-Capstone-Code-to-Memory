@@ -4,7 +4,7 @@ import { useLocation,useHistory } from 'react-router-dom';
 import { deleteDeckThunk } from '../../store/currentclassdetails';
 import {getUserClassesThunk} from '../../store/currentuserclasses';
 
-const DeleteDeckForm = ({ setShowModal, myDeck, classId}) => {
+const DeleteDeckForm = ({ setShowModal, myDeck, classId, setShowDropdown}) => {
     const [errors, setErrors] = useState([]);
     const dispatch = useDispatch();
     const pathname = useLocation().pathname;
@@ -21,7 +21,13 @@ const DeleteDeckForm = ({ setShowModal, myDeck, classId}) => {
     return (
         <>
             <div className='log-in-form-x-container'>
-                <i className="fa-solid fa-xmark login" onClick={() => setShowModal(false)}></i>
+                <i
+                className="fa-solid fa-xmark login"
+                onClick={() => {
+                    if (setShowDropdown) setShowDropdown(false)
+                    setShowModal(false)
+                    }}
+                    ></i>
             </div>
             <div className='delete-class-main-body'>
                 <div className='delete-class-title'>
@@ -39,7 +45,10 @@ const DeleteDeckForm = ({ setShowModal, myDeck, classId}) => {
                     Yes, please proceed
                 </button>
                 <div
-                    onClick={() => setShowModal(false)}
+                    onClick={() => {
+                        if (setShowDropdown) setShowDropdown(false)
+                        setShowModal(false)
+                    }}
                     className='delete-class-form-cancel'
                 >
                     No, cancel
