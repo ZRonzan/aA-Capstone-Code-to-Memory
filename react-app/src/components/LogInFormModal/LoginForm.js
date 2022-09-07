@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { login } from '../../store/session';
 import './LogInFormModal.css'
 
@@ -10,6 +10,7 @@ const LoginForm = ({ setShowModal1, setShowModal2 }) => {
   const [password, setPassword] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
+  const history = useHistory()
 
   const onLogin = async (e) => {
     e.preventDefault();
@@ -32,6 +33,7 @@ const LoginForm = ({ setShowModal1, setShowModal2 }) => {
       setErrors(["Password or email is incorrect"]);
     } else {
       setShowModal1(false)
+      history.push("/dashboard")
     }
   };
 
@@ -47,9 +49,9 @@ const LoginForm = ({ setShowModal1, setShowModal2 }) => {
     setPassword(password);
   };
 
-  if (user) {
-    return <Redirect to='/dashboard' />;
-  }
+  // if (user) {
+  //   return <Redirect to='/dashboard' />;
+  // }
 
   return (
     <>
