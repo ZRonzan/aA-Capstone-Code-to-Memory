@@ -41,11 +41,11 @@ function App() {
         <Route path='/dashboard' >
           <DashBoard />
         </Route>
-        <Route exact path='/404-not-found' >
+        {/* <Route exact path='/404-not-found' >
           <PageNotFound />
           <Footer />
-        </Route>
-        <Route>
+        </Route> */}
+        <Route path='*'>
           <PageNotFound />
           <Footer />
         </Route>

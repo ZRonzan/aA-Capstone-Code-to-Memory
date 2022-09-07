@@ -83,9 +83,9 @@ const SignUpForm = ({ setShowModal2, setShowModal1 }) => {
     setRepeatPassword(password);
   };
 
-  if (user) {
-    return <Redirect to='/dashboard' />;
-  }
+  // if (user) {
+  //   return <Redirect to='/dashboard' />;
+  // }
 
   return (
     <>
