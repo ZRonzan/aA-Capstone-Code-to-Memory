@@ -5,10 +5,11 @@ import { login, logout, logOutDemoUser } from '../../store/session';
 import image from '../../assets/logo500x500.svg'
 import profileIcon from '../../assets/profile-logo.svg'
 import "./DashboardLeftClasses.css"
-import { getUserClassesThunk } from '../../store/currentuserclasses';
+import { getUserClassesThunk, resetUserClassesThunk } from '../../store/currentuserclasses';
 import DeleteClassModal from '../DeleteClassModal/DeleteClassModal';
 import ClassCard from '../ClassCard/ClassCard';
 import CreateClassModal from '../CreateClassModal/CreateClassModal';
+import { resetCurrentClassDetailsThunk } from '../../store/currentclassdetails';
 
 const DashboardLeftClasses = ({setDashboardLoaded}) => {
     const [isLoaded, setIsLoaded] = useState(false)
@@ -52,6 +53,9 @@ const DashboardLeftClasses = ({setDashboardLoaded}) => {
 
     const logOutUser = async () => {
         setDashboardLoaded(false)
+        setIsLoaded(false)
+        await dispatch(resetUserClassesThunk())
+        await dispatch(resetCurrentClassDetailsThunk())
         await dispatch(logout())
         history.push('/')
     }

@@ -30,8 +30,14 @@ const SignUpForm = ({ setShowModal2, setShowModal1 }) => {
     if (!email.length) {
       errors.push("Email: Please provide an email.")
     }
+    if (!validateEmail(email)) {
+      errors.push("Email: Please provide a correctly formatted email.")
+    }
     if (email.includes(" ")) {
       errors.push("Email: Emails cannot contain spaces.")
+    }
+    if (!password || !repeatPassword) {
+      errors.push("Password: Both password input fields must be filled.")
     }
     if (password !== repeatPassword) {
       errors.push("Password: Passwords do not match.")
@@ -43,14 +49,21 @@ const SignUpForm = ({ setShowModal2, setShowModal1 }) => {
 
     if (password === repeatPassword) {
       const data = await dispatch(signUp(first_name, last_name, email, password));
+
       if (data) {
         setErrors(data)
       } else {
         setShowModal2(false)
-        history.push('/dashboard')
       }
     }
+  };
 
+  const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
   };
 
   const updateFirstName = (e) => {
@@ -83,9 +96,9 @@ const SignUpForm = ({ setShowModal2, setShowModal1 }) => {
     setRepeatPassword(password);
   };
 
-  // if (user) {
-  //   return <Redirect to='/dashboard' />;
-  // }
+  if (user) {
+    return <Redirect to='/dashboard' />;
+  }
 
   return (
     <>
@@ -135,7 +148,7 @@ const SignUpForm = ({ setShowModal2, setShowModal1 }) => {
             <label className='log-in-form-email-label'>Email</label>
             <input
               className='log-in-form-email-field'
-              type='email'
+              // type='email'
               name='email'
               placeholder='(Email Required)'
               onChange={updateEmail}
@@ -162,7 +175,6 @@ const SignUpForm = ({ setShowModal2, setShowModal1 }) => {
               placeholder='(Password Required)'
               onChange={updateRepeatPassword}
               value={repeatPassword}
-              required={true}
             ></input>
           </div>
           <button type='submit' className='log-in-form-submit-button'>Sign Up</button>

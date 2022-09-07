@@ -28,12 +28,11 @@ const LoginForm = ({ setShowModal1, setShowModal2 }) => {
       return
     }
 
-    const data = await dispatch(login(email, password));
+    const data = await dispatch(login(email, password))
     if (data) {
       setErrors(["Password or email is incorrect"]);
     } else {
       setShowModal1(false)
-      history.push("/dashboard")
     }
   };
 
@@ -49,9 +48,9 @@ const LoginForm = ({ setShowModal1, setShowModal2 }) => {
     setPassword(password);
   };
 
-  // if (user) {
-  //   return <Redirect to='/dashboard' />;
-  // }
+  if (user) {
+    return <Redirect to='/dashboard' />;
+  }
 
   return (
     <>
