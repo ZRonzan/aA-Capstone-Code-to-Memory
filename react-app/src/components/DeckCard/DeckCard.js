@@ -18,7 +18,6 @@ const DeckCard = ({ classId, myDeck, ownerId }) => {
 
 
     useEffect(() => {
-        console.log(myDeck.cards.length)
         setIsLoaded(true)
     }, [])
 
@@ -38,7 +37,7 @@ const DeckCard = ({ classId, myDeck, ownerId }) => {
                 <NavLink
                     title="Check out this deck"
                     className='deck-card-nav-container'
-                    to={`/dashboard/${classId}/decks/`}
+                    to={`/dashboard/${classId}/decks/${myDeck['id']}/browse`}
                 >
                     <div className='deck-card-name'>
                         {myDeck.name}
@@ -62,10 +61,10 @@ const DeckCard = ({ classId, myDeck, ownerId }) => {
                     {showDropdown && (
                         <>
                             <div className='edit-delete-deck-button'>
-                                <CreateNewDeckModal myDeck={myDeck} />
+                                <CreateNewDeckModal myDeck={myDeck} setShowDropdown={setShowDropdown}/>
                             </div>
                             <div className='edit-delete-deck-button'>
-                                <DeleteDeckModal myDeck={myDeck} classId={classId}/>
+                                <DeleteDeckModal myDeck={myDeck} classId={classId} setShowDropdown={setShowDropdown}/>
                             </div>
                         </>
                     )}
@@ -76,7 +75,7 @@ const DeckCard = ({ classId, myDeck, ownerId }) => {
                 <NavLink
                     title="Check out this deck"
                     className='deck-card-nav-container'
-                    to={`/dashboard/${classId}/decks/`}
+                    to={`/dashboard/${classId}/decks/${myDeck['id']}/browse`}
                 >
                     <i class="fa-solid fa-chevron-right deck-card"></i>
                 </NavLink>

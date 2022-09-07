@@ -27,11 +27,10 @@ const ClassCard = ({ myClass, setSortedClasses }) => {
             }
         }
         setIsLoaded(true)
-    },[])
+    },[myClass.name])
 
     useEffect(() => {
         if (pathName.startsWith(`/dashboard/${myClass['id']}`)) {
-            console.log("IN HERE FOCUSED")
             setFocused(true)
         } else {
             setFocused(false)

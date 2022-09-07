@@ -29,6 +29,7 @@
 .dashboard-right-about-text-body {
     color: #8c9caa;
     line-height: 1.5rem;
+    white-space: pre-line;
     margin: 1% 3%;
     min-height: 5vh;
 }

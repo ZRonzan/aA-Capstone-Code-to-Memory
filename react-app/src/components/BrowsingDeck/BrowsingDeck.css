@@ -1,0 +1,196 @@
+.dashboard-right-browse-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.preview-card-q-a.card-queue {
+    left: 2rem;
+    top:0.6rem;
+    font-size: 0.8rem;
+}
+
+.dashboard-right-browse-chevron {
+    width: 100px;
+}
+
+.fa-chevron-right.browsing-deck,
+.fa-chevron-left.browsing-deck {
+    color:#9cb0c4;
+    font-size: 3rem;
+}
+
+.fa-chevron-right.browsing-deck{
+    display: flex;
+    justify-content: end;
+}
+.fa-chevron-left.browsing-deck {
+    display: flex;
+    justify-content: start;
+}
+
+.fa-chevron-right.browsing-deck:hover,
+.fa-chevron-left.browsing-deck:hover {
+    cursor: pointer;
+    color: #00a8d7;
+}
+
+.dashboard-right-browse-card-container {
+    width: 100%;
+    height: 90%;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.dashboard-right-browse-body-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 300px;
+    width: 50%;
+    height: 80vh;
+}
+
+.dashboard-right-browse-body-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    white-space: pre-line;
+    border-radius: 10px;
+    width: 80%;
+    height: 100%;
+    padding: 0 10%;
+}
+
+.dashboard-right-browse-body-card.none {
+    border-bottom: 5px solid #7d93a4;
+}
+
+.dashboard-right-browse-body-card.one {
+    border-bottom: 5px solid #aa0080;
+}
+
+.dashboard-right-browse-body-card.two {
+    border-bottom: 5px solid #ff8a47;
+}
+.dashboard-right-browse-body-card.three {
+    border-bottom: 5px solid #ffdd00;
+}
+.dashboard-right-browse-body-card.four {
+    border-bottom: 5px solid #7fae2e;
+}
+.dashboard-right-browse-body-card.five {
+    border-bottom: 5px solid #00a8d7;
+}
+
+.dashboard-right-browse-body-card-text {
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+
+.dashboard-right-browse-bottom-butttons-container {
+    width: 100%;
+    min-height: 80px;
+    height: 100px;
+    margin: 2rem 0;
+}
+
+.dashboard-right-browse-bottom-butttons-reveal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    height: 100%;
+    border-radius: 10px;
+    transition: scale 0.2s;
+}
+
+.dashboard-right-browse-bottom-butttons-reveal:hover {
+    cursor: pointer;
+    scale: 1.005;
+}
+
+.dashboard-right-browse-bottom-butttons-reveal.none {
+    color:white;
+    background-color: #7d93a4;
+}
+
+.dashboard-right-browse-bottom-butttons-reveal.one {
+    color:white;
+    background-color: #aa0080;
+}
+
+.dashboard-right-browse-bottom-butttons-reveal.two {
+    color:white;
+    background-color: #ff8a47;
+}
+.dashboard-right-browse-bottom-butttons-reveal.three {
+    color:white;
+    background-color: #ffdd00;
+}
+.dashboard-right-browse-bottom-butttons-reveal.four {
+    color:white;
+    background-color: #7fae2e;
+}
+.dashboard-right-browse-bottom-butttons-reveal.five {
+    color:white;
+    background-color: #00a8d7;
+}
+
+
+.dashboard-right-browse-bottom-butttons-score-container {
+    display: flex;
+    height: 100%;
+}
+
+.dashboard-right-browse-bottom-butttons-score-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    width: 20%;
+    height: 100%;
+    transition: transform 0.3s;
+}
+
+.dashboard-right-browse-bottom-butttons-score-button:hover {
+    cursor: pointer;
+    transform: translateY(-5px);
+}
+
+.dashboard-right-browse-bottom-butttons-score-button.none {
+    color:white;
+    background-color: #7d93a4;
+}
+
+.dashboard-right-browse-bottom-butttons-score-button.one {
+    color:white;
+    background-color: #aa0080;
+}
+
+.dashboard-right-browse-bottom-butttons-score-button.two {
+    color:white;
+    background-color: #ff8a47;
+}
+.dashboard-right-browse-bottom-butttons-score-button.three {
+    color:white;
+    background-color: #ffdd00;
+}
+.dashboard-right-browse-bottom-butttons-score-button.four {
+    color:white;
+    background-color: #7fae2e;
+}
+.dashboard-right-browse-bottom-butttons-score-button.five {
+    color:white;
+    background-color: #00a8d7;
+}
+
+.dashboard-right-browse-bottom-butttons-score-button-subtext {
+    font-weight: normal;
+    font-size: 0.9rem;
+    height: 0.9rem;
+}

@@ -36,7 +36,6 @@ export const createUserClassThunk = (newClass) => async (dispatch) => {
         return data;
     } else if (response.status < 500) {
         const data = await response.json();
-        console.log(data)
         if (data.errors) {
             return data.errors;
         }

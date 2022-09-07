@@ -7,6 +7,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    z-index: 410;
 }
 
 #modal-background {
@@ -16,6 +18,7 @@
     left: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.7);
+    z-index: 3;
 }
 
 #modal-content {
@@ -27,6 +30,7 @@
     min-height: min-content;
     border-radius: 20px;
     animation: scaleUp 0.2s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+    z-index: 4;
 }
 
 @keyframes scaleUp {

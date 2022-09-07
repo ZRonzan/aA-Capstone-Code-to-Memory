@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useLocation,useHistory } from 'react-router-dom';
-import { deleteDeckThunk } from '../../store/currentclassdetails';
-import {getUserClassesThunk} from '../../store/currentuserclasses';
+import { useLocation, useHistory } from 'react-router-dom';
+import { getUserClassesThunk } from '../../store/currentuserclasses';
+import { deleteCardThunk } from '../../store/currentclassdetails';
 
-const DeleteDeckForm = ({ setShowModal, myDeck, classId, setShowDropdown}) => {
+const DeleteCardForm = ({ setShowModal, myCard, classId }) => {
     const [errors, setErrors] = useState([]);
     const dispatch = useDispatch();
     const pathname = useLocation().pathname;
@@ -13,7 +13,7 @@ const DeleteDeckForm = ({ setShowModal, myDeck, classId, setShowDropdown}) => {
     const currentClass = useSelector(state => state.currentclassdetails.class)
 
     const handleDelete = async () => {
-        await dispatch(deleteDeckThunk(myDeck['id'], classId))
+        await dispatch(deleteCardThunk(myCard['id'], classId))
         await dispatch(getUserClassesThunk())
         setShowModal(false)
     }
@@ -21,20 +21,14 @@ const DeleteDeckForm = ({ setShowModal, myDeck, classId, setShowDropdown}) => {
     return (
         <>
             <div className='log-in-form-x-container'>
-                <i
-                className="fa-solid fa-xmark login"
-                onClick={() => {
-                    if (setShowDropdown) setShowDropdown(false)
-                    setShowModal(false)
-                    }}
-                    ></i>
+                <i className="fa-solid fa-xmark login" onClick={() => setShowModal(false)}></i>
             </div>
             <div className='delete-class-main-body'>
                 <div className='delete-class-title'>
                     Caution
                 </div>
                 <div className='delete-class-message'>
-                    {`Are you sure that you want to delete this deck (${myDeck['name']}) from your library? This action cannot be undone.`}
+                    {`Are you sure that you want to delete this Card from your deck? This action cannot be undone.`}
                 </div>
             </div>
             <div className='delete-class-buttons-container'>
@@ -45,10 +39,7 @@ const DeleteDeckForm = ({ setShowModal, myDeck, classId, setShowDropdown}) => {
                     Yes, please proceed
                 </button>
                 <div
-                    onClick={() => {
-                        if (setShowDropdown) setShowDropdown(false)
-                        setShowModal(false)
-                    }}
+                    onClick={() => setShowModal(false)}
                     className='delete-class-form-cancel'
                 >
                     No, cancel
@@ -58,4 +49,4 @@ const DeleteDeckForm = ({ setShowModal, myDeck, classId, setShowDropdown}) => {
     );
 };
 
-export default DeleteDeckForm;
+export default DeleteCardForm;

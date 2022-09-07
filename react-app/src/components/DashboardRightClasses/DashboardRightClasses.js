@@ -6,7 +6,7 @@ import { getCurrentClassDetailsThunk } from '../../store/currentclassdetails';
 import IMAGES from '../ClassCard/iconPath-copy.json'
 import ICONS from '../ClassCard/icons'
 import defaultImage from '../../assets/icons/coding.svg'
-import { editUserClassThunk } from '../../store/currentuserclasses';
+import { editUserClassThunk, getUserClassesThunk } from '../../store/currentuserclasses';
 import DashboardRightAboutPage from '../DasboardRightAboutPage/DashboardRightAboutPage';
 import DashboardRightDecks from '../DashboardRightDecks/DashboardRightDecks';
 
@@ -29,22 +29,26 @@ const DashboardRightClasses = () => {
     const userClasses = useSelector(state => state.currentuserclasses)
     const currentClassDetails = useSelector(state => state.currentclassdetails.class)
     const currentClassDecks = useSelector(state => state.currentclassdetails.decks)
-    console.log(currentClassDetails)
 
     useEffect(() => {
         const getClassDetails = async () => {
-            let data = await dispatch(getCurrentClassDetailsThunk(classId));
-            if (data.class.name) {
-                for (let i = 0; i < IMAGES.length; i++) {
-                    if (data.class.name.toUpperCase().includes(IMAGES[i].name)) {
-                        setImage(ICONS[IMAGES[i].name])
-                        break;
+            await dispatch(getUserClassesThunk());
+            if(!userClasses[classId]) {
+                history.push('/404-page-not-found')
+            } else {
+                let data = await dispatch(getCurrentClassDetailsThunk(classId));
+                if (data.class.name) {
+                    for (let i = 0; i < IMAGES.length; i++) {
+                        if (data.class.name.toUpperCase().includes(IMAGES[i].name)) {
+                            setImage(ICONS[IMAGES[i].name])
+                            break;
+                        }
                     }
                 }
+                setOriginalClassName(data.class.name)
+                setClassName(data.class.name)
+                setIsLoaded(true)
             }
-            setOriginalClassName(data.class.name)
-            setClassName(data.class.name)
-            setIsLoaded(true)
         }
         getClassDetails()
     }, [])
@@ -65,8 +69,12 @@ const DashboardRightClasses = () => {
             setClassName(data.class.name)
             setIsLoaded(true)
         }
-        getClassDetails()
-    }, [classId,userClasses])
+        if(!userClasses[classId]) {
+            history.push('/404-page-not-found')
+        } else {
+            getClassDetails()
+        }
+    }, [classId, userClasses])
 
     const countCards = () => {
         if (currentClassDecks) {
@@ -136,18 +144,15 @@ const DashboardRightClasses = () => {
                                 <>
                                     <form
                                         className='dashboard-right-class-name-form'
-                                        onSubmit={(e) => handleSubmit(e)}
+                                        onSubmit={(e) => {
+                                            handleSubmit(e)
+                                        }}
                                     >
                                         <input
                                             className='dashboard-right-class-name-input'
                                             onChange={(e) => {
                                                 setErrors([])
                                                 setClassName(e.target.value)
-                                            }}
-                                            onBlur={() => {
-                                                setErrors([])
-                                                setClassName(originalClassName)
-                                                setShowEditClassName(false)
                                             }}
                                             type="text"
                                             placeholder='Class name is required'
@@ -164,7 +169,9 @@ const DashboardRightClasses = () => {
                                                 }}
                                                 className="fa-solid fa-x edit-class"
                                             ></i>
-                                            <button className='edit-class-save-button'>Save</button>
+                                            <button
+                                                className='edit-class-save-button'
+                                            >Save</button>
                                         </div>
                                     </form>
                                     <div className='edit-class-name-errors-container-outer'>

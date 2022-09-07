@@ -26,11 +26,11 @@ def get_all_decks():
 def get_all_owned_decks():
 
     decks = Deck.query.all()
-    res = {"decks": []}
+    res = {}
 
     for deck in decks:
         if deck.parent_class.owner_id == current_user.id:
-            res["decks"].append(deck.to_dict())
+            res[deck.id] = deck.to_dict()
 
     return res
 

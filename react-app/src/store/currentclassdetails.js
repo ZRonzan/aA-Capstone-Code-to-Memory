@@ -86,6 +86,75 @@ export const deleteDeckThunk = (deckId, classId) => async (dispatch) => {
     }
 }
 
+// cards within a deck
+
+export const deleteCardThunk = (cardId, classId) => async (dispatch) => {
+    const response = await fetch(`/api/cards/${cardId}/delete`, {
+        method: 'DELETE'});
+
+
+    if (response.ok) {
+        const data = await response.json()
+        dispatch(getCurrentClassDetailsThunk(classId))
+        return data;
+    } else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+            return data.errors;
+        }
+    } else {
+        return ['An error occurred. Please try again.']
+    }
+}
+
+export const editCardThunk = (editedCard, cardId, classId) => async (dispatch) => {
+    console.log("IN EDIT CARD THUNK")
+    const response = await fetch(`/api/cards/${cardId}/edit`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(editedCard)
+    });
+
+    console.log(classId)
+    if (response.ok) {
+        const data = await response.json()
+        dispatch(getCurrentClassDetailsThunk(classId))
+        return data;
+    } else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+            return data.errors;
+        }
+    } else {
+        return ['An error occurred. Please try again.']
+    }
+}
+
+export const createNewCardThunk = (newCard, classId) => async (dispatch) => {
+    const response = await fetch('/api/cards/create', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newCard)
+    });
+
+    if (response.ok) {
+        const data = await response.json()
+        dispatch(getCurrentClassDetailsThunk(classId))
+        return data;
+    } else if (response.status < 500) {
+        const data = await response.json();
+        if (data.errors) {
+            return data.errors;
+        }
+    } else {
+        return ['An error occurred. Please try again.']
+    }
+}
+
 let initialState = {class:{}, decks: {}}
 
 export default function reducer(state = initialState, action) {
