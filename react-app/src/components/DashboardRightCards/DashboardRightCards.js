@@ -2,17 +2,22 @@ import React, { useState, useEffect } from 'react';
 import { NavLink, useParams, useHistory, Switch, Route } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getCurrentClassDetailsThunk } from '../../store/currentclassdetails';
+import { getUserClassesThunk } from '../../store/currentuserclasses';
 import IMAGES from '../ClassCard/iconPath-copy.json'
 import ICONS from '../ClassCard/icons'
 import defaultImage from '../../assets/icons/coding.svg'
 
 import './DashboardRightCards.css'
+import PreviewCard from '../PreviewCards/PreviewCard';
+import DashboardRightNoCards from '../DashboardRightNoCards/DashboardRightNoCards';
 
 const DashboardRightCards = () => {
     const [isLoaded, setIsLoaded] = useState()
     const [image, setImage] = useState(defaultImage)
     const [currentSpot, setCurrentSpot] = useState(0)
     const [cardsArr, setCardsArr] = useState([])
+    const [deckArr, setDeckArr] = useState([])
+    const [deckMasteries, setDeckMasteries] = useState({})
 
     const dispatch = useDispatch()
     const history = useHistory()
@@ -27,42 +32,90 @@ const DashboardRightCards = () => {
 
     useEffect(() => {
         const getClassDetails = async () => {
-            let data = await dispatch(getCurrentClassDetailsThunk(classId));
-            if (data.class.name) {
-                for (let i = 0; i < IMAGES.length; i++) {
-                    if (data.class.name.toUpperCase().includes(IMAGES[i].name)) {
-                        setImage(ICONS[IMAGES[i].name])
-                        break;
+            await dispatch(getUserClassesThunk());
+            const userDecks = await fetch('/api/decks/current-user-owned')
+            const dat = await userDecks.json()
+
+
+            if (!userClasses[classId] || !dat[deckId]) {
+                history.push('/404-page-not-found')
+            } else {
+                let data = await dispatch(getCurrentClassDetailsThunk(classId));
+                if (data.class.name) {
+                    for (let i = 0; i < IMAGES.length; i++) {
+                        if (data.class.name.toUpperCase().includes(IMAGES[i].name)) {
+                            setImage(ICONS[IMAGES[i].name])
+                            break;
+                        }
                     }
                 }
+                if (currentDeck) {
+                    setCardsArr(currentDeck.cards)
+                }
+                const getRatings = async () => {
+                    const res = await fetch(`/api/mastery/deck/${deckId}`)
+                    const data = await res.json()
+                    const newObj = {}
+                    data['deck_scores'].forEach(ele => {
+                        let masteries = ['one', 'two', 'three', 'four', 'five']
+                        let currMast = masteries[ele['mastery_score'] - 1]
+                        newObj[ele['card_id']] = currMast
+                    });
+                    setDeckMasteries(newObj)
+                }
+                getRatings()
+                setIsLoaded(true)
             }
-            if (currentDeck) {
-                setCardsArr(currentDeck.cards)
-            }
-            setIsLoaded(true)
         }
         getClassDetails()
+
+
+
     }, [])
 
     useEffect(() => {
         setIsLoaded(false)
         const getClassDetails = async () => {
-            let data = await dispatch(getCurrentClassDetailsThunk(classId));
-            if (data.class.name) {
-                for (let i = 0; i < IMAGES.length; i++) {
-                    if (data.class.name.toUpperCase().includes(IMAGES[i].name)) {
-                        setImage(ICONS[IMAGES[i].name])
-                        break;
+            const userDecks = await fetch('/api/decks/current-user-owned')
+            const dat = await userDecks.json()
+            if (!userClasses[classId] || !dat[deckId]) {
+                history.push('/404-page-not-found')
+            } else {
+                let data = await dispatch(getCurrentClassDetailsThunk(classId));
+
+                setDeckArr(data.class.decks)
+
+                if (data.class.name) {
+                    for (let i = 0; i < IMAGES.length; i++) {
+                        if (data.class.name.toUpperCase().includes(IMAGES[i].name)) {
+                            setImage(ICONS[IMAGES[i].name])
+                            break;
+                        }
                     }
                 }
+                if (currentDeck) {
+                    setCardsArr(currentDeck.cards)
+                }
+                const getRatings = async () => {
+                    const res = await fetch(`/api/mastery/deck/${deckId}`)
+                    const data = await res.json()
+                    const newObj = {}
+                    data['deck_scores'].forEach(ele => {
+                        let masteries = ['one', 'two', 'three', 'four', 'five']
+                        let currMast = masteries[ele['mastery_score'] - 1]
+                        newObj[ele['card_id']] = currMast
+                    });
+                    setDeckMasteries(newObj)
+                }
+                getRatings()
+                setIsLoaded(true)
             }
-            if (currentDeck) {
-                setCardsArr(currentDeck.cards)
-            }
-            setIsLoaded(true)
         }
         getClassDetails()
-    }, [classId,userClasses])
+
+
+
+    }, [classId, userClasses])
 
     if (!user || !userClasses[classId]) {
         history.push('/404-not-found')
@@ -70,21 +123,30 @@ const DashboardRightCards = () => {
 
     return isLoaded ? (
         <div className='dashboard-right-cards-container'>
-            <div className='dashboard-right-class-top-container'>
-                <div>
-                </div>
-                <div className='dashboard-right-class-icon-container'>
-                    <img src={image} className='dashboard-right-class-icon'>
-                    </img>
-                </div>
-                <div>
-                    {currentClassDetails['name']}
-                </div>
-                <div>
+            <div className='dashboard-right-cards-top-container'>
+                <NavLink
+                    className='dashboard-right-class-navlink-container-cards'
+                    to={`/dashboard/${classId}/decks`}
+                >
+                    <div className='dashboard-right-class-top-go-back-container cards'>
+                        <i class="fa-solid fa-chevron-left cards-page"></i>
+                    </div>
+                    <div className='dashboard-right-class-icon-container-cards'>
+                        <img src={image} className='dashboard-right-class-icon cards'>
+                        </img>
+                    </div>
+                    <div className='dashboard-right-class-name-cards'>
+                        {currentClassDetails['name']}
+                    </div>
+                </NavLink>
+                <div className='dashboard-right-deck-name-cards'>
                     {currentDeck['name']}
                 </div>
+                <div className='dashboard-right-deck-number-cards'>
+                    {`Deck ${deckArr.indexOf(currentDeck) + 1} of ${deckArr.length}`}
+                </div>
             </div>
-            <div className='dashboard-right-class-navlinks-container'>
+            <div className='dashboard-right-class-navlinks-container cards'>
                 <NavLink className='dashboard-right-class-navlink' to={`/dashboard/${classId}/decks/${deckId}/Preview`}>
                     Preview Cards
                 </NavLink>
@@ -92,19 +154,41 @@ const DashboardRightCards = () => {
                     Browse Deck
                 </NavLink>
             </div>
-            <div className='dashboard-right-class-lower-container'>
+            <div className='dashboard-right-lower-container cards'>
                 <Switch>
                     <Route exact path='/dashboard/:classId/decks/:deckId/Preview'>
-                        PREVIEWING DECK
+                        {currentDeck.cards.length > 0 ? (
+                            <>
+                                <div className='create-card-sticky'>
+                                    <div>
+                                        CARDS
+                                    </div>
+                                    <div>
+                                        +
+                                    </div>
+                                </div>
+                                {currentDeck.cards.map((ele, i) => {
+                                    return <PreviewCard card={ele} number={i + 1} mastery={deckMasteries[ele.id] ? deckMasteries[ele.id] : "none"} />
+                                })}
+                            </>
+                        ) : (
+                            <DashboardRightNoCards />
+                        )}
                     </Route>
                     <Route exact path='/dashboard/:classId/decks/:deckId/Browse'>
-                        BROWSING DECK
+                    {currentDeck.cards.length > 0 ? (
+                            <>
+                                BROWSING DECK
+                            </>
+                        ) : (
+                            <DashboardRightNoCards />
+                        )}
                     </Route>
                 </Switch>
             </div>
         </div>
     ) : (
-        "isLoadedisfalse"
+        null
     )
 }
 

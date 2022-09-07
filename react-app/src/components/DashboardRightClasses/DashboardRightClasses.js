@@ -6,7 +6,7 @@ import { getCurrentClassDetailsThunk } from '../../store/currentclassdetails';
 import IMAGES from '../ClassCard/iconPath-copy.json'
 import ICONS from '../ClassCard/icons'
 import defaultImage from '../../assets/icons/coding.svg'
-import { editUserClassThunk } from '../../store/currentuserclasses';
+import { editUserClassThunk, getUserClassesThunk } from '../../store/currentuserclasses';
 import DashboardRightAboutPage from '../DasboardRightAboutPage/DashboardRightAboutPage';
 import DashboardRightDecks from '../DashboardRightDecks/DashboardRightDecks';
 
@@ -32,18 +32,23 @@ const DashboardRightClasses = () => {
 
     useEffect(() => {
         const getClassDetails = async () => {
-            let data = await dispatch(getCurrentClassDetailsThunk(classId));
-            if (data.class.name) {
-                for (let i = 0; i < IMAGES.length; i++) {
-                    if (data.class.name.toUpperCase().includes(IMAGES[i].name)) {
-                        setImage(ICONS[IMAGES[i].name])
-                        break;
+            await dispatch(getUserClassesThunk());
+            if(!userClasses[classId]) {
+                history.push('/404-page-not-found')
+            } else {
+                let data = await dispatch(getCurrentClassDetailsThunk(classId));
+                if (data.class.name) {
+                    for (let i = 0; i < IMAGES.length; i++) {
+                        if (data.class.name.toUpperCase().includes(IMAGES[i].name)) {
+                            setImage(ICONS[IMAGES[i].name])
+                            break;
+                        }
                     }
                 }
+                setOriginalClassName(data.class.name)
+                setClassName(data.class.name)
+                setIsLoaded(true)
             }
-            setOriginalClassName(data.class.name)
-            setClassName(data.class.name)
-            setIsLoaded(true)
         }
         getClassDetails()
     }, [])
@@ -64,7 +69,11 @@ const DashboardRightClasses = () => {
             setClassName(data.class.name)
             setIsLoaded(true)
         }
-        getClassDetails()
+        if(!userClasses[classId]) {
+            history.push('/404-page-not-found')
+        } else {
+            getClassDetails()
+        }
     }, [classId, userClasses])
 
     const countCards = () => {

@@ -27,7 +27,7 @@ const ClassCard = ({ myClass, setSortedClasses }) => {
             }
         }
         setIsLoaded(true)
-    },[])
+    },[myClass.name])
 
     useEffect(() => {
         if (pathName.startsWith(`/dashboard/${myClass['id']}`)) {
