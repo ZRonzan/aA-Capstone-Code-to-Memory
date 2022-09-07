@@ -1,10 +1,22 @@
 // constants
 const SET_USER_CLASSES = 'classes/SET_USER_CLASSES';
+const RESET_USER_CLASSES = 'classes/RESET_USER_CLASSES';
 
 const setUserClasses = (classes) => ({
     type: SET_USER_CLASSES,
     classes
 });
+
+
+const resetUserClasses = (classes) => ({
+    type: RESET_USER_CLASSES,
+    classes
+});
+
+export const resetUserClassesThunk = () => async (dispatch) => {
+    const data = {}
+    dispatch(resetUserClasses(data))
+}
 
 export const getUserClassesThunk = () => async (dispatch) => {
     const response = await fetch('/api/classes/current-user-classes');
@@ -90,6 +102,8 @@ let initialState = {}
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
+        case RESET_USER_CLASSES:
+            return action.classes;
         case SET_USER_CLASSES:
             const newState = {};
             action.classes.classes.map((ele) => {
