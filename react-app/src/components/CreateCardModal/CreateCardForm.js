@@ -54,7 +54,7 @@ const CreateNewDeckForm = ({ setShowModal, myCard, editing}) => {
       "answer": newAnswer,
       "deck_id": deckId
     }
-    
+
     await dispatch(createNewCardThunk(newCard, currentClass.id))
     await dispatch(getUserClassesThunk())
     setShowModal(false)
@@ -65,14 +65,14 @@ const CreateNewDeckForm = ({ setShowModal, myCard, editing}) => {
     let editedQuestion = question.trim()
     let editedAnswer = answer.trim()
 
-    if (editedQuestion.length > 150) {
-      errors.push("Card question must be 150 characters or less.")
+    if (editedQuestion.length > 500) {
+      errors.push("Card question must be 500 characters or less.")
     }
     if (editedQuestion.length === 0) {
       errors.push("Question is required")
     }
-    if (editedAnswer.length > 150) {
-      errors.push("Card answer must be 150 characters or less.")
+    if (editedAnswer.length > 500) {
+      errors.push("Card answer must be 500 characters or less.")
     }
     if (editedAnswer.length === 0) {
       errors.push("Answer is required")
