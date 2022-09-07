@@ -9,6 +9,8 @@ import defaultImage from '../../assets/icons/coding.svg'
 import { editUserClassThunk, getUserClassesThunk } from '../../store/currentuserclasses';
 import DashboardRightAboutPage from '../DasboardRightAboutPage/DashboardRightAboutPage';
 import DashboardRightDecks from '../DashboardRightDecks/DashboardRightDecks';
+import PageNotFound from '../PageNotFound/PageNotFound';
+import Footer from '../Footer/Footer';
 
 const DashboardRightClasses = () => {
     const [isLoaded, setIsLoaded] = useState()
@@ -227,6 +229,9 @@ const DashboardRightClasses = () => {
                     </Route>
                     <Route exact path='/dashboard/:classId/decks'>
                         <DashboardRightDecks />
+                    </Route>
+                    <Route path='*'>
+                        <PageNotFound />
                     </Route>
                 </Switch>
             </div>
