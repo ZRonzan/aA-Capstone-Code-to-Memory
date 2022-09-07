@@ -24,7 +24,6 @@ const BrowsingDeck = () => {
     const currentClassDetails = useSelector(state => state.currentclassdetails.class)
     const currentClassDecks = useSelector(state => state.currentclassdetails.decks)
     const currentDeck = currentClassDecks[deckId]
-    console.log("USER ID---------------", user.id)
 
     useEffect(() => {
         const getClassDetails = async () => {
@@ -40,7 +39,6 @@ const BrowsingDeck = () => {
                 const getRatings = async () => {
                     const res = await fetch(`/api/mastery/deck/${deckId}`)
                     const data = await res.json()
-                    console.log("++++++++++++++++++", data)
                     const newObj = {}
                     const newObj2 = {}
                     data['deck_scores'].forEach(ele => {
@@ -49,7 +47,6 @@ const BrowsingDeck = () => {
                         newObj[ele['card_id']] = currMast
                         newObj2[ele['card_id']] = ele
                     });
-                    console.log(newObj2,"===================================")
                     setDeckMasteries(newObj)
                     setDeckMasteries2(newObj2)
                 }
@@ -96,7 +93,6 @@ const BrowsingDeck = () => {
                 body: JSON.stringify(newScore)
             });
             const data = await res.json()
-            console.log("PUT DATA%%%%%%%%%%%%%%%%%%%%",data)
             await dispatch(getCurrentClassDetailsThunk(classId))
             await dispatch(getUserClassesThunk())
         } else {
