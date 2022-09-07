@@ -1,10 +1,22 @@
 // constants
 const SET_CURRENT_CLASS_DETAILS = 'classes/SET_CURRENT_CLASS_DETAILS';
+const RESET_CURRENT_CLASS_DETAILS = 'classes/RESET_CURRENT_CLASS_DETAILS';
 
 const setCurrentClass = (currClass) => ({
     type: SET_CURRENT_CLASS_DETAILS,
     currClass
 });
+
+
+const resetCurrentClass = (currClass) => ({
+    type: RESET_CURRENT_CLASS_DETAILS,
+    currClass
+});
+
+export const resetCurrentClassDetailsThunk = () => async (dispatch) => {
+    const currClass = {}
+    dispatch(resetCurrentClass(currClass))
+}
 
 export const getCurrentClassDetailsThunk= (classId) => async (dispatch) => {
     const response = await fetch(`/api/classes/${classId}`);
@@ -159,6 +171,8 @@ let initialState = {class:{}, decks: {}}
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
+        case RESET_CURRENT_CLASS_DETAILS:
+            return {};
         case SET_CURRENT_CLASS_DETAILS:
             const newState = {class: {}, decks:{}};
 

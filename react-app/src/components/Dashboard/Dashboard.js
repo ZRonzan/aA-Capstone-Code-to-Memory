@@ -25,7 +25,7 @@ const DashBoard = () => {
 
 
     useEffect(() => {
-        setDashboardLoaded(true)
+        if (user) setDashboardLoaded(true)
     }, [])
 
     return dashBoardLoaded ? (

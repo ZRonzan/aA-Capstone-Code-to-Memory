@@ -70,7 +70,8 @@
     justify-content: center;
     color: red;
     min-height: min-content;
-    height: 120px;
+    height: min-content;
+    padding: 0.5rem 0;
 }
 
 .log-in-form-errors.signup.inner {
