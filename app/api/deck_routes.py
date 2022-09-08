@@ -20,6 +20,7 @@ def get_all_decks():
 
     return res
 
+
 # Get all owned decks
 @deck_routes.route('/current-user-owned')
 @login_required

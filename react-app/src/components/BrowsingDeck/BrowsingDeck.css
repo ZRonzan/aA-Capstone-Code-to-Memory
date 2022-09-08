@@ -146,6 +146,12 @@
     height: 100%;
 }
 
+.dashboard-right-browse-bottom-butttons-score-question {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 1rem;
+}
+
 .dashboard-right-browse-bottom-butttons-score-button {
     display: flex;
     flex-direction: column;
