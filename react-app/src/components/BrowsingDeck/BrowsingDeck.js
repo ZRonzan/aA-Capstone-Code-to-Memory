@@ -96,15 +96,17 @@ const BrowsingDeck = () => {
             await dispatch(getCurrentClassDetailsThunk(classId))
             await dispatch(getUserClassesThunk())
         } else {
-            await fetch('/api/mastery/create', {
+            const res = await fetch('/api/mastery/create', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(newScore)
             });
-            await dispatch(getCurrentClassDetailsThunk(classId))
-            await dispatch(getUserClassesThunk())
+            const dat = res.json()
+            console.log(dat)
+            const data1 = await dispatch(getCurrentClassDetailsThunk(classId))
+            const data2 = await dispatch(getUserClassesThunk())
         }
 
     }

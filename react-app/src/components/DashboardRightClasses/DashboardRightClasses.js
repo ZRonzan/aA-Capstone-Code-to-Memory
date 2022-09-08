@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { NavLink, useParams, useHistory, Switch, Route } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import './DashboardRightClasses.css'
-import { getCurrentClassDetailsThunk } from '../../store/currentclassdetails';
+import { getCurrentClassDetailsThunk, getCurrentClassMasteryThunk } from '../../store/currentclassdetails';
 import IMAGES from '../ClassCard/iconPath-copy.json'
 import ICONS from '../ClassCard/icons'
 import defaultImage from '../../assets/icons/coding.svg'
@@ -21,7 +21,6 @@ const DashboardRightClasses = () => {
     const [originalClassName, setOriginalClassName] = useState("")
     const [className, setClassName] = useState("")
     const [errors, setErrors] = useState([])
-    const [masteryScore, setMasteryScore] = useState(0)
 
     const dispatch = useDispatch()
     const history = useHistory()
@@ -30,8 +29,11 @@ const DashboardRightClasses = () => {
 
     const user = useSelector(state => state.session.user)
     const userClasses = useSelector(state => state.currentuserclasses)
+    const currentClass = useSelector(state => state.currentclassdetails)
     const currentClassDetails = useSelector(state => state.currentclassdetails.class)
     const currentClassDecks = useSelector(state => state.currentclassdetails.decks)
+    const masteryObj = useSelector(state => state.currentclassdetails.mastery)
+    const masteryScore = masteryObj['masteryScore']
 
     useEffect(() => {
         const getClassDetails = async () => {
@@ -48,6 +50,11 @@ const DashboardRightClasses = () => {
                         }
                     }
                 }
+
+                const decks = data.class.decks;
+                const deckIds = decks.map(ele => ele.id);
+
+                await dispatch(getCurrentClassMasteryThunk(deckIds))
 
                 setOriginalClassName(data.class.name)
                 setClassName(data.class.name)
@@ -71,10 +78,12 @@ const DashboardRightClasses = () => {
                     }
                 }
             }
-            console.log(data.class.decks)
 
-            // await dispatch(getClassMasteryThunk(data.class.decks))
-            setMasteryScore(0)
+            const decks = data.class.decks;
+            const deckIds = decks.map(ele => ele.id);
+
+            await dispatch(getCurrentClassMasteryThunk(deckIds))
+
             setOriginalClassName(data.class.name)
             setClassName(data.class.name)
             setIsLoaded(true)
@@ -93,6 +102,7 @@ const DashboardRightClasses = () => {
             Object.values(currentClassDecks).forEach(ele => {
                 cardCount = cardCount + ele['cards'].length
             })
+            console.log(cardCount)
             return cardCount
         } else {
             return 0
@@ -130,7 +140,7 @@ const DashboardRightClasses = () => {
     if (!user || !userClasses[classId]) {
         history.push('/404-not-found')
     }
-
+    console.log("MASTERY OBJ 2", masteryObj)
     return isLoaded ? (
         <div className='dashboard-right-class-container'>
             <div className='dashboard-right-class-top-container'>
@@ -215,7 +225,7 @@ const DashboardRightClasses = () => {
                 </div>
                 <div className='dashboard-right-class-mastery-container'>
                     <div className='dashboard-right-class-mastery-percentage'>
-                        {`${countCards() > 0? ((masteryScore/(countCards() * 5)) * 100).toFixed(2) : 0.00.toFixed(2)}%`}
+                        {`${countCards() > 0 ? ((masteryScore / (countCards() * 5)) * 100).toFixed(2) : 0.00.toFixed(2)}%`}
                     </div>
                     <div className='dashboard-right-class-mastery-text'>
                         Mastery
@@ -237,7 +247,7 @@ const DashboardRightClasses = () => {
                         <DashboardRightAboutPage />
                     </Route>
                     <Route exact path='/dashboard/:classId/decks'>
-                        <DashboardRightDecks masteryScore={masteryScore} setMasteryScore={setMasteryScore}/>
+                        <DashboardRightDecks />
                     </Route>
                     <Route path='*'>
                         <PageNotFound />

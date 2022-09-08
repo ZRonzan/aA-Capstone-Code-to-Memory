@@ -6,7 +6,7 @@ import DeleteDeckModal from '../DeleteDeckModal/DeleteDeckModal';
 import "./DeckCard.css"
 
 
-const DeckCard = ({ classId, myDeck, ownerId, masteryScore, setMasteryScore}) => {
+const DeckCard = ({ classId, myDeck, ownerId}) => {
 
     const [isLoaded, setIsLoaded] = useState(false)
     const [showDropdown, setShowDropdown] = useState(false)
@@ -18,13 +18,6 @@ const DeckCard = ({ classId, myDeck, ownerId, masteryScore, setMasteryScore}) =>
 
 
     useEffect(() => {
-
-        const getMastryScore = async () => {
-            const res = await fetch(`/api/mastery/deck/${myDeck.id}`)
-            const data = await res.json()
-            setMasteryScore(masteryScore + data['total_mastery_score'])
-        }
-        getMastryScore()
 
         setIsLoaded(true)
     }, [])
@@ -39,6 +32,7 @@ const DeckCard = ({ classId, myDeck, ownerId, masteryScore, setMasteryScore}) =>
 
     return isLoaded && (
         <div
+            key={myDeck.id}
             className={`deck-card-container`}
         >
             <div className='deck-card-name-and-edit'>
@@ -85,7 +79,7 @@ const DeckCard = ({ classId, myDeck, ownerId, masteryScore, setMasteryScore}) =>
                     className='deck-card-nav-container'
                     to={`/dashboard/${classId}/decks/${myDeck['id']}/browse`}
                 >
-                    <i class="fa-solid fa-chevron-right deck-card"></i>
+                    <i className="fa-solid fa-chevron-right deck-card"></i>
                 </NavLink>
             </div>
         </div>

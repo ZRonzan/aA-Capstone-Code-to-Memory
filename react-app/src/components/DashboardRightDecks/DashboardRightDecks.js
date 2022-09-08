@@ -6,7 +6,7 @@ import CreateNewDeckModal from '../CreateNewDeckModal/CreateNewDeckModal';
 import './DashboardRightDecks.css'
 import DeckCard from '../DeckCard/DeckCard';
 
-const DashboardRightDecks = ({masteryScore, setMasteryScore}) => {
+const DashboardRightDecks = () => {
     const [isLoaded, setIsLoaded] = useState()
 
     const dispatch = useDispatch()
@@ -18,6 +18,7 @@ const DashboardRightDecks = ({masteryScore, setMasteryScore}) => {
     const userClasses = useSelector(state => state.currentuserclasses)
     const currentClassDetails = useSelector(state => state.currentclassdetails.class)
     const currentClassDecks = useSelector(state => state.currentclassdetails.decks)
+
 
     useEffect(() => {
         const getClassDetails = async () => {
@@ -62,9 +63,9 @@ const DashboardRightDecks = ({masteryScore, setMasteryScore}) => {
                         </div>
                     </div>
                 ) : (
-                    Object.values(currentClassDecks).sort((a, b) => a['id'] - b['id']).map((ele) => {
+                    Object.values(currentClassDecks).sort((a, b) => a['id'] - b['id']).map((ele, i) => {
                         return (
-                            <DeckCard myDeck={ele} classId={classId} ownerId={currentClassDetails['owner_id']} masteryScore={masteryScore} setMasteryScore={setMasteryScore}/>
+                            <DeckCard myDeck={ele} classId={classId} ownerId={currentClassDetails['owner_id']} />
 
                         )
                     })

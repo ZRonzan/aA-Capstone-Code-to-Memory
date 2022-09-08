@@ -53,6 +53,7 @@
 }
 
 .dashboard-right-browse-body-card {
+    word-break: break-word;
     display: flex;
     justify-content: center;
     align-items: center;
