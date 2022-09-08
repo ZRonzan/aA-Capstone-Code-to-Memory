@@ -12,7 +12,7 @@ mastery_routes = Blueprint('mastery_scores', __name__)
 @mastery_routes.route('/deck/<int:deckId>')
 @login_required
 def get_scores_for_deck(deckId):
-    res = {"deck_scores": []}
+    res = {"deck_scores": [], "total_mastery_score": 0}
 
     scores = Mastery.query.filter(Mastery.user_id == current_user.id).all()
     if len(scores) == 0:
@@ -24,6 +24,7 @@ def get_scores_for_deck(deckId):
 
     for score in deck_scores:
         res['deck_scores'].append(score)
+        res['total_mastery_score'] = res['total_mastery_score'] + score['mastery_score']
 
     return res
 

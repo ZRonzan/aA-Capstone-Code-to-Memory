@@ -6,7 +6,7 @@ import CreateNewDeckModal from '../CreateNewDeckModal/CreateNewDeckModal';
 import './DashboardRightDecks.css'
 import DeckCard from '../DeckCard/DeckCard';
 
-const DashboardRightDecks = () => {
+const DashboardRightDecks = ({masteryScore, setMasteryScore}) => {
     const [isLoaded, setIsLoaded] = useState()
 
     const dispatch = useDispatch()
@@ -64,7 +64,7 @@ const DashboardRightDecks = () => {
                 ) : (
                     Object.values(currentClassDecks).sort((a, b) => a['id'] - b['id']).map((ele) => {
                         return (
-                            <DeckCard myDeck={ele} classId={classId} ownerId={currentClassDetails['owner_id']} />
+                            <DeckCard myDeck={ele} classId={classId} ownerId={currentClassDetails['owner_id']} masteryScore={masteryScore} setMasteryScore={setMasteryScore}/>
 
                         )
                     })

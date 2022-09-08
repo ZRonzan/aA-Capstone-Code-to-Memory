@@ -21,6 +21,7 @@ const DashboardRightClasses = () => {
     const [originalClassName, setOriginalClassName] = useState("")
     const [className, setClassName] = useState("")
     const [errors, setErrors] = useState([])
+    const [masteryScore, setMasteryScore] = useState(0)
 
     const dispatch = useDispatch()
     const history = useHistory()
@@ -35,7 +36,7 @@ const DashboardRightClasses = () => {
     useEffect(() => {
         const getClassDetails = async () => {
             await dispatch(getUserClassesThunk());
-            if(!userClasses[classId]) {
+            if (!userClasses[classId]) {
                 history.push('/404-page-not-found')
             } else {
                 let data = await dispatch(getCurrentClassDetailsThunk(classId));
@@ -47,9 +48,10 @@ const DashboardRightClasses = () => {
                         }
                     }
                 }
+
                 setOriginalClassName(data.class.name)
                 setClassName(data.class.name)
-                setIsLoaded(true)
+                // setIsLoaded(true)
             }
         }
         getClassDetails()
@@ -57,8 +59,10 @@ const DashboardRightClasses = () => {
 
     useEffect(() => {
         setIsLoaded(false)
+
         const getClassDetails = async () => {
             let data = await dispatch(getCurrentClassDetailsThunk(classId));
+
             if (data.class.name) {
                 for (let i = 0; i < IMAGES.length; i++) {
                     if (data.class.name.toUpperCase().includes(IMAGES[i].name)) {
@@ -67,11 +71,16 @@ const DashboardRightClasses = () => {
                     }
                 }
             }
+            console.log(data.class.decks)
+
+            // await dispatch(getClassMasteryThunk(data.class.decks))
+            setMasteryScore(0)
             setOriginalClassName(data.class.name)
             setClassName(data.class.name)
             setIsLoaded(true)
         }
-        if(!userClasses[classId]) {
+
+        if (!userClasses[classId]) {
             history.push('/404-page-not-found')
         } else {
             getClassDetails()
@@ -206,10 +215,10 @@ const DashboardRightClasses = () => {
                 </div>
                 <div className='dashboard-right-class-mastery-container'>
                     <div className='dashboard-right-class-mastery-percentage'>
-                        {`${45.236.toFixed(2)}% (placeholder)`}
+                        {`${countCards() > 0? ((masteryScore/(countCards() * 5)) * 100).toFixed(2) : 0.00.toFixed(2)}%`}
                     </div>
                     <div className='dashboard-right-class-mastery-text'>
-                        Mastery (placeholder)
+                        Mastery
                     </div>
 
                 </div>
@@ -228,7 +237,7 @@ const DashboardRightClasses = () => {
                         <DashboardRightAboutPage />
                     </Route>
                     <Route exact path='/dashboard/:classId/decks'>
-                        <DashboardRightDecks />
+                        <DashboardRightDecks masteryScore={masteryScore} setMasteryScore={setMasteryScore}/>
                     </Route>
                     <Route path='*'>
                         <PageNotFound />
