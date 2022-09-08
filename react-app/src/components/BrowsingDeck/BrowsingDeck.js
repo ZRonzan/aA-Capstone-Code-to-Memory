@@ -172,115 +172,122 @@ const BrowsingDeck = () => {
                             Reveal Answer
                         </div>
                     ) : (
-                        <div
-                            className='dashboard-right-browse-bottom-butttons-score-container'
-                        >
+                        <>
                             <div
-                                className='dashboard-right-browse-bottom-butttons-score-button one'
-                                onClick={() => {
-                                    if (currentSpot === cardsArr.length - 1) {
-                                        handleSubmit(1, cardsArr[currentSpot]['id'])
-                                        setAnswerRevealed(false)
-                                    } else {
-                                        handleSubmit(1, cardsArr[currentSpot]['id'])
-                                        setCurrentSpot(currentSpot + 1)
-                                        setAnswerRevealed(false)
-                                    }
-                                }}
-                                value={1}
+                                className='dashboard-right-browse-bottom-butttons-score-question'
                             >
-                                1
-                                <div
-                                    className='dashboard-right-browse-bottom-butttons-score-button-subtext'
-                                >
-                                    Not at all
-                                </div>
+                                How confident were you with your answer?
                             </div>
                             <div
-                                className='dashboard-right-browse-bottom-butttons-score-button two'
-                                onClick={() => {
-                                    if (currentSpot === cardsArr.length - 1) {
-                                        handleSubmit(2, cardsArr[currentSpot]['id'])
-                                        setAnswerRevealed(false)
-                                    } else {
-                                        handleSubmit(2, cardsArr[currentSpot]['id'])
-                                        setCurrentSpot(currentSpot + 1)
-                                        setAnswerRevealed(false)
-                                    }
-                                }}
-                                value={2}
+                                className='dashboard-right-browse-bottom-butttons-score-container'
+                            >
+                                <div
+                                    className='dashboard-right-browse-bottom-butttons-score-button one'
+                                    onClick={() => {
+                                        if (currentSpot === cardsArr.length - 1) {
+                                            handleSubmit(1, cardsArr[currentSpot]['id'])
+                                            setAnswerRevealed(false)
+                                        } else {
+                                            handleSubmit(1, cardsArr[currentSpot]['id'])
+                                            setCurrentSpot(currentSpot + 1)
+                                            setAnswerRevealed(false)
+                                        }
+                                    }}
+                                    value={1}
+                                >
+                                    1
+                                    <div
+                                        className='dashboard-right-browse-bottom-butttons-score-button-subtext'
+                                    >
+                                        Not at all
+                                    </div>
+                                </div>
+                                <div
+                                    className='dashboard-right-browse-bottom-butttons-score-button two'
+                                    onClick={() => {
+                                        if (currentSpot === cardsArr.length - 1) {
+                                            handleSubmit(2, cardsArr[currentSpot]['id'])
+                                            setAnswerRevealed(false)
+                                        } else {
+                                            handleSubmit(2, cardsArr[currentSpot]['id'])
+                                            setCurrentSpot(currentSpot + 1)
+                                            setAnswerRevealed(false)
+                                        }
+                                    }}
+                                    value={2}
 
-                            >
-                                2
-                                <div
-                                    className='dashboard-right-browse-bottom-butttons-score-button-subtext'
                                 >
+                                    2
+                                    <div
+                                        className='dashboard-right-browse-bottom-butttons-score-button-subtext'
+                                    >
+                                    </div>
                                 </div>
-                            </div>
-                            <div
-                                className='dashboard-right-browse-bottom-butttons-score-button three'
-                                onClick={() => {
-                                    if (currentSpot === cardsArr.length - 1) {
-                                        handleSubmit(3, cardsArr[currentSpot]['id'])
-                                        setAnswerRevealed(false)
-                                    } else {
-                                        handleSubmit(3, cardsArr[currentSpot]['id'])
-                                        setCurrentSpot(currentSpot + 1)
-                                        setAnswerRevealed(false)
-                                    }
-                                }}
-                                value={3}
+                                <div
+                                    className='dashboard-right-browse-bottom-butttons-score-button three'
+                                    onClick={() => {
+                                        if (currentSpot === cardsArr.length - 1) {
+                                            handleSubmit(3, cardsArr[currentSpot]['id'])
+                                            setAnswerRevealed(false)
+                                        } else {
+                                            handleSubmit(3, cardsArr[currentSpot]['id'])
+                                            setCurrentSpot(currentSpot + 1)
+                                            setAnswerRevealed(false)
+                                        }
+                                    }}
+                                    value={3}
 
-                            >
-                                3
-                                <div
-                                    className='dashboard-right-browse-bottom-butttons-score-button-subtext'
                                 >
+                                    3
+                                    <div
+                                        className='dashboard-right-browse-bottom-butttons-score-button-subtext'
+                                    >
+                                    </div>
                                 </div>
-                            </div>
-                            <div
-                                className='dashboard-right-browse-bottom-butttons-score-button four'
-                                onClick={() => {
-                                    if (currentSpot === cardsArr.length - 1) {
-                                        handleSubmit(4, cardsArr[currentSpot]['id'])
-                                        setAnswerRevealed(false)
-                                    } else {
-                                        handleSubmit(4, cardsArr[currentSpot]['id'])
-                                        setCurrentSpot(currentSpot + 1)
-                                        setAnswerRevealed(false)
-                                    }
-                                }}
-                                value={4}
+                                <div
+                                    className='dashboard-right-browse-bottom-butttons-score-button four'
+                                    onClick={() => {
+                                        if (currentSpot === cardsArr.length - 1) {
+                                            handleSubmit(4, cardsArr[currentSpot]['id'])
+                                            setAnswerRevealed(false)
+                                        } else {
+                                            handleSubmit(4, cardsArr[currentSpot]['id'])
+                                            setCurrentSpot(currentSpot + 1)
+                                            setAnswerRevealed(false)
+                                        }
+                                    }}
+                                    value={4}
 
-                            >
-                                4
-                                <div
-                                    className='dashboard-right-browse-bottom-butttons-score-button-subtext'
                                 >
+                                    4
+                                    <div
+                                        className='dashboard-right-browse-bottom-butttons-score-button-subtext'
+                                    >
+                                    </div>
+                                </div>
+                                <div
+                                    className='dashboard-right-browse-bottom-butttons-score-button five'
+                                    onClick={() => {
+                                        if (currentSpot === cardsArr.length - 1) {
+                                            handleSubmit(5, cardsArr[currentSpot]['id'])
+                                            setAnswerRevealed(false)
+                                        } else {
+                                            handleSubmit(5, cardsArr[currentSpot]['id'])
+                                            setCurrentSpot(currentSpot + 1)
+                                            setAnswerRevealed(false)
+                                        }
+                                    }}
+                                    value={5}
+                                >
+                                    5
+                                    <div
+                                        className='dashboard-right-browse-bottom-butttons-score-button-subtext'
+                                    >
+                                        Perfectly
+                                    </div>
                                 </div>
                             </div>
-                            <div
-                                className='dashboard-right-browse-bottom-butttons-score-button five'
-                                onClick={() => {
-                                    if (currentSpot === cardsArr.length - 1) {
-                                        handleSubmit(5, cardsArr[currentSpot]['id'])
-                                        setAnswerRevealed(false)
-                                    } else {
-                                        handleSubmit(5, cardsArr[currentSpot]['id'])
-                                        setCurrentSpot(currentSpot + 1)
-                                        setAnswerRevealed(false)
-                                    }
-                                }}
-                                value={5}
-                            >
-                                5
-                                <div
-                                    className='dashboard-right-browse-bottom-butttons-score-button-subtext'
-                                >
-                                    Perfectly
-                                </div>
-                            </div>
-                        </div>
+                        </>
                     )}
 
                 </div>

@@ -6,7 +6,7 @@ import DeleteDeckModal from '../DeleteDeckModal/DeleteDeckModal';
 import "./DeckCard.css"
 
 
-const DeckCard = ({ classId, myDeck, ownerId }) => {
+const DeckCard = ({ classId, myDeck, ownerId, masteryScore, setMasteryScore}) => {
 
     const [isLoaded, setIsLoaded] = useState(false)
     const [showDropdown, setShowDropdown] = useState(false)
@@ -18,6 +18,14 @@ const DeckCard = ({ classId, myDeck, ownerId }) => {
 
 
     useEffect(() => {
+
+        const getMastryScore = async () => {
+            const res = await fetch(`/api/mastery/deck/${myDeck.id}`)
+            const data = await res.json()
+            setMasteryScore(masteryScore + data['total_mastery_score'])
+        }
+        getMastryScore()
+
         setIsLoaded(true)
     }, [])
 

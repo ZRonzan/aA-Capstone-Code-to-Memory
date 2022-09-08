@@ -21,7 +21,6 @@ export const resetCurrentClassDetailsThunk = () => async (dispatch) => {
 export const getCurrentClassDetailsThunk= (classId) => async (dispatch) => {
     const response = await fetch(`/api/classes/${classId}`);
 
-
     if (response.ok) {
         const data = await response.json()
         dispatch(setCurrentClass(data))
@@ -30,6 +29,22 @@ export const getCurrentClassDetailsThunk= (classId) => async (dispatch) => {
         return ['An error occurred. Please try again.']
     }
 }
+
+// give this thunk a try if you cannot  get state variables to work
+// export const getCurrentClassMasteryThunk = (deckIds) => async (dispatch) => {
+//     const
+//     deckIds.forEach((deckId) => {
+//         const response = await fetch(`/api/mastery/deck/${deckId}`)
+
+//         if (response.ok) {
+//             const data = await response.json()
+//             dispatch(setCurrentClass(data))
+//             return data;
+//         } else {
+//             return ['An error occurred. Please try again.']
+//         }
+//     })
+// }
 
 export const createNewDeckThunk = (newDeck) => async (dispatch) => {
     const response = await fetch('/api/decks/create', {
@@ -167,14 +182,14 @@ export const createNewCardThunk = (newCard, classId) => async (dispatch) => {
     }
 }
 
-let initialState = {class:{}, decks: {}}
+let initialState = {class:{}, decks: {}, mastery: {}}
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case RESET_CURRENT_CLASS_DETAILS:
             return {};
         case SET_CURRENT_CLASS_DETAILS:
-            const newState = {class: {}, decks:{}};
+            const newState = {...state};
 
             const classDetails = {
                 ...action.currClass["class"]
