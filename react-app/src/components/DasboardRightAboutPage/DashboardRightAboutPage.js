@@ -285,7 +285,7 @@ const DashboardRightAboutPage = () => {
                         </>
                     )}
                 </div>
-                <div className='dashboard-right-about-text-container'>
+                {/* <div className='dashboard-right-about-text-container'>
                     {!showFormSubmitButtons && (<div className='dashboard-right-about-text-title'>
                         Public class
                     </div>)}
@@ -309,7 +309,7 @@ const DashboardRightAboutPage = () => {
                         //     </input> Private
                         // </div>
                     )}
-                </div>
+                </div> */}
 
 
             </form>

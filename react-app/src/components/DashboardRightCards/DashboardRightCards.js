@@ -152,7 +152,7 @@ const DashboardRightCards = () => {
                     Preview Cards
                 </NavLink>
                 <NavLink className='dashboard-right-class-navlink' to={`/dashboard/${classId}/decks/${deckId}/Browse`}>
-                    Browse Deck
+                    Browse Deck / Study
                 </NavLink>
             </div>
             <div className='dashboard-right-lower-container cards'>

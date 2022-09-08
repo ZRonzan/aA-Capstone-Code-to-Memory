@@ -54,6 +54,7 @@
 
 .preview-card-question,
 .preview-card-answer {
+    word-break: break-word;
     position: relative;
     display: flex;
     border-right: 1px solid #c3d0dd;

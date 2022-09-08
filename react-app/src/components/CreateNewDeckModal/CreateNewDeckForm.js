@@ -9,6 +9,7 @@ const CreateNewDeckForm = ({ setShowModal, myDeck, editing, setShowDropdown }) =
   const [errors, setErrors] = useState([]);
   const [deckName, setDeckName] = useState("")
   const [deckObjective, setDeckObjective] = useState(null)
+  const [hasSubmitted, setHasSubmitted] = useState(false)
   const dispatch = useDispatch();
   const history = useHistory()
 
@@ -25,45 +26,12 @@ const CreateNewDeckForm = ({ setShowModal, myDeck, editing, setShowDropdown }) =
   }, [])
 
 
-  const handleCreate = async () => {
-    let errors = []
-    let newDeckName = deckName.trim()
-    let newDeckObjective = deckObjective
-    if (newDeckObjective) {
-      newDeckObjective = newDeckObjective.trim()
-    }
-    if (newDeckName.length > 50) {
-      errors.push("Deck name must be 50 characters or less.")
-    }
-    if (newDeckName.length === 0) {
-      errors.push("Deck name is required")
-    }
-    if (newDeckObjective && newDeckObjective.length > 150) {
-      errors.push("Deck objective must be less than or equal to 150 characters")
-    }
-    if (Number(classId) !== currentClass.class['id']) {
-      errors.push("You should not be here...")
-    }
-    if (errors.length > 0) {
-      setErrors(errors)
-      return
-    }
-
-    const newDeck = {
-      "name": newDeckName,
-      "objective": newDeckObjective,
-      "class_id": currentClass.class['id']
-    }
-    await dispatch(createNewDeckThunk(newDeck))
-    await dispatch(getUserClassesThunk())
-    setShowModal(false)
-    // history.push(`/dashboard/${currentClass.class['class_id']}`)
-  }
-
-  const handleEdit = async () => {
+  useEffect(() => {
+    setHasSubmitted(false)
     let errors = []
     let editedDeckName = deckName.trim()
     let editedDeckObjective = deckObjective
+
     if (editedDeckObjective) {
       editedDeckObjective = editedDeckObjective.trim()
     }
@@ -81,18 +49,45 @@ const CreateNewDeckForm = ({ setShowModal, myDeck, editing, setShowDropdown }) =
     }
     if (errors.length > 0) {
       setErrors(errors)
-      return
     }
+  }, [deckName, deckObjective])
+
+  const handleCreate = async (e) => {
+    e.preventDefault()
+    setHasSubmitted(true)
+    if (errors.length > 0) return
+    let newDeckName = deckName.trim()
+    let newDeckObjective = deckObjective
+    if (deckObjective) newDeckObjective = deckObjective.trim()
+
+    const newDeck = {
+      "name": newDeckName,
+      "objective": newDeckObjective,
+      "class_id": currentClass.class['id']
+    }
+    await dispatch(createNewDeckThunk(newDeck))
+    await dispatch(getUserClassesThunk())
+    setShowModal(false)
+  }
+
+  const handleEdit = async (e) => {
+    e.preventDefault()
+    setHasSubmitted(true)
+
+    if (errors.length > 0) return
+    let editedDeckName = deckName.trim()
+    let editedDeckObjective = deckObjective
+    if (editedDeckObjective) editedDeckObjective = editedDeckObjective.trim()
 
     const editedDeck = {
       "name": editedDeckName,
-      "objective": editedDeckObjective,
+      "objective": editedDeckObjective === "" ? null : editedDeckObjective,
       "class_id": currentClass.class['id']
     }
     const deckId = myDeck['id']
     await dispatch(editDeckThunk(editedDeck, deckId))
+    setShowDropdown(false)
     setShowModal(false)
-    // history.push(`/dashboard/${currentClass.class['class_id']}`)
   }
 
   const updateDeckName = (e) => {
@@ -105,13 +100,14 @@ const CreateNewDeckForm = ({ setShowModal, myDeck, editing, setShowDropdown }) =
     setDeckObjective(e.target.value);
   }
 
+
   return isLoaded && (
     <>
       <div className='log-in-form-x-container'>
         <i
           className="fa-solid fa-xmark login"
           onClick={() => {
-            if(setShowDropdown) setShowDropdown(false)
+            if (setShowDropdown) setShowDropdown(false)
             setShowModal(false)
           }}></i>
       </div>
@@ -122,7 +118,7 @@ const CreateNewDeckForm = ({ setShowModal, myDeck, editing, setShowDropdown }) =
         <div className='delete-class-message'>
           A Deck is a subset of Flashcards in a Class, similar to chapters in a book
         </div>
-        {errors.length > 0 && (<div className='log-in-form-errors login'>
+        {hasSubmitted && errors.length > 0 && (<div className='log-in-form-errors login'>
           <div
             className='log-in-form-errors login inner'
           >
@@ -154,9 +150,9 @@ const CreateNewDeckForm = ({ setShowModal, myDeck, editing, setShowDropdown }) =
       </div>
       <div className='delete-class-buttons-container'>
         <button
-          onClick={() => {
-            if(setShowDropdown) setShowDropdown(false)
-            editing ? handleEdit() : handleCreate()
+          onClick={(e) => {
+            e.stopPropagation()
+            editing ? handleEdit(e) : handleCreate(e)
           }}
           className='log-in-form-submit-button'
         >
