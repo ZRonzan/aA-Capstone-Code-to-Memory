@@ -9,8 +9,9 @@
 /* top component: logo, user profile, logout */
 .dashboard-left-classses-top {
     display: flex;
-    height: 15vh;
-    min-height: 120px
+    height: min-content;
+    min-height: 15vh;
+    max-height: 300px;
 }
 
 .dashboard-left-classses-logo {
@@ -43,6 +44,8 @@
 }
 
 .dashboard-left-classses-profile-name {
+    text-align: center;
+    word-break: break-word;
     color: white;
 }
 
