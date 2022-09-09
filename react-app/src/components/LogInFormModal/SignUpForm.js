@@ -23,12 +23,20 @@ const SignUpForm = ({ setShowModal2, setShowModal1 }) => {
     let errors = []
     if (!first_name.length) {
       errors.push("First Name: Please provide a first name.")
+    } else if (first_name.length > 30) {
+      errors.push("First Name: Please choose a first name shorter than 30 characters.")
     }
+
     if (!last_name.length) {
       errors.push("Last Name: Please provide a last name.")
+    }else if (last_name.length > 30) {
+      errors.push("Last Name: Please choose a last name shorter than 30 characters.")
     }
+
     if (!email.length) {
       errors.push("Email: Please provide an email.")
+    } else if (email.length > 254) {
+      errors.push("Email: The provided email is too long (greater than 256 characters).")
     }
     if (!validateEmail(email)) {
       errors.push("Email: Please provide a correctly formatted email.")
@@ -36,12 +44,21 @@ const SignUpForm = ({ setShowModal2, setShowModal1 }) => {
     if (email.includes(" ")) {
       errors.push("Email: Emails cannot contain spaces.")
     }
+
     if (!password || !repeatPassword) {
       errors.push("Password: Both password input fields must be filled.")
     }
     if (password !== repeatPassword) {
       errors.push("Password: Passwords do not match.")
+    } else if (password.length < 8) {
+      errors.push("Password: Passwords need to be at least 8 characters long")
+    } else if (password.length > 100) {
+      errors.push("Password: The provided password is too long (greater than 100 characters). ")
     }
+    if (password.includes(" ") || repeatPassword.includes(" ")) {
+      errors.push("Password: Passwords cannot contain spaces.")
+    }
+
     if (errors.length) {
       setErrors(errors)
       return
@@ -85,13 +102,13 @@ const SignUpForm = ({ setShowModal2, setShowModal1 }) => {
   };
 
   const updatePassword = (e) => {
-    let password = e.target.value.trim()
+    let password = e.target.value
     setErrors([])
     setPassword(password);
   };
 
   const updateRepeatPassword = (e) => {
-    let password = e.target.value.trim()
+    let password = e.target.value
     setErrors([])
     setRepeatPassword(password);
   };

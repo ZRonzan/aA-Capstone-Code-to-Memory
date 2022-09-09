@@ -80,8 +80,8 @@
     align-items: center;
     justify-content: center;
     color: red;
+    font-size: 0.8rem;
     min-height: min-content;
-    height: 120px;
     will-change: opacity;
     animation: fadeIn 2s cubic-bezier(0.165, 0.840, 0.440, 1.000) both;
 }
@@ -93,7 +93,6 @@
     justify-content: center;
     color: red;
     min-height: min-content;
-    height: 60px;
 
 }
 
@@ -105,9 +104,9 @@
     justify-content: center;
     margin-bottom: 5px;
     color: red;
+    font-size: 0.8rem;
     min-height: max-content;
     min-height: min-content;
-    height: 60px;
     will-change: opacity;
     animation: fadeIn 2s cubic-bezier(0.165, 0.840, 0.440, 1.000) both;
 }
