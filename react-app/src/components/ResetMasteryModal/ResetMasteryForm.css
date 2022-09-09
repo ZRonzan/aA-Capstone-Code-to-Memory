@@ -1,0 +1,18 @@
+.reset-mastery-button {
+    border: none;
+    background-color:#ff8243;
+    padding: 0.5rem;
+    color: white;
+    border-radius: 1rem;
+    font-size: 0.7rem;
+}
+
+.reset-mastery-button:hover {
+    cursor: pointer;
+    background-color:#ff9966;
+}
+
+.reset-mastery-modal-container {
+    margin-top: 1rem;
+
+}

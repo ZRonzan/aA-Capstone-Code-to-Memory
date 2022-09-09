@@ -12,6 +12,7 @@ import PreviewCard from '../PreviewCards/PreviewCard';
 import DashboardRightNoCards from '../DashboardRightNoCards/DashboardRightNoCards';
 import CreateCardModal from '../CreateCardModal/CreateCardModal';
 import BrowsingDeck from '../BrowsingDeck/BrowsingDeck';
+import ResetMasteryModal from '../ResetMasteryModal/ResetMasteryModal';
 
 const DashboardRightCards = () => {
     const [isLoaded, setIsLoaded] = useState()
@@ -30,6 +31,7 @@ const DashboardRightCards = () => {
     const userClasses = useSelector(state => state.currentuserclasses)
     const currentClassDetails = useSelector(state => state.currentclassdetails.class)
     const currentClassDecks = useSelector(state => state.currentclassdetails.decks)
+    const currentClassMastery = useSelector(state => state.currentclassdetails.mastery)
     const currentDeck = currentClassDecks[deckId]
 
     useEffect(() => {
@@ -116,7 +118,7 @@ const DashboardRightCards = () => {
 
 
 
-    }, [classId, userClasses])
+    }, [classId, userClasses, currentClassMastery])
 
     if (!user || !userClasses[classId]) {
         history.push('/404-not-found')
@@ -126,14 +128,14 @@ const DashboardRightCards = () => {
         <div className='dashboard-right-cards-container'>
             <div className='dashboard-right-cards-top-container'>
                 <NavLink
-                    className='dashboard-right-class-navlink-container-cards'
+                    className='dashboard-right-class-navlink-container-cards deck'
                     to={`/dashboard/${classId}/decks`}
                 >
                     <div className='dashboard-right-class-top-go-back-container cards'>
                         <i class="fa-solid fa-chevron-left cards-page"></i>
                     </div>
-                    <div className='dashboard-right-class-icon-container-cards'>
-                        <img src={image} className='dashboard-right-class-icon cards'>
+                    <div className='dashboard-right-class-icon-container-cards decks'>
+                        <img src={image} className='dashboard-right-class-decks'>
                         </img>
                     </div>
                     <div className='dashboard-right-class-name-cards'>
@@ -145,6 +147,9 @@ const DashboardRightCards = () => {
                 </div>
                 <div className='dashboard-right-deck-number-cards'>
                     {`Deck ${deckArr.indexOf(currentDeck) + 1} of ${deckArr.length}`}
+                </div>
+                <div className='dashboard-right-deck-number-cards'>
+                    <ResetMasteryModal oneDeck={currentDeck} />
                 </div>
             </div>
             <div className='dashboard-right-class-navlinks-container cards'>
