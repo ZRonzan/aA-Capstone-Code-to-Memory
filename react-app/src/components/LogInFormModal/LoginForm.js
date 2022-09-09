@@ -29,8 +29,6 @@ const LoginForm = ({ setShowModal1, setShowModal2 }) => {
       errors.push("Password: The provided password is too long (greater than 100 characters). ")
     }
 
-
-
     if (errors.length) {
       setErrors(errors)
       return

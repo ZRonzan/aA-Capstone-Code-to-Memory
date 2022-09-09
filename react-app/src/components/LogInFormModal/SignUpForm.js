@@ -35,28 +35,22 @@ const SignUpForm = ({ setShowModal2, setShowModal1 }) => {
 
     if (!email.length) {
       errors.push("Email: Please provide an email.")
-    } else if (email.length > 254) {
-      errors.push("Email: The provided email is too long (greater than 256 characters).")
-    }
-    if (!validateEmail(email)) {
+    } else if (!validateEmail(email)) {
       errors.push("Email: Please provide a correctly formatted email.")
-    }
-    if (email.includes(" ")) {
-      errors.push("Email: Emails cannot contain spaces.")
+    } else if (email.length > 254) {
+      errors.push("Email: The provided email is too long (greater than 254 characters).")
     }
 
     if (!password || !repeatPassword) {
       errors.push("Password: Both password input fields must be filled.")
-    }
-    if (password !== repeatPassword) {
+    } else if (password !== repeatPassword) {
       errors.push("Password: Passwords do not match.")
+    } else if (password.includes(" ") || repeatPassword.includes(" ")) {
+      errors.push("Password: Passwords cannot contain spaces.")
     } else if (password.length < 8) {
       errors.push("Password: Passwords need to be at least 8 characters long")
     } else if (password.length > 100) {
       errors.push("Password: The provided password is too long (greater than 100 characters). ")
-    }
-    if (password.includes(" ") || repeatPassword.includes(" ")) {
-      errors.push("Password: Passwords cannot contain spaces.")
     }
 
     if (errors.length) {
