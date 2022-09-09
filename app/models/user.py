@@ -34,6 +34,7 @@ class User(db.Model, UserMixin):
             'last_name': self.last_name,
             'email': self.email
         }
+        
 
     def to_dict_name_only(self):
         return {
