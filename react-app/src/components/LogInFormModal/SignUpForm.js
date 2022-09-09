@@ -22,35 +22,35 @@ const SignUpForm = ({ setShowModal2, setShowModal1 }) => {
     e.preventDefault();
     let errors = []
     if (!first_name.length) {
-      errors.push("First Name: Please provide a first name.")
+      errors.push("Please provide a first name.")
     } else if (first_name.length > 30) {
-      errors.push("First Name: Please choose a first name shorter than 30 characters.")
+      errors.push("Please choose a first name shorter than 30 characters.")
     }
 
     if (!last_name.length) {
-      errors.push("Last Name: Please provide a last name.")
+      errors.push("Please provide a last name.")
     }else if (last_name.length > 30) {
-      errors.push("Last Name: Please choose a last name shorter than 30 characters.")
+      errors.push("Please choose a last name shorter than 30 characters.")
     }
 
     if (!email.length) {
-      errors.push("Email: Please provide an email.")
+      errors.push("Please provide an email.")
     } else if (!validateEmail(email)) {
-      errors.push("Email: Please provide a correctly formatted email.")
+      errors.push("Please provide a correctly formatted email.")
     } else if (email.length > 254) {
-      errors.push("Email: The provided email is too long (greater than 254 characters).")
+      errors.push("The provided email is too long (greater than 254 characters).")
     }
 
     if (!password || !repeatPassword) {
-      errors.push("Password: Both password input fields must be filled.")
+      errors.push("Both password input fields must be filled.")
     } else if (password !== repeatPassword) {
-      errors.push("Password: Passwords do not match.")
+      errors.push("Passwords do not match.")
     } else if (password.includes(" ") || repeatPassword.includes(" ")) {
-      errors.push("Password: Passwords cannot contain spaces.")
+      errors.push("Passwords cannot contain spaces.")
     } else if (password.length < 8) {
-      errors.push("Password: Passwords need to be at least 8 characters long")
+      errors.push("Passwords need to be at least 8 characters long")
     } else if (password.length > 100) {
-      errors.push("Password: The provided password is too long (greater than 100 characters). ")
+      errors.push("The provided password is too long (greater than 100 characters).")
     }
 
     if (errors.length) {
