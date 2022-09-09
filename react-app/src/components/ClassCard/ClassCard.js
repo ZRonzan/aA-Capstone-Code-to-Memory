@@ -20,6 +20,7 @@ const ClassCard = ({ myClass, setSortedClasses }) => {
 
 
     useEffect(() => {
+        setImage(codingimage)
         for (let i = 0; i < IMAGES.length; i++) {
             if (myClass.name.toUpperCase().includes(IMAGES[i].name)) {
                 setImage(ICONS[IMAGES[i].name])
