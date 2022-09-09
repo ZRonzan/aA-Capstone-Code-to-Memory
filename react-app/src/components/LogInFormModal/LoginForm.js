@@ -18,10 +18,18 @@ const LoginForm = ({ setShowModal1, setShowModal2 }) => {
 
     if (!email.length) {
       errors.push("Email: Please provide an email")
+    } else if (email.length > 254) {
+      errors.push("Email: The provided email is too long (greater than 256 characters).")
     }
     if (!password.length) {
       errors.push("Password: Please provide a password")
+    } else if (password.length < 8) {
+      errors.push("Password: Passwords need to be at least 8 characters long")
+    } else if (password.length > 100) {
+      errors.push("Password: The provided password is too long (greater than 100 characters). ")
     }
+
+
 
     if (errors.length) {
       setErrors(errors)
