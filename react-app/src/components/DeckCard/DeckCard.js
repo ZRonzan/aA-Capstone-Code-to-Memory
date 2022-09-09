@@ -11,7 +11,6 @@ const DeckCard = ({ classId, myDeck, ownerId}) => {
     const [isLoaded, setIsLoaded] = useState(false)
     const [showDropdown, setShowDropdown] = useState(false)
 
-    const dispatch = useDispatch()
     const history = useHistory()
     const pathName = useLocation().pathname
     const user = useSelector(state => state.session.user)
