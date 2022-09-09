@@ -32,12 +32,10 @@ const DashboardLeftClasses = ({setDashboardLoaded}) => {
     }, [])
 
     const countDecks = () => {
-        console.log("COUNTING!!!!!!!!!!!!!!!!!!")
         let count = 0
         Object.values(userClasses).forEach((ele) => {
             count = count + ele.decks.length
         })
-        console.log("HERE'S THE COUNT!", count)
         setDecksCount(count)
     }
 

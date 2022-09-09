@@ -11,6 +11,7 @@ import DashboardRightAboutPage from '../DasboardRightAboutPage/DashboardRightAbo
 import DashboardRightDecks from '../DashboardRightDecks/DashboardRightDecks';
 import PageNotFound from '../PageNotFound/PageNotFound';
 import Footer from '../Footer/Footer';
+import ResetMasteryModal from '../ResetMasteryModal/ResetMasteryModal';
 
 const DashboardRightClasses = () => {
     const [isLoaded, setIsLoaded] = useState()
@@ -102,7 +103,6 @@ const DashboardRightClasses = () => {
             Object.values(currentClassDecks).forEach(ele => {
                 cardCount = cardCount + ele['cards'].length
             })
-            console.log(cardCount)
             return cardCount
         } else {
             return 0
@@ -140,7 +140,7 @@ const DashboardRightClasses = () => {
     if (!user || !userClasses[classId]) {
         history.push('/404-not-found')
     }
-    console.log("MASTERY OBJ 2", masteryObj)
+
     return isLoaded ? (
         <div className='dashboard-right-class-container'>
             <div className='dashboard-right-class-top-container'>
@@ -216,6 +216,9 @@ const DashboardRightClasses = () => {
                                 {`Decks: ${Object.keys(currentClassDecks).length} • Total Cards: ${countCards()}`}
                             </div>
                         </div>
+                        <div className='reset-mastery-modal-container'>
+                            <ResetMasteryModal />
+                        </div>
                         <div className='dashboard-right-class-options-container'>
                             {/* <div className='dashboard-right-class-options'>
                             <DeleteClassModal setSortedClasses={setSortedClasses} myClass={currentClassDetails} classPage={true} />
@@ -230,6 +233,9 @@ const DashboardRightClasses = () => {
                     <div className='dashboard-right-class-mastery-text'>
                         Mastery
                     </div>
+                    {/* <div className='reset-mastery-modal-container'>
+                        <ResetMasteryModal />
+                    </div> */}
 
                 </div>
             </div>
