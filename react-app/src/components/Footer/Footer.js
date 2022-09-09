@@ -30,6 +30,7 @@ function Footer({setShowModal1, setShowModal2}) {
                 </div>
                 <div className='footer-link-container'>
                     <a className='footer-link' href="https://www.vecteezy.com/free-vector/coding" target="_blank">Coding Vectors by Vecteezy</a>
+                    <a className='footer-link' href="https://iconscout.com/" target="_blank">Class icons from Iconscout</a>
                 </div>
             </div>
         </div>
