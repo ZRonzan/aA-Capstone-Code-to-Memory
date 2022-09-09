@@ -41,8 +41,8 @@ const CreateNewDeckForm = ({ setShowModal, myDeck, editing, setShowDropdown }) =
     if (editedDeckName.length === 0) {
       errors.push("Deck name is required")
     }
-    if (editedDeckObjective && editedDeckObjective.length > 150) {
-      errors.push("Deck objective must be less than or equal to 150 characters")
+    if (editedDeckObjective && editedDeckObjective.length > 100) {
+      errors.push("Deck objective must be less than or equal to 100 characters")
     }
     if (Number(classId) !== currentClass.class['id']) {
       errors.push("You should not be here...")

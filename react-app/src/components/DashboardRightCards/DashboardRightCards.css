@@ -1,10 +1,11 @@
 .dashboard-right-cards-top-container {
-    height: 7vh;
-    min-height: 70px;
+    height: min-content;
+    min-height: 7vh;
     max-height: 100px;
     padding: 0 2rem;
     display: flex;
     align-items: center;
+    box-sizing: border-box;
 }
 
 .dashboard-right-class-navlink-container-cards.deck {
@@ -17,7 +18,7 @@
 
 .dashboard-right-class-icon-decks {
     width: 60%;
-    background-color: rgbe(0,0,0,0);
+    background-color: rgbe(0, 0, 0, 0);
 }
 
 .dashboard-right-class-navlink-container-cards.deck:hover {
@@ -26,16 +27,11 @@
     background-color: #f7f7f7;
 }
 
-@media screen and (max-width: 1100px) {
-    .dashboard-right-cards-top-container {
-        display: flex;
-        height: min-content;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 1rem;
-    }
+.dashboard-right-class-name-cards {
+    max-width: 20vw;
+    word-break: break-word;
 }
+
 
 .dashboard-right-class-navlink-container-cards:hover {
     cursor: pointer;
@@ -66,19 +62,13 @@
     height: 40px;
 }
 
-/* .dashboard-right-class-name-cards {
-    height: 100%;
-}
-
-.dashboard-right-class-name-cards:hover {
-    color: #31a8dd;
-} */
 
 .dashboard-right-deck-name-cards {
     font-size: 1.5rem;
     font-weight: bold;
     color: #197096;
     text-align: center;
+    word-break: break-word;
 }
 
 .dashboard-right-deck-number-cards {
@@ -105,4 +95,32 @@
     border-bottom: 1px solid #c3d0dd;
     background-color: white;
     z-index: 2;
+}
+
+@media screen and (max-width: 1100px) {
+    .dashboard-right-cards-top-container {
+        display: flex;
+        height: max-content;
+        max-height: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+    }
+
+    .dashboard-right-class-navlink-container-cards.deck {
+        width: 100%;
+        padding: 0 2rem;
+        justify-content: center;
+    }
+
+    .dashboard-right-class-name-cards {
+        width: 70%;
+        max-width: none;
+        word-break: break-word;
+        margin-bottom: 1rem;
+    }
+    .dashboard-right-deck-name-cards {
+        margin-bottom: 1rem;
+    }
 }
