@@ -72,6 +72,7 @@ const DashboardRightClasses = () => {
             let data = await dispatch(getCurrentClassDetailsThunk(classId));
 
             if (data.class.name) {
+                setImage(defaultImage)
                 for (let i = 0; i < IMAGES.length; i++) {
                     if (data.class.name.toUpperCase().includes(IMAGES[i].name)) {
                         setImage(ICONS[IMAGES[i].name])
