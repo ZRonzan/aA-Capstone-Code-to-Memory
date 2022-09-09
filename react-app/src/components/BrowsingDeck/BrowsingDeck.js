@@ -131,28 +131,44 @@ const BrowsingDeck = () => {
             <div
                 className='dashboard-right-browse-body-container'
             >
+                {cardsArr.length > 0 && (
+                    <>
+                        <div className='preview-card-q-a card-queue'>
+                            {`Card ${currentSpot + 1} of ${cardsArr.length}`}
+                        </div>
+                        {!answerRevealed ? (
+                            <div className='preview-card-q-a'>
+                                Q
+                            </div>
+                        ) : (
+                            <div className='preview-card-q-a'>
+                                A
+                            </div>
+                        )}
+                    </>
+                )}
                 <div className='dashboard-right-browse-card-container'>
                     {cardsArr.length > 0 && (
                         <div
                             className={`dashboard-right-browse-body-card ${deckMasteries[cardsArr[currentSpot]['id']] ? deckMasteries[cardsArr[currentSpot]['id']] : "none"}`}
                         >
-                            <div className='preview-card-q-a card-queue'>
+                            {/* <div className='preview-card-q-a card-queue'>
                                 {`Card ${currentSpot + 1} of ${cardsArr.length}`}
-                            </div>
+                            </div> */}
                             {!answerRevealed ? (
                                 <>
-                                    <div className='preview-card-q-a'>
+                                    {/* <div className='preview-card-q-a'>
                                         Q
-                                    </div>
+                                    </div> */}
                                     <div className='dashboard-right-browse-body-card-text'>
                                         {cardsArr[currentSpot]['question']}
                                     </div>
                                 </>
                             ) : (
                                 <>
-                                    <div className='preview-card-q-a'>
+                                    {/* <div className='preview-card-q-a'>
                                         A
-                                    </div>
+                                    </div> */}
                                     <div className='dashboard-right-browse-body-card-text'>
                                         {cardsArr[currentSpot]['answer']}
                                     </div>
