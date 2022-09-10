@@ -173,7 +173,7 @@ const DashboardRightCards = () => {
                                         <CreateCardModal />
                                     </div>
                                 </div>
-                                {currentDeck.cards.map((ele, i) => {
+                                {currentDeck.cards.sort((a,b)=> a.id - b.id).map((ele, i) => {
                                     return <PreviewCard card={ele} number={i + 1} mastery={deckMasteries[ele.id] ? deckMasteries[ele.id] : "none"} />
                                 })}
                             </>
