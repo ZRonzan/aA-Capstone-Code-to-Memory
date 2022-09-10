@@ -5,7 +5,7 @@ import { editCardThunk, createNewCardThunk } from '../../store/currentclassdetai
 import { getUserClassesThunk } from '../../store/currentuserclasses';
 import './CreateCardForm.css'
 
-const CreateNewDeckForm = ({ setShowModal, myCard, editing}) => {
+const CreateCardForm = ({ setShowModal, myCard, editing}) => {
   const [isLoaded, setIsLoaded] = useState(false)
   const [errors, setErrors] = useState([]);
   const [question, setQuestion] = useState("")
@@ -157,4 +157,4 @@ const CreateNewDeckForm = ({ setShowModal, myCard, editing}) => {
   );
 };
 
-export default CreateNewDeckForm;
+export default CreateCardForm;
