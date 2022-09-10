@@ -20,7 +20,7 @@ function Footer({setShowModal1, setShowModal2}) {
                     About The Developer
                 </div>
                 <div className='footer-link-container'>
-                    <a className='footer-link' href="https://github.com/ZRonzan" target="_blank">Github</a>
+                    <a className='footer-link' href="https://github.com/ZRonzan/aA-Capstone-Code-to-Memory" target="_blank">Github</a>
                     <a className='footer-link' href="https://www.linkedin.com/in/zeus-ronzan-b26313104/" target="_blank">LinkedIn</a>
                 </div>
             </div>
