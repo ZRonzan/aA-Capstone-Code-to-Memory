@@ -5,7 +5,7 @@ import { editCardThunk, createNewCardThunk } from '../../store/currentclassdetai
 import { getUserClassesThunk } from '../../store/currentuserclasses';
 import './CreateCardForm.css'
 
-const CreateCardForm = ({ setShowModal, myCard, editing}) => {
+const CreateCardForm = ({ setShowModal, myCard, editing }) => {
   const [isLoaded, setIsLoaded] = useState(false)
   const [errors, setErrors] = useState([]);
   const [question, setQuestion] = useState("")
@@ -15,7 +15,7 @@ const CreateCardForm = ({ setShowModal, myCard, editing}) => {
 
   const user = useSelector(state => state.session.user)
   const currentClass = useSelector(state => state.currentclassdetails.class)
-  const {deckId} = useParams()
+  const { deckId } = useParams()
 
   useEffect(() => {
     if (myCard) {
@@ -23,7 +23,7 @@ const CreateCardForm = ({ setShowModal, myCard, editing}) => {
       setAnswer(myCard['answer'])
     }
     setIsLoaded(true)
-  },[])
+  }, [])
 
 
   const handleCreate = async () => {
@@ -111,7 +111,7 @@ const CreateCardForm = ({ setShowModal, myCard, editing}) => {
       </div>
       <div className='delete-class-main-body'>
         <div className='delete-class-title'>
-        {`${editing? "Edit card":"Create new card"}`}
+          {`${editing ? "Edit card" : "Create new card"}`}
         </div>
         {errors.length > 0 && (<div className='log-in-form-errors login'>
           <div
@@ -133,6 +133,11 @@ const CreateCardForm = ({ setShowModal, myCard, editing}) => {
           value={question}
           onChange={updateQuestion}
         />
+        <div
+          style={{ color: question ? `${500 - question.length < 0 ? "red" : "inherit"}` : "inherit", paddingTop: "1rem", height: "1rem" , fontSize: "0.8rem"}}
+        >
+          {`Characters remaining: ${question ? 500 - question.length : 500}`}
+        </div>
       </div>
       <div className='create-class-form-name-container deck-objective'>
         Answer:
@@ -144,13 +149,18 @@ const CreateCardForm = ({ setShowModal, myCard, editing}) => {
           value={answer}
           onChange={updateAnswer}
         />
+        <div
+          style={{ color: answer ? `${500 - answer.length < 0 ? "red" : "inherit"}` : "inherit", paddingTop: "1rem", height: "1rem" , fontSize: "0.8rem"}}
+        >
+          {`Characters remaining: ${answer ? 500 - answer.length : 500}`}
+        </div>
       </div>
       <div className='delete-class-buttons-container'>
         <button
-          onClick={() => {editing? handleEdit() : handleCreate()}}
+          onClick={() => { editing ? handleEdit() : handleCreate() }}
           className='log-in-form-submit-button'
         >
-          {`${editing? "Edit card":"Create new card"}`}
+          {`${editing ? "Edit card" : "Create new card"}`}
         </button>
       </div>
     </>

@@ -75,6 +75,12 @@ const CreateClassForm = ({ setShowModal, setSortedClasses }) => {
           onChange={updateClassName}
         />
       </div>
+      <div
+        className='create-class-characters-remaining'
+        style={{ color: className ? `${50 - className.length < 0 ? "red" : "inherit"}` : "inherit", paddingTop: "1rem", height: "1rem", fontSize: "0.8rem" }}
+      >
+        {`Characters remaining: ${className ? 50 - className.length : 50}`}
+      </div>
       <div className='delete-class-buttons-container'>
         <button
           onClick={handleCreate}

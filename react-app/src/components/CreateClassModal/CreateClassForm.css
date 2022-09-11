@@ -17,6 +17,7 @@
     border-right: none;
     border-top: none;
     border-bottom: 3px solid rgb(217, 217, 217);
+    overflow-x: auto;
 }
 
 .create-class-form-input-field:focus {
@@ -25,4 +26,10 @@
     border-top: none;
     border-bottom: 3px solid #29a5dc;
     outline: none;
+}
+
+.create-class-characters-remaining {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 0%;
 }
