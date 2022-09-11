@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {Redirect, useHistory, NavLink, useLocation} from 'react-router-dom'
+import {Redirect, useHistory, NavLink, useLocation, useParams} from 'react-router-dom'
 import "./ClassCard.css"
 import DeleteClassModal from '../DeleteClassModal/DeleteClassModal';
 import IMAGES from './iconPath-copy.json'
@@ -14,9 +14,15 @@ const ClassCard = ({ myClass, setSortedClasses }) => {
     const [image, setImage] = useState(codingimage)
     const [focused, setFocused] = useState(false)
 
+    const user = useSelector(state => state.session.user)
+
     const dispatch = useDispatch()
     const history = useHistory()
     const pathName = useLocation().pathname
+    let classId = -1
+    if (pathName.split('/').length >= 3) {
+        classId = parseInt(pathName.split("/")[2])
+    }
 
 
     useEffect(() => {
@@ -57,7 +63,7 @@ const ClassCard = ({ myClass, setSortedClasses }) => {
                 {myClass.name}
             </div>
             <div
-            style={{visibility: `${focused? "visible": "hidden"}`}}
+            style={{visibility: `${classId === myClass['id'] && myClass['owner_id'] === user.id? "visible": "hidden"}`}}
             className='class-card-delete-container'
             >
                 <DeleteClassModal myClass={myClass} setSortedClasses={setSortedClasses}/>
