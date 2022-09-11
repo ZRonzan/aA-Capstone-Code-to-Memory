@@ -19,6 +19,7 @@ const CreateNewDeckForm = ({ setShowModal, myDeck, editing, setShowDropdown }) =
 
   useEffect(() => {
     if (myDeck) {
+      console.log("SETTING DECKNAME", myDeck.name)
       setDeckName(myDeck['name'])
       setDeckObjective(myDeck['objective'])
     }
@@ -27,10 +28,76 @@ const CreateNewDeckForm = ({ setShowModal, myDeck, editing, setShowDropdown }) =
 
 
   useEffect(() => {
-    setHasSubmitted(false)
+    // setHasSubmitted(false)
+    // let errors = []
+    // let editedDeckName = deckName.trim()
+    // let editedDeckObjective = deckObjective
+
+    // if (editedDeckObjective) {
+    //   editedDeckObjective = editedDeckObjective.trim()
+    // }
+    // if (editedDeckName.length > 50) {
+    //   errors.push("Deck name must be 50 characters or less.")
+    // }
+    // if (editedDeckName.length === 0) {
+    //   errors.push("Deck name is required")
+    // }
+    // if (editedDeckObjective && editedDeckObjective.length > 100) {
+    //   errors.push("Deck objective must be less than or equal to 100 characters")
+    // }
+    // if (Number(classId) !== currentClass.class['id']) {
+    //   errors.push("You should not be here...")
+    // }
+    // if (errors.length > 0) {
+    //   setErrors(errors)
+    // }
+  }, [deckName, deckObjective])
+
+  const handleCreate = async (e) => {
+    e.preventDefault()
+    // setHasSubmitted(true)
     let errors = []
+    let newDeckName = deckName.trim()
+    let newDeckObjective = deckObjective
+    if (deckObjective) newDeckObjective = deckObjective.trim()
+
+    if (newDeckName.length > 50) {
+      errors.push("Deck name must be 50 characters or less.")
+    }
+    if (newDeckName.length === 0) {
+      errors.push("Deck name is required")
+    }
+    if (newDeckObjective && newDeckObjective.length > 100) {
+      errors.push("Deck objective must be less than or equal to 100 characters")
+    }
+    if (Number(classId) !== currentClass.class['id']) {
+      errors.push("You should not be here...")
+    }
+    if (errors.length > 0) {
+      setErrors(errors)
+      return
+    }
+
+    const newDeck = {
+      "name": newDeckName,
+      "objective": newDeckObjective,
+      "class_id": currentClass.class['id']
+    }
+    await dispatch(createNewDeckThunk(newDeck))
+    await dispatch(getUserClassesThunk())
+    setShowModal(false)
+  }
+
+  const handleEdit = async (e) => {
+    e.preventDefault()
+    // setHasSubmitted(true)
+    let errors = []
+
     let editedDeckName = deckName.trim()
+
     let editedDeckObjective = deckObjective
+    if (editedDeckObjective) editedDeckObjective = editedDeckObjective.trim()
+
 
     if (editedDeckObjective) {
       editedDeckObjective = editedDeckObjective.trim()
@@ -49,35 +116,8 @@ const CreateNewDeckForm = ({ setShowModal, myDeck, editing, setShowDropdown }) =
     }
     if (errors.length > 0) {
       setErrors(errors)
+      return
     }
-  }, [deckName, deckObjective])
-
-  const handleCreate = async (e) => {
-    e.preventDefault()
-    setHasSubmitted(true)
-    if (errors.length > 0) return
-    let newDeckName = deckName.trim()
-    let newDeckObjective = deckObjective
-    if (deckObjective) newDeckObjective = deckObjective.trim()
-
-    const newDeck = {
-      "name": newDeckName,
-      "objective": newDeckObjective,
-      "class_id": currentClass.class['id']
-    }
-    await dispatch(createNewDeckThunk(newDeck))
-    await dispatch(getUserClassesThunk())
-    setShowModal(false)
-  }
-
-  const handleEdit = async (e) => {
-    e.preventDefault()
-    setHasSubmitted(true)
-
-    if (errors.length > 0) return
-    let editedDeckName = deckName.trim()
-    let editedDeckObjective = deckObjective
-    if (editedDeckObjective) editedDeckObjective = editedDeckObjective.trim()
 
     const editedDeck = {
       "name": editedDeckName,
@@ -118,7 +158,7 @@ const CreateNewDeckForm = ({ setShowModal, myDeck, editing, setShowDropdown }) =
         <div className='delete-class-message'>
           A Deck is a subset of Flashcards in a Class, similar to chapters in a book
         </div>
-        {hasSubmitted && errors.length > 0 && (<div className='log-in-form-errors login'>
+        {errors.length > 0 && (<div className='log-in-form-errors login'>
           <div
             className='log-in-form-errors login inner'
           >
@@ -137,16 +177,26 @@ const CreateNewDeckForm = ({ setShowModal, myDeck, editing, setShowDropdown }) =
           value={deckName}
           onChange={updateDeckName}
         />
+        <div
+          style={{ color: deckName ? `${50 - deckName.length < 0 ? "red" : "inherit"}` : "inherit", paddingTop: "1rem", height: "1rem" , fontSize: "0.8rem"}}
+        >
+          {`Characters remaining: ${deckName ? 50 - deckName.length : 50}`}
+        </div>
       </div>
       <div className='create-class-form-name-container deck-objective'>
         Objective:
-        <textarea className='create-class-form-input-field deck-objective'
+        <input className='create-class-form-input-field deck-objective'
           name='class name'
           type='text'
           placeholder='(Objective not required). Provide a quick outline of what this deck aims to achieve'
           value={deckObjective}
           onChange={updateDeckObjective}
         />
+        <div
+          style={{ color: deckObjective ? `${100 - deckObjective.length < 0 ? "red" : "inherit"}` : "inherit", paddingTop: "1rem", height: "1rem" , fontSize: "0.8rem"}}
+        >
+          {`Characters remaining: ${deckObjective ? 100 - deckObjective.length : 100}`}
+        </div>
       </div>
       <div className='delete-class-buttons-container'>
         <button
