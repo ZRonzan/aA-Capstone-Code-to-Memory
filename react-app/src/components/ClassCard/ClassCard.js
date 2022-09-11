@@ -19,6 +19,7 @@ const ClassCard = ({ myClass, setSortedClasses }) => {
     const dispatch = useDispatch()
     const history = useHistory()
     const pathName = useLocation().pathname
+    
     let classId = -1
     if (pathName.split('/').length >= 3) {
         classId = parseInt(pathName.split("/")[2])
