@@ -211,6 +211,12 @@ const DashboardRightAboutPage = () => {
                                 value={editedHeadline}
                             >
                             </input>
+                            <div
+                            className='edit-about-class-form-error-container'
+                            style={{color: editedHeadline? `${300 - editedHeadline.length < 0? "red" : "inherit"}` : "inherit", padding: 0, height: "1rem"}}
+                            >
+                                {`Characters remaining: ${editedHeadline? 300 - editedHeadline.length : 0}`}
+                            </div>
                             <div className='edit-about-class-form-error-container'>
                                 {!!editedHeadlineErrors && (
                                     <div className='edit-about-class-form-error'>
@@ -246,6 +252,12 @@ const DashboardRightAboutPage = () => {
                                 value={editedDescription}
                             >
                             </textarea>
+                            <div
+                            className='edit-about-class-form-error-container'
+                            style={{color: editedDescription? `${5000 - editedDescription.length < 0? "red" : "inherit"}` : "inherit", padding: 0, height: "1rem"}}
+                            >
+                                {`Characters remaining: ${editedDescription? 5000 - editedDescription.length : 0}`}
+                            </div>
                             <div className='edit-about-class-form-error-container'>
                                 {!!editedDescriptionErrors && (
                                     <div className='edit-about-class-form-error'>
@@ -275,6 +287,12 @@ const DashboardRightAboutPage = () => {
                                 value={editedPurpose}
                             >
                             </input>
+                            <div
+                            className='edit-about-class-form-error-container'
+                            style={{color: editedPurpose? `${20 - editedPurpose.length < 0? "red" : "inherit"}` : "inherit", padding: 0, height: "1rem"}}
+                            >
+                                {`Characters remaining: ${editedPurpose? 20 - editedPurpose.length : 0}`}
+                            </div>
                             <div className='edit-about-class-form-error-container'>
                                 {!!editedPurposeErrors && (
                                     <div className='edit-about-class-form-error'>
