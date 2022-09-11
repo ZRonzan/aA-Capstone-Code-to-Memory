@@ -215,7 +215,7 @@ const DashboardRightAboutPage = () => {
                             className='edit-about-class-form-error-container'
                             style={{color: editedHeadline? `${300 - editedHeadline.length < 0? "red" : "inherit"}` : "inherit", padding: 0, height: "1rem"}}
                             >
-                                {`Characters remaining: ${editedHeadline? 300 - editedHeadline.length : 0}`}
+                                {`Characters remaining: ${editedHeadline? 300 - editedHeadline.length : 300}`}
                             </div>
                             <div className='edit-about-class-form-error-container'>
                                 {!!editedHeadlineErrors && (
@@ -256,7 +256,7 @@ const DashboardRightAboutPage = () => {
                             className='edit-about-class-form-error-container'
                             style={{color: editedDescription? `${5000 - editedDescription.length < 0? "red" : "inherit"}` : "inherit", padding: 0, height: "1rem"}}
                             >
-                                {`Characters remaining: ${editedDescription? 5000 - editedDescription.length : 0}`}
+                                {`Characters remaining: ${editedDescription? 5000 - editedDescription.length : 5000}`}
                             </div>
                             <div className='edit-about-class-form-error-container'>
                                 {!!editedDescriptionErrors && (
@@ -291,7 +291,7 @@ const DashboardRightAboutPage = () => {
                             className='edit-about-class-form-error-container'
                             style={{color: editedPurpose? `${20 - editedPurpose.length < 0? "red" : "inherit"}` : "inherit", padding: 0, height: "1rem"}}
                             >
-                                {`Characters remaining: ${editedPurpose? 20 - editedPurpose.length : 0}`}
+                                {`Characters remaining: ${editedPurpose? 20 - editedPurpose.length : 20}`}
                             </div>
                             <div className='edit-about-class-form-error-container'>
                                 {!!editedPurposeErrors && (
