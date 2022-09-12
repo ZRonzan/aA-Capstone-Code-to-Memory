@@ -12,6 +12,7 @@ import DashboardRightDecks from '../DashboardRightDecks/DashboardRightDecks';
 import PageNotFound from '../PageNotFound/PageNotFound';
 import Footer from '../Footer/Footer';
 import ResetMasteryModal from '../ResetMasteryModal/ResetMasteryModal';
+import SectionNotFound from '../SectionNotFound/SectionNotFound';
 
 const DashboardRightClasses = () => {
     const [isLoaded, setIsLoaded] = useState()
@@ -259,7 +260,7 @@ const DashboardRightClasses = () => {
                         <DashboardRightDecks />
                     </Route>
                     <Route path='*'>
-                        <PageNotFound />
+                        <SectionNotFound />
                     </Route>
                 </Switch>
             </div>
