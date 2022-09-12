@@ -189,7 +189,7 @@ const CreateNewDeckForm = ({ setShowModal, myDeck, editing, setShowDropdown }) =
         <input className='create-class-form-input-field deck-objective'
           name='class name'
           type='text'
-          placeholder='(Objective not required). Provide a quick outline of what this deck aims to achieve'
+          placeholder="(Objective not required). Provide the deck's objective."
           value={deckObjective}
           onChange={updateDeckObjective}
         />
