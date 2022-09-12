@@ -217,7 +217,9 @@ const DashboardRightClasses = () => {
                                 {`Decks: ${Object.keys(currentClassDecks).length} • Total Cards: ${countCards()}`}
                             </div>
                         </div>
-                        <div className='reset-mastery-modal-container'>
+                        <div
+                        style={{visibility: `${masteryScore? "visible" : "hidden"}`}}
+                        className='reset-mastery-modal-container'>
                             <ResetMasteryModal />
                         </div>
                         <div className='dashboard-right-class-options-container'>
