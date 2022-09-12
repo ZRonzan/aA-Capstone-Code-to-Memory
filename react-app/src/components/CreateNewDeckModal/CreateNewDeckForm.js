@@ -80,9 +80,10 @@ const CreateNewDeckForm = ({ setShowModal, myDeck, editing, setShowDropdown }) =
 
     const newDeck = {
       "name": newDeckName,
-      "objective": newDeckObjective,
+      "objective": newDeckObjective ? newDeckObjective : null,
       "class_id": currentClass.class['id']
     }
+    console.log(newDeck)
     await dispatch(createNewDeckThunk(newDeck))
     await dispatch(getUserClassesThunk())
     setShowModal(false)
@@ -178,7 +179,7 @@ const CreateNewDeckForm = ({ setShowModal, myDeck, editing, setShowDropdown }) =
           onChange={updateDeckName}
         />
         <div
-          style={{ color: deckName ? `${50 - deckName.length < 0 ? "red" : "inherit"}` : "inherit", paddingTop: "1rem", height: "1rem" , fontSize: "0.8rem"}}
+          style={{ color: deckName ? `${50 - deckName.length < 0 ? "red" : "inherit"}` : "inherit", paddingTop: "1rem", height: "1rem", fontSize: "0.8rem" }}
         >
           {`Characters remaining: ${deckName ? 50 - deckName.length : 50}`}
         </div>
@@ -193,9 +194,15 @@ const CreateNewDeckForm = ({ setShowModal, myDeck, editing, setShowDropdown }) =
           onChange={updateDeckObjective}
         />
         <div
-          style={{ color: deckObjective ? `${100 - deckObjective.length < 0 ? "red" : "inherit"}` : "inherit", paddingTop: "1rem", height: "1rem" , fontSize: "0.8rem"}}
+          style={{ color: deckObjective ? `${100 - deckObjective.trim().length < 0 ? "red" : "inherit"}` : "inherit", paddingTop: "1rem", height: "1rem", fontSize: "0.8rem" }}
         >
-          {`Characters remaining: ${deckObjective ? 100 - deckObjective.length : 100}`}
+          {`Characters remaining: ${deckObjective ? 100 - deckObjective.trim().length : 100}`}
+        </div>
+        <div
+          className='create-characters-remaining'
+          style={{paddingTop: "1rem", fontSize: "0.8rem" }}
+        >
+          (Note: all spaces at the beginning and end of the provided deck name and objective will be removed upon creation)
         </div>
       </div>
       <div className='delete-class-buttons-container'>

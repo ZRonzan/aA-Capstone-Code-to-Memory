@@ -19,6 +19,7 @@ const CreateClassForm = ({ setShowModal, setSortedClasses }) => {
     }
     if (newClassName.length === 0) {
       errors.push("Class name is required")
+      setClassName("")
     }
     if (errors.length > 0) {
       setErrors(errors)
@@ -77,9 +78,15 @@ const CreateClassForm = ({ setShowModal, setSortedClasses }) => {
       </div>
       <div
         className='create-class-characters-remaining'
-        style={{ color: className ? `${50 - className.length < 0 ? "red" : "inherit"}` : "inherit", paddingTop: "1rem", height: "1rem", fontSize: "0.8rem" }}
+        style={{ color: className ? `${50 - className.trim().length < 0 ? "red" : "inherit"}` : "inherit", paddingTop: "1rem", height: "1rem", fontSize: "0.8rem" }}
       >
-        {`Characters remaining: ${className ? 50 - className.length : 50}`}
+        {`Characters remaining: ${className.trim() ? 50 - className.trim().length : 50}`}
+      </div>
+      <div
+      className='create-characters-remaining'
+      style={{ color: className ? `${50 - className.trim().length < 0 ? "red" : "inherit"}` : "inherit", paddingTop: "1rem", height: "1rem", fontSize: "0.8rem" }}
+      >
+        (Note: all spaces at the beginning and end of this class name will be removed upon creation)
       </div>
       <div className='delete-class-buttons-container'>
         <button

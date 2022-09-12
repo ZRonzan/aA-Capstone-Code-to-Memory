@@ -8,6 +8,8 @@ import './CreateCardForm.css'
 const CreateCardForm = ({ setShowModal, myCard, editing }) => {
   const [isLoaded, setIsLoaded] = useState(false)
   const [errors, setErrors] = useState([]);
+  const [initialQuestion, setInitialQuestion] = useState("")
+  const [initialAnswer, setInitialAnswer] = useState("")
   const [question, setQuestion] = useState("")
   const [answer, setAnswer] = useState("")
   const dispatch = useDispatch();
@@ -19,6 +21,8 @@ const CreateCardForm = ({ setShowModal, myCard, editing }) => {
 
   useEffect(() => {
     if (myCard) {
+      setInitialQuestion(myCard['question'])
+      setInitialAnswer(myCard['answer'])
       setQuestion(myCard['question'])
       setAnswer(myCard['answer'])
     }
@@ -36,12 +40,14 @@ const CreateCardForm = ({ setShowModal, myCard, editing }) => {
     }
     if (newQuestion.length === 0) {
       errors.push("Question is required")
+      setQuestion("")
     }
     if (newAnswer.length > 500) {
       errors.push("Card answer must be 500 characters or less.")
     }
     if (newAnswer.length === 0) {
       errors.push("Answer is required")
+      setAnswer("")
     }
 
     if (errors.length > 0) {
@@ -134,9 +140,9 @@ const CreateCardForm = ({ setShowModal, myCard, editing }) => {
           onChange={updateQuestion}
         />
         <div
-          style={{ color: question ? `${500 - question.length < 0 ? "red" : "inherit"}` : "inherit", paddingTop: "1rem", height: "1rem" , fontSize: "0.8rem"}}
+          style={{ color: question ? `${500 - question.trim().length < 0 ? "red" : "inherit"}` : "inherit", paddingTop: "1rem", height: "1rem" , fontSize: "0.8rem"}}
         >
-          {`Characters remaining: ${question ? 500 - question.length : 500}`}
+          {`Characters remaining: ${question ? 500 - question.trim().length : 500}`}
         </div>
       </div>
       <div className='create-class-form-name-container deck-objective'>
@@ -150,10 +156,16 @@ const CreateCardForm = ({ setShowModal, myCard, editing }) => {
           onChange={updateAnswer}
         />
         <div
-          style={{ color: answer ? `${500 - answer.length < 0 ? "red" : "inherit"}` : "inherit", paddingTop: "1rem", height: "1rem" , fontSize: "0.8rem"}}
+          style={{ color: answer ? `${500 - answer.trim().length < 0 ? "red" : "inherit"}` : "inherit", paddingTop: "1rem", height: "1rem" , fontSize: "0.8rem"}}
         >
-          {`Characters remaining: ${answer ? 500 - answer.length : 500}`}
+          {`Characters remaining: ${answer ? 500 - answer.trim().length : 500}`}
         </div>
+      </div>
+      <div
+      className='create-characters-remaining'
+      style={{ paddingTop: "1rem", height: "1rem", fontSize: "0.8rem" }}
+      >
+        (Note: all spaces at the beginning and end of the provided question and answer will be removed upon submission)
       </div>
       <div className='delete-class-buttons-container'>
         <button

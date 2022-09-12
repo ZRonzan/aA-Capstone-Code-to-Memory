@@ -148,7 +148,9 @@ const DashboardRightCards = () => {
                 <div className='dashboard-right-deck-number-cards'>
                     {`Deck ${deckArr.indexOf(currentDeck) + 1} of ${deckArr.length}`}
                 </div>
-                <div className='dashboard-right-deck-number-cards'>
+                <div
+                className='dashboard-right-deck-number-cards'
+                >
                     <ResetMasteryModal oneDeck={currentDeck} />
                 </div>
             </div>
