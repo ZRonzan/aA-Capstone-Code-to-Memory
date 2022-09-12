@@ -10,7 +10,7 @@ def deck_name_length(form, field):
 
 def deck_objective_length(form, field):
     objective = field.data
-    if objective is not None and len(objective) > 100 or objective is not None and len(objective) == 0:
+    if objective is not None and len(objective) > 100:
         raise ValidationError("Deck objective must be 100 characters or less.")
 
 class DeckForm(FlaskForm):

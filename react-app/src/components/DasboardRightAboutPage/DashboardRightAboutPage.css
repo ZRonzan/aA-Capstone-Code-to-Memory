@@ -87,3 +87,9 @@
 .edit-about-class-form-error {
 
 }
+
+.about-character-counts {
+    margin: 0% 3%;
+    margin-top: 1%;
+    font-size: 0.8rem;
+}

@@ -212,10 +212,10 @@ const DashboardRightAboutPage = () => {
                             >
                             </input>
                             <div
-                            className='edit-about-class-form-error-container'
-                            style={{color: editedHeadline? `${300 - editedHeadline.length < 0? "red" : "inherit"}` : "inherit", padding: 0, height: "1rem"}}
+                            className='about-character-counts'
+                            style={{color: editedHeadline? `${300 - editedHeadline.trim().length < 0? "red" : "inherit"}` : "inherit", padding: 0, height: "1rem"}}
                             >
-                                {`Characters remaining: ${editedHeadline? 300 - editedHeadline.length : 300}`}
+                                {`Characters remaining: ${editedHeadline? 300 - editedHeadline.trim().length : 300} (Note: all spaces at the beginning and end of this class headline will be removed upon creation)`}
                             </div>
                             <div className='edit-about-class-form-error-container'>
                                 {!!editedHeadlineErrors && (
@@ -253,10 +253,10 @@ const DashboardRightAboutPage = () => {
                             >
                             </textarea>
                             <div
-                            className='edit-about-class-form-error-container'
-                            style={{color: editedDescription? `${5000 - editedDescription.length < 0? "red" : "inherit"}` : "inherit", padding: 0, height: "1rem"}}
+                            className='about-character-counts'
+                            style={{color: editedDescription? `${5000 - editedDescription.trim().length < 0? "red" : "inherit"}` : "inherit", padding: 0, height: "1rem"}}
                             >
-                                {`Characters remaining: ${editedDescription? 5000 - editedDescription.length : 5000}`}
+                                {`Characters remaining: ${editedDescription? 5000 - editedDescription.trim().length : 5000} (Note: all spaces at the beginning and end of this class description will be removed upon creation)`}
                             </div>
                             <div className='edit-about-class-form-error-container'>
                                 {!!editedDescriptionErrors && (
@@ -288,10 +288,10 @@ const DashboardRightAboutPage = () => {
                             >
                             </input>
                             <div
-                            className='edit-about-class-form-error-container'
-                            style={{color: editedPurpose? `${20 - editedPurpose.length < 0? "red" : "inherit"}` : "inherit", padding: 0, height: "1rem"}}
+                            className='about-character-counts'
+                            style={{color: editedPurpose? `${20 - editedPurpose.trim().length < 0? "red" : "inherit"}` : "inherit", padding: 0, height: "1rem"}}
                             >
-                                {`Characters remaining: ${editedPurpose? 20 - editedPurpose.length : 20}`}
+                                {`Characters remaining: ${editedPurpose? 20 - editedPurpose.trim().length : 20} (Note: all spaces at the beginning and end of this class purpose will be removed upon creation)`}
                             </div>
                             <div className='edit-about-class-form-error-container'>
                                 {!!editedPurposeErrors && (
