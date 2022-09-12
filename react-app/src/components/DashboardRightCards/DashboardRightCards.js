@@ -13,6 +13,7 @@ import DashboardRightNoCards from '../DashboardRightNoCards/DashboardRightNoCard
 import CreateCardModal from '../CreateCardModal/CreateCardModal';
 import BrowsingDeck from '../BrowsingDeck/BrowsingDeck';
 import ResetMasteryModal from '../ResetMasteryModal/ResetMasteryModal';
+import SectionNotFound from '../SectionNotFound/SectionNotFound';
 
 const DashboardRightCards = () => {
     const [isLoaded, setIsLoaded] = useState()
@@ -191,6 +192,9 @@ const DashboardRightCards = () => {
                         ) : (
                             <DashboardRightNoCards />
                         )}
+                    </Route>
+                    <Route path='*'>
+                        <SectionNotFound />
                     </Route>
                 </Switch>
             </div>
