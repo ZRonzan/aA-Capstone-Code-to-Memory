@@ -163,7 +163,7 @@ const CreateCardForm = ({ setShowModal, myCard, editing }) => {
       </div>
       <div
       className='create-characters-remaining'
-      style={{ paddingTop: "1rem", height: "1rem", fontSize: "0.8rem" }}
+      style={{ paddingTop: "1rem", paddingBottom: "1rem", height: "1rem", fontSize: "0.8rem" }}
       >
         (Note: all spaces at the beginning and end of the provided question and answer will be removed upon submission)
       </div>
