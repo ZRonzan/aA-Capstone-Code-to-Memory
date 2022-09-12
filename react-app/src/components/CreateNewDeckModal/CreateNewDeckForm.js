@@ -66,6 +66,7 @@ const CreateNewDeckForm = ({ setShowModal, myDeck, editing, setShowDropdown }) =
     }
     if (newDeckName.length === 0) {
       errors.push("Deck name is required")
+      setDeckName("")
     }
     if (newDeckObjective && newDeckObjective.length > 100) {
       errors.push("Deck objective must be less than or equal to 100 characters")
@@ -179,9 +180,9 @@ const CreateNewDeckForm = ({ setShowModal, myDeck, editing, setShowDropdown }) =
           onChange={updateDeckName}
         />
         <div
-          style={{ color: deckName ? `${50 - deckName.length < 0 ? "red" : "inherit"}` : "inherit", paddingTop: "1rem", height: "1rem", fontSize: "0.8rem" }}
+          style={{ color: deckName ? `${50 - deckName.trim().length < 0 ? "red" : "inherit"}` : "inherit", paddingTop: "1rem", height: "1rem", fontSize: "0.8rem" }}
         >
-          {`Characters remaining: ${deckName ? 50 - deckName.length : 50}`}
+          {`Characters remaining: ${deckName ? 50 - deckName.trim().length : 50}`}
         </div>
       </div>
       <div className='create-class-form-name-container deck-objective'>
