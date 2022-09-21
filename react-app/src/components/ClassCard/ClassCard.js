@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {Redirect, useHistory, NavLink, useLocation, useParams} from 'react-router-dom'
 import "./ClassCard.css"
 import DeleteClassModal from '../DeleteClassModal/DeleteClassModal';
-import IMAGES from './iconPath-copy.json'
+// import IMAGES from './iconPath-copy.json'
 import ICONS from './icons';
 import codingimage from '../../assets/icons/coding.svg'
 
@@ -19,7 +19,7 @@ const ClassCard = ({ myClass, setSortedClasses }) => {
     const dispatch = useDispatch()
     const history = useHistory()
     const pathName = useLocation().pathname
-    
+
     let classId = -1
     if (pathName.split('/').length >= 3) {
         classId = parseInt(pathName.split("/")[2])
@@ -28,9 +28,11 @@ const ClassCard = ({ myClass, setSortedClasses }) => {
 
     useEffect(() => {
         setImage(codingimage)
+        const IMAGES = Object.keys(ICONS)
+
         for (let i = 0; i < IMAGES.length; i++) {
-            if (myClass.name.toUpperCase().includes(IMAGES[i].name)) {
-                setImage(ICONS[IMAGES[i].name])
+            if (myClass.name.toUpperCase().includes(IMAGES[i])) {
+                setImage(ICONS[IMAGES[i]])
                 break;
             }
         }
