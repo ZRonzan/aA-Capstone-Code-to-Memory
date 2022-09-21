@@ -3,7 +3,7 @@ import { NavLink, useParams, useHistory, Switch, Route } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import './DashboardRightClasses.css'
 import { getCurrentClassDetailsThunk, getCurrentClassMasteryThunk } from '../../store/currentclassdetails';
-import IMAGES from '../ClassCard/iconPath-copy.json'
+// import IMAGES from '../ClassCard/iconPath-copy.json'
 import ICONS from '../ClassCard/icons'
 import defaultImage from '../../assets/icons/coding.svg'
 import { editUserClassThunk, getUserClassesThunk } from '../../store/currentuserclasses';
@@ -45,9 +45,10 @@ const DashboardRightClasses = () => {
             } else {
                 let data = await dispatch(getCurrentClassDetailsThunk(classId));
                 if (data.class.name) {
+                    const IMAGES = Object.keys(ICONS)
                     for (let i = 0; i < IMAGES.length; i++) {
-                        if (data.class.name.toUpperCase().includes(IMAGES[i].name)) {
-                            setImage(ICONS[IMAGES[i].name])
+                        if (data.class.name.toUpperCase().includes(IMAGES[i])) {
+                            setImage(ICONS[IMAGES[i]])
                             break;
                         }
                     }
@@ -74,9 +75,10 @@ const DashboardRightClasses = () => {
 
             if (data.class.name) {
                 setImage(defaultImage)
+                const IMAGES = Object.keys(ICONS)
                 for (let i = 0; i < IMAGES.length; i++) {
-                    if (data.class.name.toUpperCase().includes(IMAGES[i].name)) {
-                        setImage(ICONS[IMAGES[i].name])
+                    if (data.class.name.toUpperCase().includes(IMAGES[i])) {
+                        setImage(ICONS[IMAGES[i]])
                         break;
                     }
                 }
