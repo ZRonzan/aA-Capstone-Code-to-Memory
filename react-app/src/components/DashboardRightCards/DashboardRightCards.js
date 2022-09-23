@@ -87,8 +87,8 @@ const DashboardRightCards = () => {
                 history.push('/404-page-not-found')
             } else {
                 let data = await dispatch(getCurrentClassDetailsThunk(classId));
-
                 setDeckArr(data.class.decks)
+
 
                 if (data.class.name) {
                     for (let i = 0; i < IMAGES.length; i++) {
@@ -153,7 +153,7 @@ const DashboardRightCards = () => {
                     {currentDeck['name']}
                 </div>
                 <div className='dashboard-right-deck-number-cards'>
-                    {`Deck ${deckArr.indexOf(currentDeck) + 1} of ${deckArr.length}`}
+                    {`Deck ${Object.keys(currentClassDecks).indexOf(deckId) + 1} of ${deckArr.length}`}
                 </div>
                 {showDeckMasteryReset && (<div
                 className='dashboard-right-deck-number-cards'
