@@ -22,6 +22,7 @@ const DashboardRightCards = () => {
     const [cardsArr, setCardsArr] = useState([])
     const [deckArr, setDeckArr] = useState([])
     const [deckMasteries, setDeckMasteries] = useState({})
+    const [showDeckMasteryReset, setShowDeckmasteryReset] = useState(false)
 
     const dispatch = useDispatch()
     const history = useHistory()
@@ -109,6 +110,11 @@ const DashboardRightCards = () => {
                         let currMast = masteries[ele['mastery_score'] - 1]
                         newObj[ele['card_id']] = currMast
                     });
+                    if (Object.keys(newObj).length) {
+                        setShowDeckmasteryReset(true)
+                    } else {
+                        setShowDeckmasteryReset(false)
+                    }
                     setDeckMasteries(newObj)
                 }
                 getRatings()
@@ -149,11 +155,11 @@ const DashboardRightCards = () => {
                 <div className='dashboard-right-deck-number-cards'>
                     {`Deck ${deckArr.indexOf(currentDeck) + 1} of ${deckArr.length}`}
                 </div>
-                <div
+                {showDeckMasteryReset && (<div
                 className='dashboard-right-deck-number-cards'
                 >
                     <ResetMasteryModal oneDeck={currentDeck} />
-                </div>
+                </div>)}
             </div>
             <div className='dashboard-right-class-navlinks-container cards'>
                 <NavLink className='dashboard-right-class-navlink' to={`/dashboard/${classId}/decks/${deckId}/Preview`}>
