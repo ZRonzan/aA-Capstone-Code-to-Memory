@@ -13,11 +13,11 @@ const ResetMasteryForm = ({ setShowModal, oneDeck }) => {
 
   const dispatch = useDispatch()
 
-  console.log(oneDeck)
+  // console.log(oneDeck)
 
   const handleDelete = async (deckIds = allDeckIds) => {
 
-    console.log(allDeckIds)
+    // console.log(allDeckIds)
 
     for (let deckId of deckIds) {
       const response = await fetch(`/api/mastery/deck/${deckId}`)
@@ -25,16 +25,20 @@ const ResetMasteryForm = ({ setShowModal, oneDeck }) => {
       if (response.ok) {
         const data = await response.json()
 
-        if (data.deck_scores.length === 0) {
-          setErrors(["This deck does not have any mastery scores recorded"])
-          return
+        if (data.deck_scores.length !== 0) {
+          for (let row of data.deck_scores) {
+            await fetch(`/api/mastery/${row.id}/delete`, {
+              method: 'DELETE'
+            });
+          }
+          // setErrors(["This deck does not have any mastery scores recorded"])
+          // return
         }
 
-        for (let row of data.deck_scores) {
-          await fetch(`/api/mastery/${row.id}/delete`, {
-            method: 'DELETE'
-          });
-        }
+        // if (data.deck_scores.length !== 0) {
+        //   setErrors(["This deck does not have any mastery scores recorded"])
+        // }
+
 
       }
       dispatch(getCurrentClassMasteryThunk(deckIds))
