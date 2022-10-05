@@ -89,10 +89,66 @@
 
 /* where classes you own will be shown */
 .dashboard-left-classses-bottom {
-    max-height: 78vh;
+    height: 70vh;
     width: 100%;
     padding: 3% 0%;
     overflow-y: auto;
+}
+
+@media screen and (max-height: 750px) {
+    .dashboard-left-classses-bottom {
+        height: 60vh;
+    }
+}
+
+@media screen and (max-height: 600px) {
+    .dashboard-left-classses-bottom {
+        height: 55vh;
+    }
+}
+
+@media screen and (max-height: 500px) {
+    .dashboard-left-classses-bottom {
+        height: 45vh;
+    }
+}
+
+.dashboard-left-classses-devlinks {
+    min-height: 4vh;
+    height: min-content;
+}
+
+.get-in-touch {
+    color:white;
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem 0;
+    border-top: 1px solid rgb(169, 169, 169);
+    margin: 0 5%;
+    margin-top: 0.5rem;
+    max-height: 25%;
+}
+
+div.dev-icons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 75%;
+    color: white;
+}
+
+.dev-icons {
+    color: white;
+}
+
+.dev-icons:visited, .dev-icons:active {
+    color: white;
+    text-decoration: none;
+}
+
+.dev-icons:hover {
+    cursor: pointer;
+    color: #0a92dd;
 }
 
 .dashboard-left-classses-empty {}
