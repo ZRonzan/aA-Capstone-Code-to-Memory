@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory, Redirect, useLocation} from 'react-router-dom'
+import { useHistory, Redirect, useLocation } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { login, logout, logOutDemoUser } from '../../store/session';
 import image from '../../assets/logo500x500.svg'
@@ -11,7 +11,7 @@ import ClassCard from '../ClassCard/ClassCard';
 import CreateClassModal from '../CreateClassModal/CreateClassModal';
 import { resetCurrentClassDetailsThunk } from '../../store/currentclassdetails';
 
-const DashboardLeftClasses = ({setDashboardLoaded}) => {
+const DashboardLeftClasses = ({ setDashboardLoaded }) => {
     const [isLoaded, setIsLoaded] = useState(false)
     const [classesCount, setClassesCount] = useState(0)
     const [sortedClasses, setSortedClasses] = useState([])
@@ -46,7 +46,7 @@ const DashboardLeftClasses = ({setDashboardLoaded}) => {
         setSortedClasses(sorted)
         countDecks()
         setIsLoaded(true)
-    }, [userClasses ])
+    }, [userClasses])
 
 
     const logOutUser = async () => {
@@ -92,7 +92,7 @@ const DashboardLeftClasses = ({setDashboardLoaded}) => {
                     {`MY CLASSES (${classesCount})`}
                 </div>
                 <div className='dashboard-left-classses-create'>
-                    <CreateClassModal setSortedClasses={setSortedClasses}/>
+                    <CreateClassModal setSortedClasses={setSortedClasses} />
                 </div>
             </div>
             <div className='dashboard-left-classses-bottom'>
@@ -107,10 +107,20 @@ const DashboardLeftClasses = ({setDashboardLoaded}) => {
                 {sortedClasses.length > 0 && (
                     sortedClasses.map((ele) => {
                         return (
-                            <ClassCard myClass={ele} setSortedClasses={setSortedClasses}/>
+                            <ClassCard myClass={ele} setSortedClasses={setSortedClasses} />
                         )
                     })
                 )}
+            </div>
+            <div className='dashboard-left-classses-devlinks'>
+                <div className='get-in-touch'>
+                    Get in touch
+                </div>
+                <div class="dev-icons">
+                    <a href="https://github.com/ZRonzan" target="_blank"><i className="fa-brands fa-github dev-icons"></i></a>
+                    <a href="https://www.linkedin.com/in/zeus-ronzan-b26313104/" target="_blank"><i className="fa-brands fa-linkedin dev-icons"></i></a>
+                    <a href="mailto:zeus.ronzan@gmail.com" target="_blank"><i className="fa-solid fa-envelope dev-icons"></i></a>
+                </div>
             </div>
         </div>
     );
