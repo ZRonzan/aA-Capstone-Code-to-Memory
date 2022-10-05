@@ -112,7 +112,7 @@ const DashboardLeftClasses = ({ setDashboardLoaded }) => {
                     })
                 )}
             </div>
-            <div className='dashboard-left-classses-devlinks'>
+            {user && user.id === 2 && (<div className='dashboard-left-classses-devlinks'>
                 <div className='get-in-touch'>
                     Get in touch
                 </div>
@@ -121,7 +121,7 @@ const DashboardLeftClasses = ({ setDashboardLoaded }) => {
                     <a href="https://www.linkedin.com/in/zeus-ronzan-b26313104/" target="_blank"><i className="fa-brands fa-linkedin dev-icons"></i></a>
                     <a href="mailto:zeus.ronzan@gmail.com" target="_blank"><i className="fa-solid fa-envelope dev-icons"></i></a>
                 </div>
-            </div>
+            </div>)}
         </div>
     );
 }
