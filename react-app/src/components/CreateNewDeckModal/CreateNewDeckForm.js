@@ -19,43 +19,14 @@ const CreateNewDeckForm = ({ setShowModal, myDeck, editing, setShowDropdown }) =
 
   useEffect(() => {
     if (myDeck) {
-      console.log("SETTING DECKNAME", myDeck.name)
       setDeckName(myDeck['name'])
       setDeckObjective(myDeck['objective'])
     }
     setIsLoaded(true)
   }, [])
 
-
-  useEffect(() => {
-    // setHasSubmitted(false)
-    // let errors = []
-    // let editedDeckName = deckName.trim()
-    // let editedDeckObjective = deckObjective
-
-    // if (editedDeckObjective) {
-    //   editedDeckObjective = editedDeckObjective.trim()
-    // }
-    // if (editedDeckName.length > 50) {
-    //   errors.push("Deck name must be 50 characters or less.")
-    // }
-    // if (editedDeckName.length === 0) {
-    //   errors.push("Deck name is required")
-    // }
-    // if (editedDeckObjective && editedDeckObjective.length > 100) {
-    //   errors.push("Deck objective must be less than or equal to 100 characters")
-    // }
-    // if (Number(classId) !== currentClass.class['id']) {
-    //   errors.push("You should not be here...")
-    // }
-    // if (errors.length > 0) {
-    //   setErrors(errors)
-    // }
-  }, [deckName, deckObjective])
-
   const handleCreate = async (e) => {
     e.preventDefault()
-    // setHasSubmitted(true)
     let errors = []
     let newDeckName = deckName.trim()
     let newDeckObjective = deckObjective
@@ -84,7 +55,6 @@ const CreateNewDeckForm = ({ setShowModal, myDeck, editing, setShowDropdown }) =
       "objective": newDeckObjective ? newDeckObjective : null,
       "class_id": currentClass.class['id']
     }
-    console.log(newDeck)
     await dispatch(createNewDeckThunk(newDeck))
     await dispatch(getUserClassesThunk())
     setShowModal(false)
@@ -92,7 +62,6 @@ const CreateNewDeckForm = ({ setShowModal, myDeck, editing, setShowDropdown }) =
 
   const handleEdit = async (e) => {
     e.preventDefault()
-    // setHasSubmitted(true)
     let errors = []
 
     let editedDeckName = deckName.trim()
